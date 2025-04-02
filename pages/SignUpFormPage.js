@@ -91,8 +91,8 @@ class SignUpFormPage extends BasePage{
         await actions.move({ origin: registerButton }).click().perform();
     }
 
+    //private data getters
     get email() {return this._email;}
-
     get password() {return this._password;}
 
     //sign up form page text element getters
