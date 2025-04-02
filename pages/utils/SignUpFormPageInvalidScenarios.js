@@ -47,6 +47,12 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         Logger.info("No user email: ", noEmail);
         await emailInputField.sendKeys(noEmail);
     }
+    async inputNoPasswordIntoPasswordInputField(){
+        const passwordInputField = await this.driver.findElement(this._signUpFormPagePasswordInputField);
+        const noPassword = await this._noPassword;
+        Logger.info("No user password: ", noPassword);
+        await passwordInputField.sendKeys(noPassword);
+    }
 
     //sign up form page error message getter
     async getSignUpFormPageInputErrorMessage(){
