@@ -38,6 +38,8 @@ class GeneralPage extends BasePage{
         this._asideDVDsCategoryFictionSubtitleLink = By.xpath("//div[@class='sidebar']/ul[2]/li");
         //list elements
         this._asideDVDsCategoryFictionListElements = By.xpath("//div[@class='sidebar']/ul[2]/li//li");
+        //login message
+        this._loginMessage = By.xpath("//div[@id='login-message']");
     }
 
     //click 'Sign up' button method
@@ -78,6 +80,11 @@ class GeneralPage extends BasePage{
         const asideDVDsFictionSubtitle = await this.driver.findElement(this._asideDVDsCategoryFictionSubtitleLink);
         const text = await asideDVDsFictionSubtitle.getText();
         return text.split("\n")[0].trim();
+    }
+    //login message getter
+    async getLoginMessage(){
+        const loginMessage = await this.driver.findElement(this._loginMessage);
+        return await loginMessage.getText();
     }
 
     //link text element getters (list)

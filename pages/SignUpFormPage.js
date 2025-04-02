@@ -2,9 +2,9 @@
 
 const { By, until} = require('selenium-webdriver');
 const BasePage = require('./utils/BasePage');
-const { Logger } = require("./utils/Logger");
+const Logger  = require("./utils/Logger");
 const { Actions } = require('selenium-webdriver');
-const TestDataGenerator = require("./utils/TestDataGenerator");
+const { TestDataGenerator } = require("./utils/TestDataGenerator");
 const { Key } = require('selenium-webdriver');
 
 class SignUpFormPage extends BasePage{
@@ -13,7 +13,7 @@ class SignUpFormPage extends BasePage{
         super(driver);
 
         //signup form page web elements
-        this._signUpFormPageTitle = By.xpath("");
+        this._signUpFormPageTitle = By.xpath("//div[@class='partition-title']");
         //input form
         this._signUpFormPageFirstNameInputField = By.xpath("//input[@id='s-name']");
         this._signUpFormPageLastNameInputField = By.xpath("//input[@id='s-surname']");
@@ -35,7 +35,65 @@ class SignUpFormPage extends BasePage{
 
         const testDataGenerator = new TestDataGenerator(this.driver);
 
+        //valid user data
+        const { firstName, lastName } = testDataGenerator.getRandomName();
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._email = testDataGenerator.generateRandomEmailAddress(7);
+        this._password = testDataGenerator.generateRandomPassword();
     }
+
+    //valid user account data input methods
+    async inputFirstNameIntoFirstNameInputField(){
+        const firstNameInputField = await this.driver.findElement(this._signUpFormPageFirstNameInputField);
+        const firstName = await this._firstName;
+        Logger.info("Valid user first name: ", firstName);
+        await firstNameInputField.sendKeys(firstName);
+    }
+    async inputLastNameIntoLastNameInputField(){
+        const lastNameInputField = await this.driver.findElement(this._signUpFormPageLastNameInputField);
+        const lastName = await this._lastName;
+        Logger.info("Valid user last name: ", lastName);
+        await lastNameInputField.sendKeys(lastName);
+    }
+    async inputEmailIntoEmailInputField(){
+        const emailInputField = await this.driver.findElement(this._signUpFormPageEmailInputField);
+        const email = this._email;
+        Logger.info("Valid user email: ", email);
+        await emailInputField.clear();
+        await emailInputField.sendKeys(email);
+    }
+    async inputPasswordIntoPasswordInputField() {
+        const passwordInputField = await this.driver.findElement(this._signUpFormPagePasswordInputField);
+        const password = this._password;
+        Logger.info("Valid user password: ", password);
+        await passwordInputField.sendKeys(password);
+    }
+
+    //click 'Myself' radio button method
+    async clickMyselfRadioButton(){
+        const myselfRadioButton = await this.driver.findElement(this._signUpFormPageMySelfRadioButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: myselfRadioButton }).click().perform();
+    }
+
+    //click 'Accept privacy policy' checkbox method
+    async clickPrivacyPolicyCheckbox(){
+        const privacyPolicyCheckbox = await this.driver.findElement(this._signUpFormPageAcceptPrivacyCheckbox);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: privacyPolicyCheckbox }).click().perform();
+    }
+
+    //click 'Register' button method
+    async clickRegisterButton(){
+        const registerButton = await this.driver.findElement(this._signUpFormPageRegisterButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: registerButton }).click().perform();
+    }
+
+    get email() {return this._email;}
+
+    get password() {return this._password;}
 
     //sign up form page text element getters
     async getSignUpFormPageTitle(){

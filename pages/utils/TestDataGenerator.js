@@ -224,4 +224,4 @@ class TestDataGenerator {
 
 }
 
-module.exports = TestDataGenerator;
+module.exports = { TestDataGenerator };

@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const assert = require("node:assert");
 const Logger = require('../../pages/utils/Logger');
-const TestDataGenerator = require("../../pages/utils/TestDataGenerator");
 const { HomePage } = require('../../pages/HomePage');
 const { GeneralPage } = require("../../pages/GeneralPage");
 const { SignUpFormPage } = require("../../pages/SignUpFormPage")
@@ -37,6 +36,48 @@ class TestMethods {
         await generalPage.clickSignUpButton();
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Navigate To Sign Up Form Test");
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //valid user account creation test method
+    async validUserAccountCreationTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const signUpFormPage = new SignUpFormPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //sign up form page web element assert
+        await signUpFormPage.isSignUpFormPagePageWebElementDisplayed();
+        //sign up form page text element assert
+        await this.isSignUpFormPageTextElementAsExpected();
+        //capture screenshot of the sign-up form page before data input
+        await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page Display Before Data Input");
+        // valid user first name into first name input field
+        await signUpFormPage.inputFirstNameIntoFirstNameInputField();
+        //input valid user last name into last name input field
+        await signUpFormPage.inputLastNameIntoLastNameInputField();
+        //input valid user email into email input field
+        await signUpFormPage.inputEmailIntoEmailInputField();
+        //input valid user password into password input field
+        await signUpFormPage.inputPasswordIntoPasswordInputField();
+        //capture screenshot of the sign-up form page after valid data input
+        await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page After Valid Data Input");
+        //click 'Myself' radio button
+        await signUpFormPage.clickMyselfRadioButton();
+        //click 'Accept privacy policy' checkbox
+        await signUpFormPage.clickPrivacyPolicyCheckbox();
+        //click 'Register' button
+        await signUpFormPage.clickRegisterButton();
+        //assert the user gets an expected login message
+        const loginMessage = await generalPage.getLoginMessage();
+        const loginEmail = await signUpFormPage.email;
+        assert.strictEqual(loginMessage, `Welcome back, ${loginEmail}`, "The login message doesn't match expectations or the user sign up process has failed.");
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Valid User Sign Up Test Result");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,19 +125,19 @@ class TestMethods {
         assert.strictEqual(signUpFormPageTitle, "SIGN UP", "The sign up form page title doesn't match the expectations.");
         //assert sign up form using account for subtext is as expected
         const signUpFormPageUsingAccountForSubtext = await signUpFormPage.getSignUpFormPageUsingAccountForSubtext();
-        assert.strictEqual(signUpFormPageUsingAccountForSubtext, "SIGN UP", "The sign up form page using account for subtext doesn't match the expectations.");
+        assert.strictEqual(signUpFormPageUsingAccountForSubtext, "I will be using my account for:", "The sign up form page using account for subtext doesn't match the expectations.");
         //assert sign up form using account for subtext is as expected
         const signUpFormPageMyselfSubtext = await signUpFormPage.getSignUpFormPageMyselfSubtext();
-        assert.strictEqual(signUpFormPageMyselfSubtext, "SIGN UP", "The sign up form page myself subtext doesn't match the expectations.");
+        assert.strictEqual(signUpFormPageMyselfSubtext, "Myself", "The sign up form page myself subtext doesn't match the expectations.");
         //assert sign up form business subtext is as expected
         const signUpFormPageBusinessSubtext = await signUpFormPage.getSignUpFormPageBusinessSubtext();
-        assert.strictEqual(signUpFormPageBusinessSubtext, "SIGN UP", "The sign up form page business subtext doesn't match the expectations.");
+        assert.strictEqual(signUpFormPageBusinessSubtext, "My business", "The sign up form page business subtext doesn't match the expectations.");
         //assert sign up form promo email subtext is as expected
         const signUpFormPagePromoEmailSubtext = await signUpFormPage.getSignUpFormPagePromoEmailSubtext();
-        assert.strictEqual(signUpFormPagePromoEmailSubtext, "SIGN UP", "The sign up form page promo email subtext doesn't match the expectations.");
+        assert.strictEqual(signUpFormPagePromoEmailSubtext, "I would like to receive promotional emails", "The sign up form page promo email subtext doesn't match the expectations.");
         //assert sign up form accept privacy subtext is as expected
         const signUpFormPageAcceptPrivacySubtext = await signUpFormPage.getSignUpFormPageAcceptPrivacySubtext();
-        assert.strictEqual(signUpFormPageAcceptPrivacySubtext, "SIGN UP", "The sign up form page accept privacy subtext doesn't match the expectations.");
+        assert.strictEqual(signUpFormPageAcceptPrivacySubtext, "I have read and accept the privacy policy", "The sign up form page accept privacy subtext doesn't match the expectations.");
 
 
 
