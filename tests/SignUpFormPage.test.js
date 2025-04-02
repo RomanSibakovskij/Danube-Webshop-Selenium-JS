@@ -142,6 +142,14 @@ describe('Sign Up Form Page Tests', () => {
                 await testMethods.invalidUserAccountCreationTooLongLastNameTest();
             });
 
+            //Test 002n -> invalid user account creation test - too long user email (100 chars -> name, domain) (the too long email input error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - Too Long Email", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - too long user email (100 chars -> name, domain)
+                await testMethods.invalidUserAccountCreationTooLongEmailTest();
+            });
+
         });
 
     });

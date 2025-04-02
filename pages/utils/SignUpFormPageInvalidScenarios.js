@@ -21,6 +21,8 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         //error message
         this._fillAllFieldsError = By.xpath("//div[@class='error-message']");
 
+        const testDataGenerator = new TestDataGenerator(this.driver);
+
         //invalid user data - no singular input
         this._noFirstName = "";
         this._noLastName = "";
@@ -30,12 +32,13 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         //invalid user data - too short singular input
         this._tooShortFirstName = "J";
         this._tooShortLastName = "M"
-        this._tooShortEmail = "d@f.org";
+        this._tooShortEmail = testDataGenerator.generateRandomTooShortEmailAddress(1);
         this._tooShortPassword = "$Fr2"
 
         //invalid user data - too long singular input
         this._tooLongFirstName = "Cffdgdfhesfesdghjulkjhtgrefdwsafghjklskfgjmhgnbfdvcsxzbcvgbnfgjertrytuiukjhgfsdgfjuyuioijfhgdfsfddsf"; //100 chars
         this._tooLongLastName = "Dffdgdfhesfesdghjulkjhtgrefdwsafghjklskfgjmhgnbfdvcsxzbcvgbnfgjertrytuiukjhgfsdgfjuyuioijfhgdfsfddsf"; //100 chars
+        this._tooLongEmail = testDataGenerator.generateRandomTooLongEmailAddress(100);
     }
 
     //invalid user account data input method - no singular input
@@ -102,6 +105,12 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         const tooLongLastName = await this._tooLongLastName;
         Logger.info("Too long user last name: ", tooLongLastName);
         await lastNameInputField.sendKeys(tooLongLastName);
+    }
+    async inputTooLongEmailIntoEmailInputField(){
+        const emailInputField = await this.driver.findElement(this._signUpFormPageEmailInputField);
+        const tooLongEmail = await this._tooLongEmail;
+        Logger.info("Too long user email: ", tooLongEmail);
+        await emailInputField.sendKeys(tooLongEmail);
     }
 
     //sign up form page error message getter
