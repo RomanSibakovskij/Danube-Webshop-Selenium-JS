@@ -16,7 +16,7 @@ describe('Home Page Tests', () => {
 
     describe("Navigate to 'Sign Up' Form Test", () => {
 
-        //Test 001 -> navigate to 'Sign up' form test
+        //Test 001 -> Navigate to 'Sign up' form test
         test("Navigate to 'Sign up' Form Test", async function () {
             await testMethods.navigateToSignUpFormTest();
         });
