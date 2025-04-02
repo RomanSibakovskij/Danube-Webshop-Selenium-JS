@@ -21,6 +21,7 @@ class GeneralPage extends BasePage{
         this._headerLoginButton = By.xpath("//div[@class='account-buttons']/button[1]"); //doubles as signin button too
         this._headerRegisterButton = By.xpath("//div[@class='account-buttons']/button[2]");
         this._headerShoppingCartButton = By.xpath("//div[@class='account-buttons']/button[3]");
+        this._headerMyAccountButton = By.xpath("//div[@class='account-buttons']/button[4]");
         //aside section
         //books category
         this._asideBooksCategorySubtitle = By.xpath("//div[@class='category-title-wrapper'][1]/h2");
@@ -54,6 +55,13 @@ class GeneralPage extends BasePage{
         const loginButton = await this.driver.findElement(this._headerLoginButton);
         const actions = this.driver.actions({ bridge: true });
         await actions.move({ origin: loginButton }).click().perform();
+    }
+
+    //click 'My Account' button method //it's also a 'Logout' button when logged in
+    async clickMyAccountButton(){
+        const myAccountButton = await this.driver.findElement(this._headerMyAccountButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: myAccountButton }).click().perform();
     }
 
     //general page text element getters

@@ -8,6 +8,7 @@ const { HomePage } = require('../../pages/HomePage');
 const { GeneralPage } = require("../../pages/GeneralPage");
 const { SignUpFormPage } = require("../../pages/SignUpFormPage");
 const { SignUpFormPageInvalidScenarios } = require("../../pages/utils/SignUpFormPageInvalidScenarios");
+const { AccountPage } = require("../../pages/AccountPage");
 
 class TestMethods {
 
@@ -972,21 +973,40 @@ class TestMethods {
         //assert sign up form accept privacy subtext is as expected
         const signUpFormPageAcceptPrivacySubtext = await signUpFormPage.getSignUpFormPageAcceptPrivacySubtext();
         assert.strictEqual(signUpFormPageAcceptPrivacySubtext, "I have read and accept the privacy policy", "The sign up form page accept privacy subtext doesn't match the expectations.");
+    }
 
+    //account page text element assert test method
+    async isAccountPageTextElementAsExpected(){
+        const accountPage = new AccountPage(this.driver);
+        //assert account page title is as expected
+        const accountPageTitle = await accountPage.getAccountPageTitle();
+        assert.strictEqual(accountPageTitle, "", "The account page title doesn't match the expectations.");
+        //assert account user details subtitle is as expected
+        const accountPageUserDetailsSubtitle = await accountPage.getAccountUserDetailsSubtitle();
+        assert.strictEqual(accountPageUserDetailsSubtitle, "", "The account page user details subtitle doesn't match the expectations.");
+        //assert account profile image subtext is as expected
+        const accountPageProfileImgSubtext = await accountPage.getAccountProfileImgSubtext();
+        assert.strictEqual(accountPageProfileImgSubtext, "", "The account page profile image subtext doesn't match the expectations.");
+        //assert account billing info subtitle is as expected
+        const accountPageBillingInfoSubtitle = await accountPage.getAccountBillingInfoSubtitle();
+        assert.strictEqual(accountPageBillingInfoSubtitle, "", "The account page billing info subtitle doesn't match the expectations.");
+        //assert account profile previous order subtitle is as expected
+        const accountPagePrevOrderSubtitle = await accountPage.getAccountPreviousOrdersSubtitle();
+        assert.strictEqual(accountPagePrevOrderSubtitle, "", "The account page previous orders subtitle doesn't match the expectations.");
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //account page user details section web element assert test method
+    async isAccountPageUserDetailsSectionDataAsExpected(){
+        const signUpFormPage = new SignUpFormPage(this.driver);
+        const accountPage = new AccountPage(this.driver);
+        //assert user account email is as expected, log the issue otherwise
+        const accountPageUserEmail = await accountPage.getAccountUserEmail();
+        const accountPageExpectedEmail = await signUpFormPage.email;
+        try {
+            assert.strictEqual(accountPageUserEmail, accountPageExpectedEmail, "The account page user email doesn't match expectations.");
+        } catch (e) {
+            Logger.error(`The user email doesn't match expected values. Expected email: ${accountPageExpectedEmail}, displayed email: ${accountPageUserEmail}`)
+        }
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1017,6 +1037,14 @@ class TestMethods {
         //log home page top sellers product unit prices (as a list)
         const homePageTopSellersProductUnitPrices = await homePage.getHomePageTopSellersProductUnitPrice();
         Logger.info("Home page top sellers product unit price(s): " + homePageTopSellersProductUnitPrices);
+    }
+
+    //account page order invoice data logger method
+    async logAccountPageOrderInvoiceData(){
+        const accountPage = new AccountPage(this.driver);
+        //assert user account email is as expected, log the issue otherwise
+        const accountPageOrderData = await accountPage.getAccountPageSubmittedOrder();
+        Logger.info("Account page displayed order invoice data (no orders submitted yet): " + accountPageOrderData);
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
