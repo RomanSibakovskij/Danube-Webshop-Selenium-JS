@@ -150,6 +150,14 @@ describe('Sign Up Form Page Tests', () => {
                 await testMethods.invalidUserAccountCreationTooLongEmailTest();
             });
 
+            //Test 002o -> invalid user account creation test - too long user password (21 chars) (the too long password input error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - Too Long Password", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - too long user password (21 chars)
+                await testMethods.invalidUserAccountCreationTooLongPasswordTest();
+            });
+
         });
 
     });
