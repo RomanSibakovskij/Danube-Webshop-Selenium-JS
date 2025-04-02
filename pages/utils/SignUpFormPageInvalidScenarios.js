@@ -35,6 +35,12 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         Logger.info("No user first name: ", noFirstName);
         await firstNameInputField.sendKeys(noFirstName);
     }
+    async inputNoLastNameIntoLastNameInputField(){
+        const lastNameInputField = await this.driver.findElement(this._signUpFormPageLastNameInputField);
+        const noLastName = await this._noLastName;
+        Logger.info("No user last name: ", noLastName);
+        await lastNameInputField.sendKeys(noLastName);
+    }
 
     //sign up form page error message getter
     async getSignUpFormPageInputErrorMessage(){
