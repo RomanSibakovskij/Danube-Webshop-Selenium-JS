@@ -56,22 +56,6 @@ class HomePage extends BasePage{
         );
     }
 
-    async getHomePageTopSellersProductReviewStar() {
-        const elements = await this.driver.findElements(this._homePageProductReviewStarElements);
-
-        return await Promise.all(
-            elements.map(async (element) => {
-                try {
-                    const text = await element.getText();
-                    return text.trim();
-                } catch (error) {
-                    Logger.warn('Failed to get product (top sellers) review star:', error.message);
-                    return '';
-                }
-            })
-        );
-    }
-
     async getHomePageTopSellersProductUnitPrice() {
         const elements = await this.driver.findElements(this._homePageProductUnitPriceElements);
 

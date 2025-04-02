@@ -18,7 +18,7 @@ class GeneralPage extends BasePage{
         this._headerSearchBarInputField = By.xpath("//div[@class='topbar']/input");
         this._headerSearchButton = By.xpath("//div[@class='topbar']/button");
         this._headerDateBox = By.xpath("//div[@class='topbar']/p[@id='clock']");// this element seems to be static
-        this._headerLoginButton = By.xpath("//div[@class='account-buttons']/button[1]"); //doubles as signup button too
+        this._headerLoginButton = By.xpath("//div[@class='account-buttons']/button[1]"); //doubles as signin button too
         this._headerRegisterButton = By.xpath("//div[@class='account-buttons']/button[2]");
         this._headerShoppingCartButton = By.xpath("//div[@class='account-buttons']/button[3]");
         //aside section
@@ -40,6 +40,13 @@ class GeneralPage extends BasePage{
         this._asideDVDsCategoryFictionListElements = By.xpath("//div[@class='sidebar']/ul[2]/li//li");
     }
 
+    //click 'Sign up' button method
+    async clickSignUpButton(){
+        const signUpButton = await this.driver.findElement(this._headerRegisterButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: signUpButton }).click().perform();
+    }
+
     //general page text element getters
     async getSpecialOfferText(){
         const specialOfferText = await this.driver.findElement(this._specialOfferText);
@@ -55,19 +62,22 @@ class GeneralPage extends BasePage{
     }
     async getAsideBooksFictionSubtitle(){
         const asideBooksFictionSubtitle = await this.driver.findElement(this._asideBooksCategoryFictionSubtitleLink);
-        return await asideBooksFictionSubtitle.getText();
+        const text = await asideBooksFictionSubtitle.getText();
+        return text.split("\n")[0].trim();
     }
     async getAsideBooksNonFictionSubtitle(){
         const asideBooksNonFictionSubtitle = await this.driver.findElement(this._asideBooksCategoryNonFictionSubtitleLink);
-        return await asideBooksNonFictionSubtitle.getText();
+        const text = await asideBooksNonFictionSubtitle.getText();
+        return text.split("\n")[0].trim();
     }
     async getAsideDVDsCategorySubtitle(){
         const asideDVDsCategorySubtitle = await this.driver.findElement(this._asideDVDsCategorySubtitle);
         return await asideDVDsCategorySubtitle.getText();
     }
     async getAsideDVDsFictionSubtitle(){
-        const asideDVDsFictionSubtitle = await this.driver.findElement(this._asideDVDsFictionSubtitle);
-        return await asideDVDsFictionSubtitle.getText();
+        const asideDVDsFictionSubtitle = await this.driver.findElement(this._asideDVDsCategoryFictionSubtitleLink);
+        const text = await asideDVDsFictionSubtitle.getText();
+        return text.split("\n")[0].trim();
     }
 
     //link text element getters (list)
