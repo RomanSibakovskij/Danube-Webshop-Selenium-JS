@@ -186,6 +186,16 @@ describe('Sign Up Form Page Tests', () => {
                 await testMethods.invalidUserAccountCreationInvalidEmailFormatTest();
             });
 
+            //Test 002s -> invalid user account creation test - pre-existing user email (used beforehand in account creation) (the existing email input error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - Existing Email", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid user account creation test - pre-existing user email (used beforehand in account creation)
+                await testMethods.invalidUserAccountCreationExistingEmailTest();
+            });
+
         });
 
     });

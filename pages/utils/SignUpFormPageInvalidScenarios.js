@@ -5,6 +5,7 @@ const BasePage = require('./BasePage');
 const Logger  = require("./Logger");
 const { Actions } = require('selenium-webdriver');
 const { TestDataGenerator } = require("./TestDataGenerator");
+const { SignUpFormPage } = require("../SignUpFormPage");
 const { Key } = require('selenium-webdriver');
 
 class SignUpFormPageInvalidScenarios extends BasePage{
@@ -138,11 +139,19 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         Logger.info("Invalid user last name input format: ", invalidLastNameFormat);
         await lastNameInputField.sendKeys(invalidLastNameFormat);
     }
-    async inputInvalidEmailFormatIntoLastNameInputField(){
+    async inputInvalidEmailFormatIntoEmailInputField(){
         const emailInputField = await this.driver.findElement(this._signUpFormPageEmailInputField);
         const invalidEmailFormat = await this._invalidEmailFormat;
         Logger.info("Invalid user email input format: ", invalidEmailFormat);
         await emailInputField.sendKeys(invalidEmailFormat);
+    }
+    async inputExistingEmailIntoEmailInputField(){
+        const emailInputField = await this.driver.findElement(this._signUpFormPageEmailInputField);
+        const signUpFormPage = new SignUpFormPage(this.driver);
+        const existingEmail = signUpFormPage.email;
+        Logger.info("Existing user email: ", existingEmail);
+        await emailInputField.clear();
+        await emailInputField.sendKeys(existingEmail);
     }
 
     //sign up form page error message getter

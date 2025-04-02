@@ -49,6 +49,13 @@ class GeneralPage extends BasePage{
         await actions.move({ origin: signUpButton }).click().perform();
     }
 
+    //click 'Login' button method //it's also a 'Logout' button when logged in
+    async clickLoginButton(){
+        const loginButton = await this.driver.findElement(this._headerLoginButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: loginButton }).click().perform();
+    }
+
     //general page text element getters
     async getSpecialOfferText(){
         const specialOfferText = await this.driver.findElement(this._specialOfferText);
