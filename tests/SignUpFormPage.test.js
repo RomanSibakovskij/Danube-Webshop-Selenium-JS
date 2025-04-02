@@ -134,6 +134,14 @@ describe('Sign Up Form Page Tests', () => {
                 await testMethods.invalidUserAccountCreationTooLongFirstNameTest();
             });
 
+            //Test 002m -> invalid user account creation test - too long user last name (100 chars) (the too long last name input error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - Too Long Last Name", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - too long user last name (100 chars)
+                await testMethods.invalidUserAccountCreationTooLongLastNameTest();
+            });
+
         });
 
     });

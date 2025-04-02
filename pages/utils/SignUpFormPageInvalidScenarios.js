@@ -35,6 +35,7 @@ class SignUpFormPageInvalidScenarios extends BasePage{
 
         //invalid user data - too long singular input
         this._tooLongFirstName = "Cffdgdfhesfesdghjulkjhtgrefdwsafghjklskfgjmhgnbfdvcsxzbcvgbnfgjertrytuiukjhgfsdgfjuyuioijfhgdfsfddsf"; //100 chars
+        this._tooLongLastName = "Dffdgdfhesfesdghjulkjhtgrefdwsafghjklskfgjmhgnbfdvcsxzbcvgbnfgjertrytuiukjhgfsdgfjuyuioijfhgdfsfddsf"; //100 chars
     }
 
     //invalid user account data input method - no singular input
@@ -95,6 +96,12 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         const tooLongFirstName = await this._tooLongFirstName
         Logger.info("Too long user first name: ", tooLongFirstName);
         await firstNameInputField.sendKeys(tooLongFirstName);
+    }
+    async inputTooLongLastNameIntoLastNameInputField(){
+        const lastNameInputField = await this.driver.findElement(this._signUpFormPageLastNameInputField);
+        const tooLongLastName = await this._tooLongLastName;
+        Logger.info("Too long user last name: ", tooLongLastName);
+        await lastNameInputField.sendKeys(tooLongLastName);
     }
 
     //sign up form page error message getter
