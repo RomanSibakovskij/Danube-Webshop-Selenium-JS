@@ -88,6 +88,18 @@ describe('Sign Up Form Page Tests', () => {
 
         });
 
+        describe("Invalid User Account Creation Tests - Too Short Singular Input", () => {
+
+            //Test 002h -> invalid user account creation test - too short user first name (1 char) (the too short first name input error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - Too Short First Name", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - too short user first name (1 char)
+                await testMethods.invalidUserAccountCreationTooShortFirstNameTest();
+            });
+
+        });
+
     });
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
