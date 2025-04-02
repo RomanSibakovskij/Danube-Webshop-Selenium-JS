@@ -170,6 +170,14 @@ describe('Sign Up Form Page Tests', () => {
                 await testMethods.invalidUserAccountCreationInvalidFirstNameFormatTest();
             });
 
+            //Test 002q -> invalid user account creation test - invalid user last name format (special symbols only) (the invalid last name input format error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - Invalid Last Name Input Format", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - invalid user last name input format (special symbols only)
+                await testMethods.invalidUserAccountCreationInvalidLastNameFormatTest();
+            });
+
         });
 
     });

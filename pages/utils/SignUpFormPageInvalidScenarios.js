@@ -43,6 +43,7 @@ class SignUpFormPageInvalidScenarios extends BasePage{
 
         //invalid user data - invalid singular input format
         this._invalidFirstNameInputFormat = "#$#$^%^&*%^*&";
+        this._invalidLastNameInputFormat = "#$#$^%^&*%^*&";
     }
 
     //invalid user account data input method - no singular input
@@ -129,6 +130,12 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         const invalidFirstNameFormat = await this._invalidFirstNameInputFormat;
         Logger.info("Invalid user first name input format: ", invalidFirstNameFormat);
         await firstNameInputField.sendKeys(invalidFirstNameFormat);
+    }
+    async inputInvalidLastNameFormatIntoLastNameInputField(){
+        const lastNameInputField = await this.driver.findElement(this._signUpFormPageLastNameInputField);
+        const invalidLastNameFormat = await this._invalidLastNameInputFormat;
+        Logger.info("Invalid user last name input format: ", invalidLastNameFormat);
+        await lastNameInputField.sendKeys(invalidLastNameFormat);
     }
 
     //sign up form page error message getter
