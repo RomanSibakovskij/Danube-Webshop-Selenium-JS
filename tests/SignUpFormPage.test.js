@@ -160,6 +160,18 @@ describe('Sign Up Form Page Tests', () => {
 
         });
 
+        describe("Invalid User Account Creation Tests - Invalid Singular Input Format", () => {
+
+            //Test 002p -> invalid user account creation test - invalid user first name format (special symbols only) (the invalid first name input format error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - Invalid First Name Input Format", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - invalid user first name input format (special symbols only)
+                await testMethods.invalidUserAccountCreationInvalidFirstNameFormatTest();
+            });
+
+        });
+
     });
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

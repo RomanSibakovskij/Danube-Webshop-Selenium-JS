@@ -733,6 +733,52 @@ class TestMethods {
         await TestMethods.captureScreenshot(this.driver, "Invalid User Sign Up Test Result - Too Long Password");
     }
 
+    //invalid singular input format
+
+    //invalid user account creation test method - invalid user first name format (special symbols only)
+    async invalidUserAccountCreationInvalidFirstNameFormatTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const signUpFormPage = new SignUpFormPage(this.driver);
+        const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //sign up form page web element assert
+        await signUpFormPage.isSignUpFormPagePageWebElementDisplayed();
+        //sign up form page text element assert
+        await this.isSignUpFormPageTextElementAsExpected();
+        //capture screenshot of the sign-up form page before data input
+        await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page Display Before Data Input");
+        //input invalid user first name format into first name input field (special symbols only)
+        await signUpFormPageInvalidScenarios.inputInvalidFirstNameFormatIntoFirstNameInputField();
+        //input valid user last name into last name input field
+        await signUpFormPage.inputLastNameIntoLastNameInputField();
+        //input valid user email into email input field
+        await signUpFormPage.inputEmailIntoEmailInputField();
+        //input valid user password into password input field
+        await signUpFormPage.inputPasswordIntoPasswordInputField();
+        //capture screenshot of the sign-up form page after invalid data input
+        await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page After Invalid Data Input - Invalid First Name Input Format");
+        //click 'Myself' radio button
+        await signUpFormPage.clickMyselfRadioButton();
+        //click 'Accept privacy policy' checkbox
+        await signUpFormPage.clickPrivacyPolicyCheckbox();
+        //click 'Register' button
+        await signUpFormPage.clickRegisterButton();
+        //assert the user gets an expected error message, log the issue otherwise
+        try {
+            const errorMessage = await signUpFormPageInvalidScenarios.getSignUpFormPageInputErrorMessage();
+            assert.strictEqual(errorMessage, "Name cannot consist of special symbols only.", "The invalid first name input format error message doesn't match expectations.");
+        } catch (e) {
+            Logger.error("The invalid first name input format error message hasn't been triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid User Sign Up Test Result - Invalid First Name Format");
+    }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page text element assert test method

@@ -40,6 +40,9 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         this._tooLongLastName = "Dffdgdfhesfesdghjulkjhtgrefdwsafghjklskfgjmhgnbfdvcsxzbcvgbnfgjertrytuiukjhgfsdgfjuyuioijfhgdfsfddsf"; //100 chars
         this._tooLongEmail = testDataGenerator.generateRandomTooLongEmailAddress(100);
         this._tooLongPassword = "$rfsdfdsfRRtgdfdsfd$%"//21 chars
+
+        //invalid user data - invalid singular input format
+        this._invalidFirstNameInputFormat = "#$#$^%^&*%^*&";
     }
 
     //invalid user account data input method - no singular input
@@ -97,7 +100,7 @@ class SignUpFormPageInvalidScenarios extends BasePage{
     //invalid user account data input method - too long singular input
     async inputTooLongFirstNameIntoFirstNameInputField(){
         const firstNameInputField = await this.driver.findElement(this._signUpFormPageFirstNameInputField);
-        const tooLongFirstName = await this._tooLongFirstName
+        const tooLongFirstName = await this._tooLongFirstName;
         Logger.info("Too long user first name: ", tooLongFirstName);
         await firstNameInputField.sendKeys(tooLongFirstName);
     }
@@ -118,6 +121,14 @@ class SignUpFormPageInvalidScenarios extends BasePage{
             const tooLongPassword = await this._tooLongPassword;
         Logger.info("Too long user password: ", tooLongPassword);
         await passwordInputField.sendKeys(tooLongPassword);
+    }
+
+    //invalid user account data input method - invalid singular input format
+    async inputInvalidFirstNameFormatIntoFirstNameInputField(){
+        const firstNameInputField = await this.driver.findElement(this._signUpFormPageFirstNameInputField);
+        const invalidFirstNameFormat = await this._invalidFirstNameInputFormat;
+        Logger.info("Invalid user first name input format: ", invalidFirstNameFormat);
+        await firstNameInputField.sendKeys(invalidFirstNameFormat);
     }
 
     //sign up form page error message getter
