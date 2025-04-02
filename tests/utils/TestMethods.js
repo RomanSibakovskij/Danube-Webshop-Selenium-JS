@@ -7,6 +7,7 @@ const Logger = require('../../pages/utils/Logger');
 const TestDataGenerator = require("../../pages/utils/TestDataGenerator");
 const { HomePage } = require('../../pages/HomePage');
 const { GeneralPage } = require("../../pages/GeneralPage");
+const { SignUpFormPage } = require("../../pages/SignUpFormPage")
 
 class TestMethods {
 
@@ -49,7 +50,7 @@ class TestMethods {
         //assert header date text is as expected (it's static)
         const headerDate = await generalPage.getHeaderDate();
         assert.strictEqual(headerDate, "3:43pm 23/06/2002", "The header date text doesn't match the expectations.");
-        //aside
+        //aside category
         //assert aside books category subtitle is as expected
         const asideBooksCategorySubtitle = await generalPage.getAsideBooksCategorySubtitle();
         assert.strictEqual(asideBooksCategorySubtitle, "Books", "The aside books category subtitle doesn't match the expectations.");
@@ -67,12 +68,50 @@ class TestMethods {
         assert.strictEqual(asideDVDsFictionSubtitle, "Fiction", "The aside DVDs fiction subtitle doesn't match the expectations.");
     }
 
-    //home page text element getter test method
+    //home page text element assert test method
     async isHomePageTextElementAsExpected(){
         const homePage = new HomePage(this.driver);
         //assert home page title is as expected
         const homePageTitle = await homePage.getHomePageTitle();
         assert.strictEqual(homePageTitle, "Top sellers", "The home page title doesn't match the expectations.");
+    }
+
+    //sign up form page text element assert test method
+    async isSignUpFormPageTextElementAsExpected(){
+        const signUpFormPage = new SignUpFormPage(this.driver);
+        //assert sign up form page title is as expected
+        const signUpFormPageTitle = await signUpFormPage.getSignUpFormPageTitle();
+        assert.strictEqual(signUpFormPageTitle, "SIGN UP", "The sign up form page title doesn't match the expectations.");
+        //assert sign up form using account for subtext is as expected
+        const signUpFormPageUsingAccountForSubtext = await signUpFormPage.getSignUpFormPageUsingAccountForSubtext();
+        assert.strictEqual(signUpFormPageUsingAccountForSubtext, "SIGN UP", "The sign up form page using account for subtext doesn't match the expectations.");
+        //assert sign up form using account for subtext is as expected
+        const signUpFormPageMyselfSubtext = await signUpFormPage.getSignUpFormPageMyselfSubtext();
+        assert.strictEqual(signUpFormPageMyselfSubtext, "SIGN UP", "The sign up form page myself subtext doesn't match the expectations.");
+        //assert sign up form business subtext is as expected
+        const signUpFormPageBusinessSubtext = await signUpFormPage.getSignUpFormPageBusinessSubtext();
+        assert.strictEqual(signUpFormPageBusinessSubtext, "SIGN UP", "The sign up form page business subtext doesn't match the expectations.");
+        //assert sign up form promo email subtext is as expected
+        const signUpFormPagePromoEmailSubtext = await signUpFormPage.getSignUpFormPagePromoEmailSubtext();
+        assert.strictEqual(signUpFormPagePromoEmailSubtext, "SIGN UP", "The sign up form page promo email subtext doesn't match the expectations.");
+        //assert sign up form accept privacy subtext is as expected
+        const signUpFormPageAcceptPrivacySubtext = await signUpFormPage.getSignUpFormPageAcceptPrivacySubtext();
+        assert.strictEqual(signUpFormPageAcceptPrivacySubtext, "SIGN UP", "The sign up form page accept privacy subtext doesn't match the expectations.");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
