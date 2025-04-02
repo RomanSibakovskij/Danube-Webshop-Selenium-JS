@@ -30,7 +30,8 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         //invalid user data - too short singular input
         this._tooShortFirstName = "J";
         this._tooShortLastName = "M"
-        this._tooShortEmail = "d@f.org"
+        this._tooShortEmail = "d@f.org";
+        this._tooShortPassword = "$Fr2"
     }
 
     //invalid user account data input method - no singular input
@@ -77,6 +78,12 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         const tooShortEmail = await this._tooShortEmail;
         Logger.info("Too short user email: ", tooShortEmail);
         await emailInputField.sendKeys(tooShortEmail);
+    }
+    async inputTooShortPasswordIntoPasswordInputField(){
+        const passwordInputField = await this.driver.findElement(this._signUpFormPagePasswordInputField);
+        const tooShortPassword = await this._tooShortPassword;
+        Logger.info("Too short user password: ", tooShortPassword);
+        await passwordInputField.sendKeys(tooShortPassword);
     }
 
     //sign up form page error message getter

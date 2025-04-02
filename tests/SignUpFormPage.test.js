@@ -114,6 +114,14 @@ describe('Sign Up Form Page Tests', () => {
                 await testMethods.invalidUserAccountCreationTooShortEmailTest();
             });
 
+            //Test 002k -> invalid user account creation test - too short user password (4 chars) (the too short password input error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - Too Short Password", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - too short user password (4 chars)
+                await testMethods.invalidUserAccountCreationTooShortPasswordTest();
+            });
+
         });
 
     });

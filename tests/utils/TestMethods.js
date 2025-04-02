@@ -514,6 +514,49 @@ class TestMethods {
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Invalid User Sign Up Test Result - Too Short Email");
     }
+    //invalid user account creation test method - too short user password (4 chars)
+    async invalidUserAccountCreationTooShortPasswordTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const signUpFormPage = new SignUpFormPage(this.driver);
+        const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //sign up form page web element assert
+        await signUpFormPage.isSignUpFormPagePageWebElementDisplayed();
+        //sign up form page text element assert
+        await this.isSignUpFormPageTextElementAsExpected();
+        //capture screenshot of the sign-up form page before data input
+        await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page Display Before Data Input");
+        //input valid user first name into first name input field
+        await signUpFormPage.inputFirstNameIntoFirstNameInputField();
+        //input valid user last name into last name input field
+        await signUpFormPage.inputLastNameIntoLastNameInputField();
+        //input valid user email into email input field
+        await signUpFormPage.inputEmailIntoEmailInputField();
+        //input too short user password into password input field (4 chars)
+        await signUpFormPageInvalidScenarios.inputTooShortPasswordIntoPasswordInputField();
+        //capture screenshot of the sign-up form page after invalid data input
+        await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page After Invalid Data Input - Too Short Password");
+        //click 'Myself' radio button
+        await signUpFormPage.clickMyselfRadioButton();
+        //click 'Accept privacy policy' checkbox
+        await signUpFormPage.clickPrivacyPolicyCheckbox();
+        //click 'Register' button
+        await signUpFormPage.clickRegisterButton();
+        //assert the user gets an expected error message, log the issue otherwise
+        try {
+            const errorMessage = await signUpFormPageInvalidScenarios.getSignUpFormPageInputErrorMessage();
+            assert.strictEqual(errorMessage, "Password is too short.", "The too short password input error message doesn't match expectations.");
+        } catch (e) {
+            Logger.error("The too short password input error message hasn't been triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid User Sign Up Test Result - Too Short Password");
+    }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
