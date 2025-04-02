@@ -29,6 +29,7 @@ class SignUpFormPageInvalidScenarios extends BasePage{
 
         //invalid user data - too short singular input
         this._tooShortFirstName = "J";
+        this._tooShortLastName = "M"
     }
 
     //invalid user account data input method - no singular input
@@ -63,6 +64,12 @@ class SignUpFormPageInvalidScenarios extends BasePage{
         const tooShortFirstName = await this._tooShortFirstName;
         Logger.info("Too short user first name: ", tooShortFirstName);
         await firstNameInputField.sendKeys(tooShortFirstName);
+    }
+    async inputTooShortLastNameIntoLastNameInputField(){
+        const lastNameInputField = await this.driver.findElement(this._signUpFormPageLastNameInputField);
+        const tooShortLastName = await this._tooShortLastName;
+        Logger.info("Too short user last name: ", tooShortLastName);
+        await lastNameInputField.sendKeys(tooShortLastName);
     }
 
     //sign up form page error message getter
