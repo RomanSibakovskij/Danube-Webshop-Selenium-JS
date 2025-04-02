@@ -6,7 +6,8 @@ const assert = require("node:assert");
 const Logger = require('../../pages/utils/Logger');
 const { HomePage } = require('../../pages/HomePage');
 const { GeneralPage } = require("../../pages/GeneralPage");
-const { SignUpFormPage } = require("../../pages/SignUpFormPage")
+const { SignUpFormPage } = require("../../pages/SignUpFormPage");
+const { SignUpFormPageInvalidScenarios } = require("../../pages/utils/SignUpFormPageInvalidScenarios");
 
 class TestMethods {
 
@@ -40,6 +41,8 @@ class TestMethods {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //valid user account creation test
+
     //valid user account creation test method
     async validUserAccountCreationTest(){
         const generalPage = new GeneralPage(this.driver);
@@ -56,7 +59,7 @@ class TestMethods {
         await this.isSignUpFormPageTextElementAsExpected();
         //capture screenshot of the sign-up form page before data input
         await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page Display Before Data Input");
-        // valid user first name into first name input field
+        //input valid user first name into first name input field
         await signUpFormPage.inputFirstNameIntoFirstNameInputField();
         //input valid user last name into last name input field
         await signUpFormPage.inputLastNameIntoLastNameInputField();
@@ -78,6 +81,54 @@ class TestMethods {
         assert.strictEqual(loginMessage, `Welcome back, ${loginEmail}`, "The login message doesn't match expectations or the user sign up process has failed.");
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Valid User Sign Up Test Result");
+    }
+
+    //invalid user account creation tests
+
+    //no singular input
+
+    //invalid user account creation test method - no user first name
+    async invalidUserAccountCreationNoFirstNameTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const signUpFormPage = new SignUpFormPage(this.driver);
+        const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //sign up form page web element assert
+        await signUpFormPage.isSignUpFormPagePageWebElementDisplayed();
+        //sign up form page text element assert
+        await this.isSignUpFormPageTextElementAsExpected();
+        //capture screenshot of the sign-up form page before data input
+        await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page Display Before Data Input");
+        //input no user first name into first name input field
+        await signUpFormPageInvalidScenarios.inputNoFirstNameIntoFirstNameInputField();
+        //input valid user last name into last name input field
+        await signUpFormPage.inputLastNameIntoLastNameInputField();
+        //input valid user email into email input field
+        await signUpFormPage.inputEmailIntoEmailInputField();
+        //input valid user password into password input field
+        await signUpFormPage.inputPasswordIntoPasswordInputField();
+        //capture screenshot of the sign-up form page after valid data input
+        await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page After Invalid Data Input - No First Name");
+        //click 'Myself' radio button
+        await signUpFormPage.clickMyselfRadioButton();
+        //click 'Accept privacy policy' checkbox
+        await signUpFormPage.clickPrivacyPolicyCheckbox();
+        //click 'Register' button
+        await signUpFormPage.clickRegisterButton();
+        //assert the user gets an expected error message, log the issue otherwise
+        try {
+            const errorMessage = await signUpFormPageInvalidScenarios.getSignUpFormPageInputErrorMessage();
+            assert.strictEqual(errorMessage, "Please fill in all fields.", "The missing input error message doesn't match expectations.");
+        } catch (e) {
+            Logger.error("The missing input error message hasn't been triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid User Sign Up Test Result - No First Name");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

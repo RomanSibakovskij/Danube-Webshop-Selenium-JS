@@ -26,6 +26,22 @@ describe('Sign Up Form Page Tests', () => {
 
     });
 
+    describe("Invalid User Account Creation Tests", () => {
+        //the missing input error message gets triggered only when all input fields are empty but not if one of the required fields is empty
+        describe("Invalid User Account Creation Tests - No Singular Input", () => {
+
+            //Test 002b -> invalid user account creation test - no user first name (the missing input error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - No First Name", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - no user first name
+                await testMethods.invalidUserAccountCreationNoFirstNameTest();
+            });
+
+        });
+
+    });
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //driver clean-up after each test run
