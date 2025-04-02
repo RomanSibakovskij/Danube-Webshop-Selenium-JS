@@ -178,6 +178,14 @@ describe('Sign Up Form Page Tests', () => {
                 await testMethods.invalidUserAccountCreationInvalidLastNameFormatTest();
             });
 
+            //Test 002r -> invalid user account creation test - invalid user email format (missing '@') (the invalid email input format error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - Invalid Email Input Format", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - invalid user email input format (missing '@')
+                await testMethods.invalidUserAccountCreationInvalidEmailFormatTest();
+            });
+
         });
 
     });
