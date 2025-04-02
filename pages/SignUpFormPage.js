@@ -105,6 +105,8 @@ class SignUpFormPage extends BasePage{
     }
 
     //private data getters
+    get firstName() {return this._firstName;}
+    get lastName() {return this._lastName;}
     get email() {return this._email;}
     get password() {return this._password;}
 

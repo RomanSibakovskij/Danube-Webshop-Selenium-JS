@@ -917,6 +917,59 @@ class TestMethods {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //valid user account edit test
+
+    //valid user account test method
+    async validUserAccountEditTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const homePage = new HomePage(this.driver);
+        const accountPage = new AccountPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //home page web element assert
+        await homePage.isHomePageWebElementDisplayed();
+        //home page text element assert
+        await this.isHomePageTextElementAsExpected();
+        //log top sellers product data
+        await this.logHomePageTopSellersProductData();
+        //click 'My Account' button
+        await generalPage.clickMyAccountButton();
+        //capture screenshot of the 'my account' page display
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display");
+        //account page web element assert
+        await accountPage.isAccountPagePageWebElementDisplayed();
+        //account page text element assert
+        await this.isAccountPageTextElementAsExpected();
+        //account page user details section assert
+        await this.isAccountPageUserDetailsSectionDataAsExpected();
+        //log order invoice data (it's present before submission)
+        await this.logAccountPageOrderInvoiceData();
+        //capture screenshot of the 'my account' page display before data input
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display Before Data Input");
+        //input user first name into first name input field
+        await accountPage.inputFirstNameIntoAccPageFirstNameInputField();
+        //input user last name into last name input field
+        await accountPage.inputLastNameIntoAccPageLastNameInputField();
+        //input user address into address input field
+        await accountPage.inputAddressIntoAccPageAddressInputField();
+        //input user post code into post code input field
+        await accountPage.inputPostCodeIntoAccPagePostCodeInputField();
+        //input user city into city input field
+        await accountPage.inputCityIntoAccPageCityInputField();
+        //capture screenshot of the 'my account' page display after valid data input
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display After Valid Data Input");
+        //click 'Update' button
+        await accountPage.clickUpdateButton();
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Valid User Account Edition Test Result");
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //general page text element assert test method
     async isGeneralPageTextElementAsExpected(){
         const generalPage = new GeneralPage(this.driver);
@@ -980,19 +1033,19 @@ class TestMethods {
         const accountPage = new AccountPage(this.driver);
         //assert account page title is as expected
         const accountPageTitle = await accountPage.getAccountPageTitle();
-        assert.strictEqual(accountPageTitle, "", "The account page title doesn't match the expectations.");
+        assert.strictEqual(accountPageTitle, "Account", "The account page title doesn't match the expectations.");
         //assert account user details subtitle is as expected
         const accountPageUserDetailsSubtitle = await accountPage.getAccountUserDetailsSubtitle();
-        assert.strictEqual(accountPageUserDetailsSubtitle, "", "The account page user details subtitle doesn't match the expectations.");
+        assert.strictEqual(accountPageUserDetailsSubtitle, "User Details", "The account page user details subtitle doesn't match the expectations.");
         //assert account profile image subtext is as expected
         const accountPageProfileImgSubtext = await accountPage.getAccountProfileImgSubtext();
-        assert.strictEqual(accountPageProfileImgSubtext, "", "The account page profile image subtext doesn't match the expectations.");
+        assert.strictEqual(accountPageProfileImgSubtext, "Profile picture:", "The account page profile image subtext doesn't match the expectations.");
         //assert account billing info subtitle is as expected
         const accountPageBillingInfoSubtitle = await accountPage.getAccountBillingInfoSubtitle();
-        assert.strictEqual(accountPageBillingInfoSubtitle, "", "The account page billing info subtitle doesn't match the expectations.");
+        assert.strictEqual(accountPageBillingInfoSubtitle, "Billing Information", "The account page billing info subtitle doesn't match the expectations.");
         //assert account profile previous order subtitle is as expected
         const accountPagePrevOrderSubtitle = await accountPage.getAccountPreviousOrdersSubtitle();
-        assert.strictEqual(accountPagePrevOrderSubtitle, "", "The account page previous orders subtitle doesn't match the expectations.");
+        assert.strictEqual(accountPagePrevOrderSubtitle, "Previous Orders", "The account page previous orders subtitle doesn't match the expectations.");
     }
 
     //account page user details section web element assert test method

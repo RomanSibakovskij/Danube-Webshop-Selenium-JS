@@ -6,6 +6,7 @@ const Logger  = require("./utils/Logger");
 const { Actions } = require('selenium-webdriver');
 const { TestDataGenerator } = require("./utils/TestDataGenerator");
 const { Key } = require('selenium-webdriver');
+const {SignUpFormPage} = require("./SignUpFormPage");
 
 class AccountPage extends BasePage{
 
@@ -34,7 +35,54 @@ class AccountPage extends BasePage{
         this._accountPageSubmittedOrderElements = By.xpath("//div[@id='orders']/ul/li");
         this._accountPageSubmittedOrderInvoiceLinkElements = By.xpath("//div[@id='orders']/ul/li/a");
 
+        const testDataGenerator = new TestDataGenerator(this.driver);
+        const signUpFormPage = new SignUpFormPage(this.driver);
+        //valid user account data getters
+        this._accountPageFirstName = signUpFormPage.firstName;
+        this._accountPageLastName = signUpFormPage.lastName;
+        this._accountPageAddress = testDataGenerator.generateRandomAddress(9);
+        this._accountPagePostCode = testDataGenerator.getRandomPostalOrderNumber();
+        this._accountPageCity = testDataGenerator.getRandomCity();
 
+    }
+
+    //valid user account data input methods
+    async inputFirstNameIntoAccPageFirstNameInputField(){
+        const firstNameInputField = await this.driver.findElement(this._accountPageBillingInfoFirstNameInputField);
+        const firstName = await this._accountPageFirstName;
+        Logger.info("Valid user first name: ", firstName);
+        await firstNameInputField.sendKeys(firstName);
+    }
+    async inputLastNameIntoAccPageLastNameInputField(){
+        const lastNameInputField = await this.driver.findElement(this._accountPageBillingInfoLastNameInputField);
+        const lastName = await this._accountPageLastName;
+        Logger.info("Valid user last name: ", lastName);
+        await lastNameInputField.sendKeys(lastName);
+    }
+    async inputAddressIntoAccPageAddressInputField(){
+        const addressInputField = await this.driver.findElement(this._accountPageBillingInfoAddressInputField);
+        const address = this._accountPageAddress;
+        Logger.info("Valid user address: ", address);
+        await addressInputField.sendKeys(address);
+    }
+    async inputPostCodeIntoAccPagePostCodeInputField() {
+        const postCodeInputField = await this.driver.findElement(this._accountPageBillingInfoPostCodeInputField);
+        const postCode = this._accountPagePostCode;
+        Logger.info("Valid user post code: ", postCode);
+        await postCodeInputField.sendKeys(postCode);
+    }
+    async inputCityIntoAccPageCityInputField() {
+        const cityInputField = await this.driver.findElement(this._accountPageBillingInfoCityInputField);
+        const city = this._accountPageCity;
+        Logger.info("Valid user city: ", city);
+        await cityInputField.sendKeys(city);
+    }
+
+    //click 'Update' button
+    async clickUpdateButton(){
+        const updateButton = await this.driver.findElement(this._accountPageUpdateButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: updateButton }).click().perform();
     }
 
     //account page text element getters
@@ -48,11 +96,17 @@ class AccountPage extends BasePage{
     }
     async getAccountUserEmail(){
         const accountPageUserEmail = await this.driver.findElement(this._accountPageUserEmail);
-        return await accountPageUserEmail.getText();
+        const text = await accountPageUserEmail.getText();
+        //extract email part from string
+        const match = text.match(/[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}/);
+        return match ? match[0].trim() : null; //return email if found or null
     }
     async getAccountProfileImgSubtext(){
         const accountPageProfileImgSubtext = await this.driver.findElement(this._accountPageProfileImgSubtext);
-        return await accountPageProfileImgSubtext.getText();
+        const text = await accountPageProfileImgSubtext.getText();
+        //extract "Profile picture:" part from string
+        const match = text.match(/^Profile picture:/);
+        return match ? match[0].trim() : null; //return only "Profile picture:" if found or null
     }
     async getAccountBillingInfoSubtitle(){
         const accountPageBillingInfoSubtitle = await this.driver.findElement(this._accountPageBillingInfoSubtitle);
