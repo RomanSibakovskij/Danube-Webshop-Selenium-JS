@@ -54,12 +54,20 @@ describe('Sign Up Form Page Tests', () => {
                 await testMethods.invalidUserAccountCreationNoEmailTest();
             });
 
-            //Test 002d -> invalid user account creation test - no user password (the missing input error message hasn't been triggered, test has failed)
+            //Test 002e -> invalid user account creation test - no user password (the missing input error message hasn't been triggered, test has failed)
             test("Invalid User Sign Up Test - No Password", async function () {
                 //navigate to 'Sign up' form test
                 await testMethods.navigateToSignUpFormTest();
                 //invalid user account creation test - no user password
                 await testMethods.invalidUserAccountCreationNoPasswordTest();
+            });
+
+            //Test 002f -> invalid user account creation test - no user account usage statement (the missing user account statement error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - No User Account Statement", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - no user account usage statement
+                await testMethods.invalidUserAccountCreationNoAccountStatementTest();
             });
 
         });
