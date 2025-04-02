@@ -123,7 +123,7 @@ class TestMethods {
         //assert the user gets an expected error message, log the issue otherwise
         try {
             const errorMessage = await signUpFormPageInvalidScenarios.getSignUpFormPageInputErrorMessage();
-            assert.strictEqual(errorMessage, "Please fill in all fields.", "The missing input error message doesn't match expectations.");
+            assert.strictEqual(errorMessage, "Please fill in all fields.", "The missing first name input error message doesn't match expectations.");
         } catch (e) {
             Logger.error("The missing first name input error message hasn't been triggered, test has failed");
         }
@@ -166,12 +166,55 @@ class TestMethods {
         //assert the user gets an expected error message, log the issue otherwise
         try {
             const errorMessage = await signUpFormPageInvalidScenarios.getSignUpFormPageInputErrorMessage();
-            assert.strictEqual(errorMessage, "Please fill in all fields.", "The missing input error message doesn't match expectations.");
+            assert.strictEqual(errorMessage, "Please fill in all fields.", "The missing last name input error message doesn't match expectations.");
         } catch (e) {
             Logger.error("The missing last name input error message hasn't been triggered, test has failed");
         }
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Invalid User Sign Up Test Result - No Last Name");
+    }
+    //invalid user account creation test method - no user email
+    async invalidUserAccountCreationNoEmailTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const signUpFormPage = new SignUpFormPage(this.driver);
+        const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //sign up form page web element assert
+        await signUpFormPage.isSignUpFormPagePageWebElementDisplayed();
+        //sign up form page text element assert
+        await this.isSignUpFormPageTextElementAsExpected();
+        //capture screenshot of the sign-up form page before data input
+        await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page Display Before Data Input");
+        //input valid user first name into first name input field
+        await signUpFormPage.inputFirstNameIntoFirstNameInputField();
+        //input valid user last name into last name input field
+        await signUpFormPage.inputLastNameIntoLastNameInputField();
+        //don't input user email into email input field
+        await signUpFormPageInvalidScenarios.inputNoEmailIntoEmailInputField();
+        //input valid user password into password input field
+        await signUpFormPage.inputPasswordIntoPasswordInputField();
+        //capture screenshot of the sign-up form page after valid data input
+        await TestMethods.captureScreenshot(this.driver, "Sign Up Form Page After Invalid Data Input - No Email");
+        //click 'Myself' radio button
+        await signUpFormPage.clickMyselfRadioButton();
+        //click 'Accept privacy policy' checkbox
+        await signUpFormPage.clickPrivacyPolicyCheckbox();
+        //click 'Register' button
+        await signUpFormPage.clickRegisterButton();
+        //assert the user gets an expected error message, log the issue otherwise
+        try {
+            const errorMessage = await signUpFormPageInvalidScenarios.getSignUpFormPageInputErrorMessage();
+            assert.strictEqual(errorMessage, "Please fill in all fields.", "The missing email input error message doesn't match expectations.");
+        } catch (e) {
+            Logger.error("The missing email input error message hasn't been triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid User Sign Up Test Result - No Email");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

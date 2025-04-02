@@ -46,6 +46,14 @@ describe('Sign Up Form Page Tests', () => {
                 await testMethods.invalidUserAccountCreationNoLastNameTest();
             });
 
+            //Test 002d -> invalid user account creation test - no user email
+            test("Invalid User Sign Up Test - No Email", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - no user email
+                await testMethods.invalidUserAccountCreationNoEmailTest();
+            });
+
         });
 
     });
