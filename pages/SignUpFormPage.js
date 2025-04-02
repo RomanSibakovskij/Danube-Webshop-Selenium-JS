@@ -69,12 +69,25 @@ class SignUpFormPage extends BasePage{
         Logger.info("Valid user password: ", password);
         await passwordInputField.sendKeys(password);
     }
+    async inputCompanyIntoCompanyInputField() {
+        const companyInputField = await this.driver.findElement(this._signUpFormPageCompanyInputField);
+        const company = "TestCompany Co.";
+        Logger.info("Valid user company: ", company);
+        await companyInputField.sendKeys(company);
+    }
 
     //click 'Myself' radio button method
     async clickMyselfRadioButton(){
         const myselfRadioButton = await this.driver.findElement(this._signUpFormPageMySelfRadioButton);
         const actions = this.driver.actions({ bridge: true });
         await actions.move({ origin: myselfRadioButton }).click().perform();
+    }
+
+    //click 'Business' radio button method
+    async clickBusinessRadioButton(){
+        const businessRadioButton = await this.driver.findElement(this._signUpFormPageBusinessRadioButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: businessRadioButton }).click().perform();
     }
 
     //click 'Accept privacy policy' checkbox method

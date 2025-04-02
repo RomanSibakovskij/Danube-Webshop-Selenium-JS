@@ -14,7 +14,7 @@ describe('Sign Up Form Page Tests', () => {
     jest.setTimeout(140000) //timer for the whole single test run, otherwise throws a timeout error
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    describe("Valid User Account Creation Test", () => {
+    describe("Valid User Account Creation Tests", () => {
 
         //Test 002 -> valid user account creation test
         test("Valid User Sign Up Test", async function () {
@@ -22,6 +22,14 @@ describe('Sign Up Form Page Tests', () => {
             await testMethods.navigateToSignUpFormTest();
             //valid user account creation test
             await testMethods.validUserAccountCreationTest();
+        });
+
+        //Test 002a -> valid user business account creation test
+        test("Valid User Sign Up Test (business account)", async function () {
+            //navigate to 'Sign up' form test
+            await testMethods.navigateToSignUpFormTest();
+            //valid user business account creation test
+            await testMethods.validUserBusinessAccountCreationTest();
         });
 
     });
