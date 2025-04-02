@@ -25,8 +25,8 @@ jest-test-results.json
 # Selenium WebDriver and browser-related files
 webdriver/
 
-# Ignore everything inside the screenshots folder
-screenshots/*
+# Ignore all PNG files
+*.png
 
 # But keep the folder itself
 !screenshots/.gitkeep
