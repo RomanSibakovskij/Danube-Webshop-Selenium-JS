@@ -70,6 +70,14 @@ describe('Sign Up Form Page Tests', () => {
                 await testMethods.invalidUserAccountCreationNoAccountStatementTest();
             });
 
+            //Test 002g -> invalid user account creation test - no user agreement with privacy policy (the missing user agreement with privacy policy error message hasn't been triggered, test has failed)
+            test("Invalid User Sign Up Test - No Agree With Privacy Policy", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //invalid user account creation test - no user agreement with privacy policy
+                await testMethods.invalidUserAccountCreationNoAgreePrivacyPolicyTest();
+            });
+
         });
 
     });
