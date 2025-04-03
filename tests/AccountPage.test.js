@@ -180,6 +180,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditTooLongPostCodeTest();
             });
 
+            //Test 003o -> invalid edit user account edit test - too long user city (75 chars) (the too long city input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - Too Long City", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - too long user city (75 chars)
+                await testMethods.invalidUserAccountEditTooLongCityTest();
+            });
+
         });
 
     });
