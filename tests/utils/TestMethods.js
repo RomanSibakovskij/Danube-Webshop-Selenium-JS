@@ -2160,7 +2160,7 @@ class TestMethods {
             Logger.info("The login has proceeded successfully. Test has passed");
         } else {
             assert.strictEqual(errorElement, "The email and/or password you have provided is incorrect.", "The expected error message doesn't match expectations")
-            Logger.error(`The login has failed with valid user login credentials. The error message displayed: ${errorElement}. Test has failed.`);
+            Logger.error(`The login has failed with valid user login credentials. The error message displayed: ${errorElement} Test has failed.`);
         }
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Valid User Account Login Test Result");
