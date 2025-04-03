@@ -138,6 +138,20 @@ describe('Account Page Tests', () => {
 
         });
 
+        describe("Invalid User Account Edit Tests - Too Long Singular Input", () => {
+
+            //Test 003k -> invalid edit user account edit test - too long user first name (100 chars) (the too long first name input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - Too Long First Name", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - too long user first name (100 chars)
+                await testMethods.invalidUserAccountEditTooLongFirstNameTest();
+            });
+
+        });
+
     });
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
