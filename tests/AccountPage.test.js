@@ -28,6 +28,24 @@ describe('Account Page Tests', () => {
 
     });
 
+    describe("Invalid User Account Edit Tests", () => {
+
+        describe("Invalid User Account Edit Tests - No Singular Input", () => {
+
+            //Test 003a -> invalid edit user account edit test - no user first name (the missing first name input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - No First Name", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - no user first name
+                await testMethods.invalidUserAccountEditNoFirstNameTest();
+            });
+
+        });
+
+    });
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //driver clean-up after each test run

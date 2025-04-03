@@ -19,9 +19,27 @@ class AccountPageInvalidScenarios extends BasePage{
         this._accountPageBillingInfoAddressInputField = By.xpath("//input[@id='s-address']");
         this._accountPageBillingInfoPostCodeInputField = By.xpath("//input[@id='s-zipcode']");
         this._accountPageBillingInfoCityInputField = By.xpath("//input[@id='s-city']");
+        //error message
+        this._fillAllFieldsError = By.xpath("//div[@class='error-message']");
+
+        //invalid user input data - no singular input
+        this._noAccPageFirstName = "";
 
     }
 
+    //invalid user account data input methods - no singular input
+    async inputNoFirstNameIntoAccPageFirstNameInputField(){
+        const firstNameInputField = await this.driver.findElement(this._accountPageBillingInfoFirstNameInputField);
+        const noFirstName = await this._noAccPageFirstName;
+        Logger.info("No user first name: ", noFirstName);
+        await firstNameInputField.sendKeys(noFirstName);
+    }
+
+    //account page error message getter
+    async getAccountPageInputErrorMessage(){
+        const inputErrorMessage = await this.driver.findElement(this._fillAllFieldsError);
+        return await inputErrorMessage.getText();
+    }
 
 }
 module.exports = { AccountPageInvalidScenarios }
