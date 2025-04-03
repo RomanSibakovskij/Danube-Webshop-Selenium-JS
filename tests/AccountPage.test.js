@@ -224,6 +224,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditInvalidAddressFormatTest();
             });
 
+            //Test 003s -> invalid edit user account edit test - invalid user post code format (special symbols only) (the invalid post code input format error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - Invalid Post Code Format", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - invalid user post code format (special symbols only)
+                await testMethods.invalidUserAccountEditInvalidPostCodeFormatTest();
+            });
+
         });
 
     });

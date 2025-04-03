@@ -1990,6 +1990,62 @@ class TestMethods {
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Invalid User Account Edition Test Result - Invalid Address Format");
     }
+    //invalid user account test method - invalid user post code format (special symbols only)
+    async invalidUserAccountEditInvalidPostCodeFormatTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const homePage = new HomePage(this.driver);
+        const accountPage = new AccountPage(this.driver);
+        const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //home page web element assert
+        await homePage.isHomePageWebElementDisplayed();
+        //home page text element assert
+        await this.isHomePageTextElementAsExpected();
+        //log top sellers product data
+        await this.logHomePageTopSellersProductData();
+        //click 'My Account' button
+        await generalPage.clickMyAccountButton();
+        //capture screenshot of the 'my account' page display
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display");
+        //account page web element assert
+        await accountPage.isAccountPagePageWebElementDisplayed();
+        //account page text element assert
+        await this.isAccountPageTextElementAsExpected();
+        //account page user details section assert
+        await this.isAccountPageUserDetailsSectionDataAsExpected();
+        //log order invoice data (it's present before submission)
+        await this.logAccountPageOrderInvoiceData();
+        //capture screenshot of the 'my account' page display before data input
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display Before Data Input");
+        //input user first name format into first name input field
+        await accountPage.inputFirstNameIntoAccPageFirstNameInputField();
+        //input user last name format into last name input field
+        await accountPage.inputLastNameIntoAccPageLastNameInputField();
+        //input user address into address input field
+        await accountPage.inputAddressIntoAccPageAddressInputField();
+        //input invalid user post code format into post code input field (special symbols only)
+        await accountPageInvalidScenarios.inputInvalidPostCodeFormatIntoAccPagePostCodeInputField();
+        //input user city into city input field
+        await accountPage.inputCityIntoAccPageCityInputField();
+        //capture screenshot of the 'my account' page display after invalid data input
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display After Invalid Data Input - Invalid Post Code Input Format");
+        //click 'Update' button
+        await accountPage.clickUpdateButton();
+        //assert the user gets an expected error message, log the issue otherwise
+        try {
+            const errorMessage = await accountPageInvalidScenarios.getAccountPageInputErrorMessage();
+            assert.strictEqual(errorMessage, "Post code cannot consist of special symbols only.", "The invalid post code input format error message doesn't match expectations.");
+        } catch (e) {
+            Logger.error("The invalid post code input format error message hasn't been triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid User Account Edition Test Result - Invalid Post Code Format");
+    }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
