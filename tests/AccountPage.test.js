@@ -106,6 +106,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditTooShortLastNameTest();
             });
 
+            //Test 003h -> invalid edit user account edit test - too short user address (5 chars) (the too short address input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - Too Short Address", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - too short user address (5 chars)
+                await testMethods.invalidUserAccountEditTooShortAddressTest();
+            });
+
         });
 
     });
