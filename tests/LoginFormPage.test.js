@@ -86,6 +86,18 @@ describe('Login Form Page Tests', () => {
                 await testMethods.invalidUserLoginInvalidEmailTest();
             });
 
+            //Test 005e -> invalid user account login test - invalid user login password
+            test("Invalid User Login Test - Invalid Login Password", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //user account logout test
+                await testMethods.userLogoutTest();
+                //invalid user account login test - invalid user login password
+                await testMethods.invalidUserLoginInvalidPasswordTest();
+            });
+
         });
 
     });

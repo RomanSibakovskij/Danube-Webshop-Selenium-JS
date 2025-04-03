@@ -26,6 +26,7 @@ class LoginFormPage extends BasePage{
 
         //invalid user login input data - invalid singular input
         this._invalidLoginEmail = "fghtr@fakemail.com";
+        this._invalidLoginPassword = "Yfgfdfd#$%$#53";
     }
 
     //valid user login data input methods
@@ -67,6 +68,12 @@ class LoginFormPage extends BasePage{
         Logger.info("Invalid user login email: ", invalidLoginEmail);
         await loginEmailInputField.clear();
         await loginEmailInputField.sendKeys(invalidLoginEmail);
+    }
+    async inputInvalidUserPasswordIntoLoginPasswordInputField(){
+        const loginPasswordInputField = await this.driver.findElement(this._loginFormPasswordInputField);
+        const invalidLoginPassword = this._invalidLoginPassword;
+        Logger.info("Invalid user login password: ", invalidLoginPassword);
+        await loginPasswordInputField.sendKeys(invalidLoginPassword);
     }
 
     //click 'Sign in' button method
