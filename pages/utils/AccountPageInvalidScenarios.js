@@ -48,6 +48,7 @@ class AccountPageInvalidScenarios extends BasePage{
         //invalid user input data - invalid singular input format (special symbols only)
         this._invalidAccPageFirstNameFormat = "@$#%$#^%&%$%#$";
         this._invalidAccPageLastNameFormat = ")*&*&^%^$%$";
+        this._invalidAccPageAddressFormat = "&%^%&%^*&";
     }
 
     //invalid user account data input methods - no singular input
@@ -158,6 +159,12 @@ class AccountPageInvalidScenarios extends BasePage{
         const invalidLastNameFormat = await this._invalidAccPageLastNameFormat;
         Logger.info("Invalid user last name format: ", invalidLastNameFormat);
         await lastNameInputField.sendKeys(invalidLastNameFormat);
+    }
+    async inputInvalidAddressFormatIntoAccPageAddressInputField(){
+        const addressInputField = await this.driver.findElement(this._accountPageBillingInfoAddressInputField);
+        const invalidAddressFormat = await this._invalidAccPageAddressFormat;
+        Logger.info("Invalid user address format: ", invalidAddressFormat);
+        await addressInputField.sendKeys(invalidAddressFormat);
     }
 
     //account page error message getter
