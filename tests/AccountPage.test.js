@@ -170,6 +170,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditTooLongAddressTest();
             });
 
+            //Test 003n -> invalid edit user account edit test - too long user post code (25 digits) (the too long post code input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - Too Long Post Code", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - too long user post code (25 digits)
+                await testMethods.invalidUserAccountEditTooLongPostCodeTest();
+            });
+
         });
 
     });

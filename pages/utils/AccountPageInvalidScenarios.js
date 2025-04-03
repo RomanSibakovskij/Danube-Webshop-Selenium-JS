@@ -42,6 +42,7 @@ class AccountPageInvalidScenarios extends BasePage{
         this._tooLongAccPageFirstName = "Ffhgjhdsfdsgfghtyutgtefrrttyijukolkijghbgnhgjfdgsdfrrghtuytikjgfgfdfgsdfsgfdhtuyiuorrewweqwedfsfdsgd";//100 chars
         this._tooLongAccPageLastName = "Ffhgjhdsfdsgfghtyutgtefrrttyijukolkijghbgnhgjfdgsdfrrghtuytikjgfgfdfgsdfsgfdhtuyiuorrewweqwedfsfdsgd";//100 chars
         this._tooLongAccPageAddress = testDataGenerator.generateRandomAddress(90);
+        this._tooLongAccPagePostCode = 3456645445677543334553456;//25 digits
     }
 
     //invalid user account data input methods - no singular input
@@ -126,6 +127,12 @@ class AccountPageInvalidScenarios extends BasePage{
         const tooLongAddress = await this._tooLongAccPageAddress;
         Logger.info("Too long user address: ", tooLongAddress);
         await addressInputField.sendKeys(tooLongAddress);
+    }
+    async inputTooLongPostCodeIntoAccPagePostCodeInputField() {
+        const postCodeInputField = await this.driver.findElement(this._accountPageBillingInfoPostCodeInputField);
+        const tooLongPostCode = this._tooLongAccPagePostCode;
+        Logger.info("Too long user post code: ", tooLongPostCode);
+        await postCodeInputField.sendKeys(tooLongPostCode);
     }
 
     //account page error message getter
