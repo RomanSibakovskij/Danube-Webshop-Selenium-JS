@@ -2307,6 +2307,42 @@ class TestMethods {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //home page product addition to cart test
+
+    //home page set product addition to cart test method
+    async addHomePageGrandGrotsbyBookToCart(){
+        const generalPage = new GeneralPage(this.driver);
+        const homePage = new HomePage(this.driver);
+        const singleProductPage = new SingleProductPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //home page web element assert
+        await homePage.isHomePageWebElementDisplayed();
+        //home page text element assert
+        await this.isHomePageTextElementAsExpected();
+        //log top sellers product data
+        await this.logHomePageTopSellersProductData();
+        //click 'Grand Grotsby' book product card
+        await homePage.clickGrandGrotsbyProductCard();
+        //capture screenshot of the single product page
+        await TestMethods.captureScreenshot(this.driver, "Single Product Page Display - 'The Grand Grotsby'");
+        //single product page web element assert
+        await singleProductPage.isSingleProductPageWebElementDisplayed();
+        //log single product page product data ('The Grand Grotsby')
+        await this.logSingleProductPageProductData();
+        //click 'Add to cart' button
+        await singleProductPage.clickAddToCartButton();
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Home Page Product ('The Grand Grotsby') Addition To Cart Test Result");
+    }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //general page text element assert test method
     async isGeneralPageTextElementAsExpected(){
         const generalPage = new GeneralPage(this.driver);

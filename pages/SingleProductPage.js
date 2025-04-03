@@ -55,6 +55,13 @@ class SingleProductPage extends BasePage{
         return stockText.replace(/Left in stock:\s+/, '');
     }
 
+    //click 'Add to cart' button method
+    async clickAddToCartButton(){
+        const addToCartButton = await this.driver.findElement(this._singleProductAddToCartButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: addToCartButton }).click().perform();
+    }
+
     //single product page web element assert method
     async isElementDisplayed(locator) {
         const element = await this.driver.findElement(locator);

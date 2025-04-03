@@ -23,6 +23,15 @@ describe('Home Page Tests', () => {
 
     });
 
+    describe("Home Page Product Addition To Cart Test (guest)", () => {
+
+        //Test 006 -> home page product addition to cart test
+        test("Home Page Product ('The Grand Grotsby') Addition To Cart Test (as a guest)", async function () {
+            await testMethods.addHomePageGrandGrotsbyBookToCart();
+        });
+
+    });
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //driver clean-up after each test run

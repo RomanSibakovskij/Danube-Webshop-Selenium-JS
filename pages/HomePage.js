@@ -72,6 +72,19 @@ class HomePage extends BasePage{
         );
     }
 
+    //click 'Grand Grotsby' product card method
+    async clickGrandGrotsbyProductCard() {
+        //find and list elements
+        const homePageProductCard = await this.driver.findElements(this._homePageProductCardElements);
+        //assert list elements isn't empty
+        if (homePageProductCard.length === 0) {throw new Error("No product cards found on home page.");}
+
+        //choose set product (yoga in Spain)
+        const grandGrotsbyProductCard = homePageProductCard[5];
+        await this.driver.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", grandGrotsbyProductCard);
+        await grandGrotsbyProductCard.click();
+    }
+
     //home page text element getter
     async getHomePageTitle(){
         const homePageTitle = await this.driver.findElement(this._homePageTitle);
