@@ -44,6 +44,9 @@ class AccountPageInvalidScenarios extends BasePage{
         this._tooLongAccPageAddress = testDataGenerator.generateRandomAddress(90);
         this._tooLongAccPagePostCode = 3456645445677543334553456;//25 digits
         this._tooLongAccPageCity = "Rffdgfhffvdfhggjkjhluyutrtserttiuuyouitrgfsdsadffdfvxzcxcgfdhfujttetregfdgf";//75 chars
+
+        //invalid user input data - invalid singular input format (special symbols only)
+        this._invalidAccPageFirstNameFormat = "@$#%$#^%&%$%#$";
     }
 
     //invalid user account data input methods - no singular input
@@ -140,6 +143,14 @@ class AccountPageInvalidScenarios extends BasePage{
         const tooLongCity = this._tooLongAccPageCity;
         Logger.info("Too long user city: ", tooLongCity);
         await cityInputField.sendKeys(tooLongCity);
+    }
+
+    //invalid user account data input methods - invalid singular input format
+    async inputInvalidFirstNameFormatIntoAccPageFirstNameInputField(){
+        const firstNameInputField = await this.driver.findElement(this._accountPageBillingInfoFirstNameInputField);
+        const invalidFirstNameFormat = await this._invalidAccPageFirstNameFormat;
+        Logger.info("Invalid user first name format: ", invalidFirstNameFormat);
+        await firstNameInputField.sendKeys(invalidFirstNameFormat);
     }
 
     //account page error message getter
