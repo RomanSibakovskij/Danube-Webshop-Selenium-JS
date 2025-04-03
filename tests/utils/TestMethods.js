@@ -2105,6 +2105,31 @@ class TestMethods {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //user logout test method
+    async userLogoutTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const homePage = new HomePage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //home page web element assert
+        await homePage.isHomePageWebElementDisplayed();
+        //home page text element assert
+        await this.isHomePageTextElementAsExpected();
+        //log top sellers product data
+        await this.logHomePageTopSellersProductData();
+        //click 'Log out' button (it's same button as 'Logout' button)
+        await generalPage.clickLoginButton()
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "User Account Logout Test Result");
+    }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     //general page text element assert test method
     async isGeneralPageTextElementAsExpected(){
         const generalPage = new GeneralPage(this.driver);
