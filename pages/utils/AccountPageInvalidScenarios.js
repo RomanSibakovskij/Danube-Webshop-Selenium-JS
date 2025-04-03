@@ -31,6 +31,7 @@ class AccountPageInvalidScenarios extends BasePage{
 
         //invalid user input data - too short singular input
         this._tooShortAccPageFirstName = "B";
+        this._tooShortAccPageLastName = "H";
     }
 
     //invalid user account data input methods - no singular input
@@ -71,6 +72,12 @@ class AccountPageInvalidScenarios extends BasePage{
         const tooShortFirstName = await this._tooShortAccPageFirstName;
         Logger.info("Too short user first name: ", tooShortFirstName);
         await firstNameInputField.sendKeys(tooShortFirstName);
+    }
+    async inputTooShortLastNameIntoAccPageLastNameInputField(){
+        const lastNameInputField = await this.driver.findElement(this._accountPageBillingInfoLastNameInputField);
+        const tooShortLastName = await this._tooShortAccPageLastName;
+        Logger.info("Too short user last name: ", tooShortLastName);
+        await lastNameInputField.sendKeys(tooShortLastName);
     }
 
     //account page error message getter
