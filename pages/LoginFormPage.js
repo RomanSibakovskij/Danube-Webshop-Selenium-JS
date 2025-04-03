@@ -19,6 +19,9 @@ class LoginFormPage extends BasePage{
         this._loginFormSignInButton = By.xpath("//button[@id='goto-signin-btn']");
         //error message
         this._loginFormInputError = By.xpath("//div[@class='error-message']");
+
+        //invalid user login input data - no singular input
+        this._noLoginEmail = "";
     }
 
     //valid user login data input methods
@@ -36,6 +39,15 @@ class LoginFormPage extends BasePage{
         const loginPassword = signUpFormPage.password;
         Logger.info("Valid user login password: ", loginPassword);
         await loginPasswordInputField.sendKeys(loginPassword);
+    }
+
+    //invalid user login data input methods - no singular input
+    async inputNoUserEmailIntoLoginEmailInputField(){
+        const loginEmailInputField = await this.driver.findElement(this._loginFormEmailInputField);
+        const noLoginEmail = "";
+        Logger.info("No user login email: ", noLoginEmail);
+        await loginEmailInputField.clear();
+        await loginEmailInputField.sendKeys(noLoginEmail);
     }
 
     //click 'Sign in' button method

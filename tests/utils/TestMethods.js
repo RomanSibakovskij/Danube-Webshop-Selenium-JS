@@ -2128,7 +2128,9 @@ class TestMethods {
         await TestMethods.captureScreenshot(this.driver, "User Account Logout Test Result");
     }
 
-    //valid user login test
+    //valid user account login test
+
+    //valid user login test method
     async validUserLoginTest(){
         const generalPage = new GeneralPage(this.driver);
         const loginFormPage = new LoginFormPage(this.driver);
@@ -2164,6 +2166,43 @@ class TestMethods {
         }
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Valid User Account Login Test Result");
+    }
+
+    //invalid user login tests
+
+    //no singular input
+
+    //invalid user login test method - no user login email
+    async invalidUserLoginNoEmailTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const loginFormPage = new LoginFormPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //click 'Login' button
+        await generalPage.clickLoginButton();
+        //capture screenshot of the login form page display before data input
+        await TestMethods.captureScreenshot(this.driver, "Login Form Page Display Before Data Input");
+        //login form page web element assert
+        await loginFormPage.isLoginFormPagePageWebElementDisplayed();
+        //login form page text element assert
+        await this.isLoginFormPageTextElementAsExpected();
+        //don't input user login email into email input field
+        await loginFormPage.inputNoUserEmailIntoLoginEmailInputField();
+        //input valid user login password into email input field
+        await loginFormPage.inputValidUserPasswordIntoLoginPasswordInputField();
+        //capture screenshot of the login form page display after invalid data input
+        await TestMethods.captureScreenshot(this.driver, "Login Form Page Display After Invalid Data Input - No Login Email");
+        //click 'Sign in' button
+        await loginFormPage.clickSigninButton();
+        //assert the user gets an expected error message
+        const errorElement = await loginFormPage.getLoginInputErrorMessage();
+        assert.strictEqual(errorElement, "Please fill in all fields.", "The missing login email error message doesn't match expectations")
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid User Account Login Test Result - No Login Email");
     }
 
 

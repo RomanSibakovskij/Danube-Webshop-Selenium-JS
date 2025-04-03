@@ -42,6 +42,25 @@ describe('Login Form Page Tests', () => {
 
     });
 
+    describe("Invalid User Account Login Tests", () => {
+
+        describe("Invalid User Account Login Tests - No Singular Input", () => {
+
+            //Test 005b -> invalid user account login test - no user login email (the page has a visual bug that makes the user email re-appear after password input (or sign in button click) despite clearing input field beforehand and inputting an empty string)
+            test("Invalid User Login Test - No Login Email", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //user account logout test
+                await testMethods.userLogoutTest();
+                //invalid user account login test - no user login email
+                await testMethods.invalidUserLoginNoEmailTest();
+            });
+
+        });
+    });
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //driver clean-up after each test run
