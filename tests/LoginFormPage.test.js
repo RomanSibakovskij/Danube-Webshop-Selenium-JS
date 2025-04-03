@@ -58,6 +58,18 @@ describe('Login Form Page Tests', () => {
                 await testMethods.invalidUserLoginNoEmailTest();
             });
 
+            //Test 005c -> invalid user account login test - no user login password
+            test("Invalid User Login Test - No Login Password", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //user account logout test
+                await testMethods.userLogoutTest();
+                //invalid user account login test - no user login password
+                await testMethods.invalidUserLoginNoPasswordTest();
+            });
+
         });
     });
 

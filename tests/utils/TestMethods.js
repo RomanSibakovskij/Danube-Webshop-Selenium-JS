@@ -2204,7 +2204,38 @@ class TestMethods {
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Invalid User Account Login Test Result - No Login Email");
     }
-
+    //invalid user login test method - no user login password
+    async invalidUserLoginNoPasswordTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const loginFormPage = new LoginFormPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //click 'Login' button
+        await generalPage.clickLoginButton();
+        //capture screenshot of the login form page display before data input
+        await TestMethods.captureScreenshot(this.driver, "Login Form Page Display Before Data Input");
+        //login form page web element assert
+        await loginFormPage.isLoginFormPagePageWebElementDisplayed();
+        //login form page text element assert
+        await this.isLoginFormPageTextElementAsExpected();
+        //input valid user login email into email input field
+        await loginFormPage.inputValidUserEmailIntoLoginEmailInputField();
+        //don't input user login password into email input field
+        await loginFormPage.inputNoUserPasswordIntoLoginPasswordInputField();
+        //capture screenshot of the login form page display after invalid data input
+        await TestMethods.captureScreenshot(this.driver, "Login Form Page Display After Invalid Data Input - No Login Password");
+        //click 'Sign in' button
+        await loginFormPage.clickSigninButton();
+        //assert the user gets an expected error message
+        const errorElement = await loginFormPage.getLoginInputErrorMessage();
+        assert.strictEqual(errorElement, "Please fill in all fields.", "The missing login password error message doesn't match expectations")
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid User Account Login Test Result - No Login Password");
+    }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

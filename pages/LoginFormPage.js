@@ -22,6 +22,7 @@ class LoginFormPage extends BasePage{
 
         //invalid user login input data - no singular input
         this._noLoginEmail = "";
+        this._noLoginPassword = "";
     }
 
     //valid user login data input methods
@@ -44,10 +45,16 @@ class LoginFormPage extends BasePage{
     //invalid user login data input methods - no singular input
     async inputNoUserEmailIntoLoginEmailInputField(){
         const loginEmailInputField = await this.driver.findElement(this._loginFormEmailInputField);
-        const noLoginEmail = "";
+        const noLoginEmail = this._noLoginEmail;
         Logger.info("No user login email: ", noLoginEmail);
         await loginEmailInputField.clear();
         await loginEmailInputField.sendKeys(noLoginEmail);
+    }
+    async inputNoUserPasswordIntoLoginPasswordInputField(){
+        const loginPasswordInputField = await this.driver.findElement(this._loginFormPasswordInputField);
+        const noLoginPassword = this._noLoginPassword;
+        Logger.info("No user login password: ", noLoginPassword);
+        await loginPasswordInputField.sendKeys(noLoginPassword);
     }
 
     //click 'Sign in' button method
