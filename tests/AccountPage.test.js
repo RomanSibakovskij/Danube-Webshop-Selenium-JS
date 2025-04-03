@@ -126,6 +126,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditTooShortPostCodeTest();
             });
 
+            //Test 003j -> invalid edit user account edit test - too short user city (2 chars) (the too short city input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - Too Short City", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - too short user city (2 chars)
+                await testMethods.invalidUserAccountEditTooShortCityTest();
+            });
+
         });
 
     });

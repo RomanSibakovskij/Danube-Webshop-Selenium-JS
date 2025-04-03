@@ -34,6 +34,7 @@ class AccountPageInvalidScenarios extends BasePage{
         this._tooShortAccPageLastName = "H";
         this._tooShortAccPageAddress = "3 Rd.";
         this._tooShortAccPagePostCode = 5463;
+        this._tooShortAccPageCity = "Bt";
     }
 
     //invalid user account data input methods - no singular input
@@ -92,6 +93,12 @@ class AccountPageInvalidScenarios extends BasePage{
         const tooShortPostCode = this._tooShortAccPagePostCode;
         Logger.info("Too short user post code: ", tooShortPostCode);
         await postCodeInputField.sendKeys(tooShortPostCode);
+    }
+    async inputTooShortCityIntoAccPageCityInputField() {
+        const cityInputField = await this.driver.findElement(this._accountPageBillingInfoCityInputField);
+        const tooShortCity = this._tooShortAccPageCity;
+        Logger.info("Too short user city: ", tooShortCity);
+        await cityInputField.sendKeys(tooShortCity);
     }
 
     //account page error message getter
