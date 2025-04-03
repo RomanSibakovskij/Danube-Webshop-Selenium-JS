@@ -1254,6 +1254,65 @@ class TestMethods {
         await TestMethods.captureScreenshot(this.driver, "Invalid User Account Edition Test Result - No City");
     }
 
+    //too short singular input
+
+    //invalid user account test method - too short user first name (1 char)
+    async invalidUserAccountEditTooShortFirstNameTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const homePage = new HomePage(this.driver);
+        const accountPage = new AccountPage(this.driver);
+        const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //home page web element assert
+        await homePage.isHomePageWebElementDisplayed();
+        //home page text element assert
+        await this.isHomePageTextElementAsExpected();
+        //log top sellers product data
+        await this.logHomePageTopSellersProductData();
+        //click 'My Account' button
+        await generalPage.clickMyAccountButton();
+        //capture screenshot of the 'my account' page display
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display");
+        //account page web element assert
+        await accountPage.isAccountPagePageWebElementDisplayed();
+        //account page text element assert
+        await this.isAccountPageTextElementAsExpected();
+        //account page user details section assert
+        await this.isAccountPageUserDetailsSectionDataAsExpected();
+        //log order invoice data (it's present before submission)
+        await this.logAccountPageOrderInvoiceData();
+        //capture screenshot of the 'my account' page display before data input
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display Before Data Input");
+        //input too short user first name into first name input field (1 char)
+        await accountPageInvalidScenarios.inputTooShortFirstNameIntoAccPageFirstNameInputField();
+        //input user last name into last name input field
+        await accountPage.inputLastNameIntoAccPageLastNameInputField();
+        //input user address into address input field
+        await accountPage.inputAddressIntoAccPageAddressInputField();
+        //input user post code into post code input field
+        await accountPage.inputPostCodeIntoAccPagePostCodeInputField();
+        //input user city into city input field
+        await accountPage.inputCityIntoAccPageCityInputField();
+        //capture screenshot of the 'my account' page display after valid data input
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display After Invalid Data Input - Too Short First Name");
+        //click 'Update' button
+        await accountPage.clickUpdateButton();
+        //assert the user gets an expected error message, log the issue otherwise
+        try {
+            const errorMessage = await accountPageInvalidScenarios.getAccountPageInputErrorMessage();
+            assert.strictEqual(errorMessage, "Name is too short.", "The too short first name input error message doesn't match expectations.");
+        } catch (e) {
+            Logger.error("The too short first name input error message hasn't been triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid User Account Edition Test Result - Too Short First Name");
+    }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page text element assert test method

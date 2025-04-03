@@ -29,6 +29,8 @@ class AccountPageInvalidScenarios extends BasePage{
         this._noAccPagePostCode = "";
         this._noAccPageCity = "";
 
+        //invalid user input data - too short singular input
+        this._tooShortAccPageFirstName = "B";
     }
 
     //invalid user account data input methods - no singular input
@@ -61,6 +63,14 @@ class AccountPageInvalidScenarios extends BasePage{
         const noCity = this._noAccPageCity;
         Logger.info("No user city: ", noCity);
         await cityInputField.sendKeys(noCity);
+    }
+
+    //invalid user account data input methods - too short singular input
+    async inputTooShortFirstNameIntoAccPageFirstNameInputField(){
+        const firstNameInputField = await this.driver.findElement(this._accountPageBillingInfoFirstNameInputField);
+        const tooShortFirstName = await this._tooShortAccPageFirstName;
+        Logger.info("Too short user first name: ", tooShortFirstName);
+        await firstNameInputField.sendKeys(tooShortFirstName);
     }
 
     //account page error message getter
