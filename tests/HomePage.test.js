@@ -25,9 +25,18 @@ describe('Home Page Tests', () => {
 
     describe("Home Page Product Addition To Cart Test (guest)", () => {
 
-        //Test 006 -> home page product addition to cart test
+        //Test 006 -> home page product ('The Grand Grotsby') addition to cart test
         test("Home Page Product ('The Grand Grotsby') Addition To Cart Test (as a guest)", async function () {
             await testMethods.addHomePageGrandGrotsbyBookToCart();
+        });
+
+    });
+
+    describe("Searched Addition To Cart Test (guest)", () => {
+
+        //Test 007 -> searched product ('The Fjord of the Lies') addition to cart test
+        test("Searched Product ('The Fjord of the Lies') Addition To Cart Test (as a guest)", async function () {
+            await testMethods.addSearchedBookFjordToCart();
         });
 
     });

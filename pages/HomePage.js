@@ -79,10 +79,18 @@ class HomePage extends BasePage{
         //assert list elements isn't empty
         if (homePageProductCard.length === 0) {throw new Error("No product cards found on home page.");}
 
-        //choose set product (yoga in Spain)
+        //choose set product
         const grandGrotsbyProductCard = homePageProductCard[5];
         await this.driver.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", grandGrotsbyProductCard);
         await grandGrotsbyProductCard.click();
+    }
+
+    async clickFjordProductCard() {
+        //find and list elements
+        await new Promise(resolve => setTimeout(resolve, 800));
+        const setProductCard = await this.driver.findElement(By.xpath("//li[@class='preview']"));
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: setProductCard }).click().perform();
     }
 
     //home page text element getter

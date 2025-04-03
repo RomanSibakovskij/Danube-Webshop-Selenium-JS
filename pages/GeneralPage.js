@@ -64,6 +64,21 @@ class GeneralPage extends BasePage{
         await actions.move({ origin: myAccountButton }).click().perform();
     }
 
+    //input search query method (for product 'The Fjord of the Lies')
+    async inputProductFjordSearchQuery() {
+        const searchBar = await this.driver.findElement(this._headerSearchBarInputField);
+        const searchQuery = "The Fjord of the Lies";
+        await searchBar.sendKeys(searchQuery);
+    }
+
+    //click 'Search' button method
+    async clickSearchButton(){
+        const searchButton = await this.driver.findElement(this._headerSearchButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: searchButton }).click().perform();
+    }
+
+
     //general page text element getters
     async getSpecialOfferText(){
         const specialOfferText = await this.driver.findElement(this._specialOfferText);

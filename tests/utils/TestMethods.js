@@ -2309,7 +2309,7 @@ class TestMethods {
 
     //home page product addition to cart test
 
-    //home page set product addition to cart test method
+    //home page set product ('The Grand Grotsby') addition to cart test method
     async addHomePageGrandGrotsbyBookToCart(){
         const generalPage = new GeneralPage(this.driver);
         const homePage = new HomePage(this.driver);
@@ -2338,6 +2338,45 @@ class TestMethods {
         await singleProductPage.clickAddToCartButton();
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Home Page Product ('The Grand Grotsby') Addition To Cart Test Result");
+    }
+
+    //home page searched product addition to cart test
+
+    //home page set searched product ('The Fjord of the Lies') addition to cart test method
+    async addSearchedBookFjordToCart(){
+        const generalPage = new GeneralPage(this.driver);
+        const homePage = new HomePage(this.driver);
+        const singleProductPage = new SingleProductPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //home page web element assert
+        await homePage.isHomePageWebElementDisplayed();
+        //home page text element assert
+        await this.isHomePageTextElementAsExpected();
+        //log top sellers product data
+        await this.logHomePageTopSellersProductData();
+        //input product search query
+        await generalPage.inputProductFjordSearchQuery();
+        //click 'Search' button
+        await generalPage.clickSearchButton();
+        //log the searched product data (to confirm the product has been found)
+        await this.logHomePageTopSellersProductData();
+        //click searched product card
+        await homePage.clickFjordProductCard();
+        //capture screenshot of the single product page
+        await TestMethods.captureScreenshot(this.driver, "Single Product Page Display - 'The Fjord of the Lies'");
+        //single product page web element assert
+        await singleProductPage.isSingleProductPageWebElementDisplayed();
+        //log single product page product data ('The Fjord of the Lies')
+        await this.logSingleProductPageProductData();
+        //click 'Add to cart' button
+        await singleProductPage.clickAddToCartButton();
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Searched Product ('The Fjord of the Lies') Addition To Cart Test Result");
     }
 
 
