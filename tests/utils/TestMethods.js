@@ -1085,6 +1085,62 @@ class TestMethods {
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Invalid User Account Edition Test Result - No Last Name");
     }
+    //invalid user account test method - no user address
+    async invalidUserAccountEditNoAddressTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const homePage = new HomePage(this.driver);
+        const accountPage = new AccountPage(this.driver);
+        const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //home page web element assert
+        await homePage.isHomePageWebElementDisplayed();
+        //home page text element assert
+        await this.isHomePageTextElementAsExpected();
+        //log top sellers product data
+        await this.logHomePageTopSellersProductData();
+        //click 'My Account' button
+        await generalPage.clickMyAccountButton();
+        //capture screenshot of the 'my account' page display
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display");
+        //account page web element assert
+        await accountPage.isAccountPagePageWebElementDisplayed();
+        //account page text element assert
+        await this.isAccountPageTextElementAsExpected();
+        //account page user details section assert
+        await this.isAccountPageUserDetailsSectionDataAsExpected();
+        //log order invoice data (it's present before submission)
+        await this.logAccountPageOrderInvoiceData();
+        //capture screenshot of the 'my account' page display before data input
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display Before Data Input");
+        //input user first name into first name input field
+        await accountPage.inputFirstNameIntoAccPageFirstNameInputField();
+        //input user last name into last name input field
+        await accountPage.inputLastNameIntoAccPageLastNameInputField();
+        //don't input user address into address input field
+        await accountPageInvalidScenarios.inputNoAddressIntoAccPageAddressInputField();
+        //input user post code into post code input field
+        await accountPage.inputPostCodeIntoAccPagePostCodeInputField();
+        //input user city into city input field
+        await accountPage.inputCityIntoAccPageCityInputField();
+        //capture screenshot of the 'my account' page display after valid data input
+        await TestMethods.captureScreenshot(this.driver, "User Account Page Display After Invalid Data Input - No Address");
+        //click 'Update' button
+        await accountPage.clickUpdateButton();
+        //assert the user gets an expected error message, log the issue otherwise
+        try {
+            const errorMessage = await accountPageInvalidScenarios.getAccountPageInputErrorMessage();
+            assert.strictEqual(errorMessage, "Please input address.", "The missing address input error message doesn't match expectations.");
+        } catch (e) {
+            Logger.error("The missing address input error message hasn't been triggered, test has failed");
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid User Account Edition Test Result - No Address");
+    }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
