@@ -50,6 +50,7 @@ class AccountPageInvalidScenarios extends BasePage{
         this._invalidAccPageLastNameFormat = ")*&*&^%^$%$";
         this._invalidAccPageAddressFormat = "&%^%&%^*&";
         this._invalidAccPagePostCodeFormat = "*^%^&*(";
+        this._invalidAccPageCityFormat = "%^@#$#$*(";
     }
 
     //invalid user account data input methods - no singular input
@@ -172,6 +173,12 @@ class AccountPageInvalidScenarios extends BasePage{
         const invalidPostCodeFormat = this._invalidAccPagePostCodeFormat;
         Logger.info("Invalid user post code format: ", invalidPostCodeFormat);
         await postCodeInputField.sendKeys(invalidPostCodeFormat);
+    }
+    async inputInvalidCityFormatIntoAccPageCityInputField() {
+        const cityInputField = await this.driver.findElement(this._accountPageBillingInfoCityInputField);
+        const invalidCityFormat = this._invalidAccPageCityFormat;
+        Logger.info("Invalid user city format: ", invalidCityFormat);
+        await cityInputField.sendKeys(invalidCityFormat);
     }
 
     //account page error message getter

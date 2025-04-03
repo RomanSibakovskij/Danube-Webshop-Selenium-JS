@@ -234,6 +234,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditInvalidPostCodeFormatTest();
             });
 
+            //Test 003t -> invalid edit user account edit test - invalid user city format (special symbols only) (the invalid city input format error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - Invalid City Format", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - invalid user city format (special symbols only)
+                await testMethods.invalidUserAccountEditInvalidCityFormatTest();
+            });
+
         });
 
     });
