@@ -56,19 +56,19 @@ class AccountPageInvalidScenarios extends BasePage{
     //invalid user account data input methods - no singular input
     async inputNoFirstNameIntoAccPageFirstNameInputField(){
         const firstNameInputField = await this.driver.findElement(this._accountPageBillingInfoFirstNameInputField);
-        const noFirstName = await this._noAccPageFirstName;
+        const noFirstName = this._noAccPageFirstName;
         Logger.info("No user first name: ", noFirstName);
         await firstNameInputField.sendKeys(noFirstName);
     }
     async inputNoLastNameIntoAccPageLastNameInputField(){
         const lastNameInputField = await this.driver.findElement(this._accountPageBillingInfoLastNameInputField);
-        const noLastName = await this._noAccPageLastName;
+        const noLastName = this._noAccPageLastName;
         Logger.info("No user last name: ", noLastName);
         await lastNameInputField.sendKeys(noLastName);
     }
     async inputNoAddressIntoAccPageAddressInputField(){
         const addressInputField = await this.driver.findElement(this._accountPageBillingInfoAddressInputField);
-        const noAddress = await this._noAccPageAddress;
+        const noAddress = this._noAccPageAddress;
         Logger.info("No user address: ", noAddress);
         await addressInputField.sendKeys(noAddress);
     }
@@ -88,19 +88,19 @@ class AccountPageInvalidScenarios extends BasePage{
     //invalid user account data input methods - too short singular input
     async inputTooShortFirstNameIntoAccPageFirstNameInputField(){
         const firstNameInputField = await this.driver.findElement(this._accountPageBillingInfoFirstNameInputField);
-        const tooShortFirstName = await this._tooShortAccPageFirstName;
+        const tooShortFirstName = this._tooShortAccPageFirstName;
         Logger.info("Too short user first name: ", tooShortFirstName);
         await firstNameInputField.sendKeys(tooShortFirstName);
     }
     async inputTooShortLastNameIntoAccPageLastNameInputField(){
         const lastNameInputField = await this.driver.findElement(this._accountPageBillingInfoLastNameInputField);
-        const tooShortLastName = await this._tooShortAccPageLastName;
+        const tooShortLastName = this._tooShortAccPageLastName;
         Logger.info("Too short user last name: ", tooShortLastName);
         await lastNameInputField.sendKeys(tooShortLastName);
     }
     async inputTooShortAddressIntoAccPageAddressInputField(){
         const addressInputField = await this.driver.findElement(this._accountPageBillingInfoAddressInputField);
-        const tooShortAddress = await this._tooShortAccPageAddress;
+        const tooShortAddress = this._tooShortAccPageAddress;
         Logger.info("Too short user address: ", tooShortAddress);
         await addressInputField.sendKeys(tooShortAddress);
     }
@@ -120,13 +120,13 @@ class AccountPageInvalidScenarios extends BasePage{
     //invalid user account data input methods - too long singular input
     async inputTooLongFirstNameIntoAccPageFirstNameInputField(){
         const firstNameInputField = await this.driver.findElement(this._accountPageBillingInfoFirstNameInputField);
-        const tooLongFirstName = await this._tooLongAccPageFirstName;
+        const tooLongFirstName = this._tooLongAccPageFirstName;
         Logger.info("Too long user first name: ", tooLongFirstName);
         await firstNameInputField.sendKeys(tooLongFirstName);
     }
     async inputTooLongLastNameIntoAccPageLastNameInputField(){
         const lastNameInputField = await this.driver.findElement(this._accountPageBillingInfoLastNameInputField);
-        const tooLongLastName = await this._tooLongAccPageLastName;
+        const tooLongLastName = this._tooLongAccPageLastName;
         Logger.info("Too long user last name: ", tooLongLastName);
         await lastNameInputField.sendKeys(tooLongLastName);
     }
@@ -152,19 +152,19 @@ class AccountPageInvalidScenarios extends BasePage{
     //invalid user account data input methods - invalid singular input format
     async inputInvalidFirstNameFormatIntoAccPageFirstNameInputField(){
         const firstNameInputField = await this.driver.findElement(this._accountPageBillingInfoFirstNameInputField);
-        const invalidFirstNameFormat = await this._invalidAccPageFirstNameFormat;
+        const invalidFirstNameFormat = this._invalidAccPageFirstNameFormat;
         Logger.info("Invalid user first name format: ", invalidFirstNameFormat);
         await firstNameInputField.sendKeys(invalidFirstNameFormat);
     }
     async inputInvalidLastNameFormatIntoAccPageLastNameInputField(){
         const lastNameInputField = await this.driver.findElement(this._accountPageBillingInfoLastNameInputField);
-        const invalidLastNameFormat = await this._invalidAccPageLastNameFormat;
+        const invalidLastNameFormat = this._invalidAccPageLastNameFormat;
         Logger.info("Invalid user last name format: ", invalidLastNameFormat);
         await lastNameInputField.sendKeys(invalidLastNameFormat);
     }
     async inputInvalidAddressFormatIntoAccPageAddressInputField(){
         const addressInputField = await this.driver.findElement(this._accountPageBillingInfoAddressInputField);
-        const invalidAddressFormat = await this._invalidAccPageAddressFormat;
+        const invalidAddressFormat = this._invalidAccPageAddressFormat;
         Logger.info("Invalid user address format: ", invalidAddressFormat);
         await addressInputField.sendKeys(invalidAddressFormat);
     }
