@@ -116,6 +116,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditTooShortAddressTest();
             });
 
+            //Test 003i -> invalid edit user account edit test - too short user post code (4 digits) (the too short post code input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - Too Short Post Code", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - too short user post code (4 digits)
+                await testMethods.invalidUserAccountEditTooShortPostCodeTest();
+            });
+
         });
 
     });
