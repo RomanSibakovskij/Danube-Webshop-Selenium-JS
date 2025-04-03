@@ -27,6 +27,7 @@ class AccountPageInvalidScenarios extends BasePage{
         this._noAccPageLastName = "";
         this._noAccPageAddress = "";
         this._noAccPagePostCode = "";
+        this._noAccPageCity = "";
 
     }
 
@@ -54,6 +55,12 @@ class AccountPageInvalidScenarios extends BasePage{
         const noPostCode = this._noAccPagePostCode;
         Logger.info("No user post code: ", noPostCode);
         await postCodeInputField.sendKeys(noPostCode);
+    }
+    async inputNoCityIntoAccPageCityInputField() {
+        const cityInputField = await this.driver.findElement(this._accountPageBillingInfoCityInputField);
+        const noCity = this._noAccPageCity;
+        Logger.info("No user city: ", noCity);
+        await cityInputField.sendKeys(noCity);
     }
 
     //account page error message getter

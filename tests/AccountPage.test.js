@@ -72,6 +72,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditNoPostCodeTest();
             });
 
+            //Test 003e -> invalid edit user account edit test - no user city (the missing city input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - No City", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - no user city
+                await testMethods.invalidUserAccountEditNoCityTest();
+            });
+
         });
 
     });
