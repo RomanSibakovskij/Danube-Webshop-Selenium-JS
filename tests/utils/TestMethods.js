@@ -11,6 +11,7 @@ const { SignUpFormPageInvalidScenarios } = require("../../pages/utils/SignUpForm
 const { AccountPage } = require("../../pages/AccountPage");
 const { AccountPageInvalidScenarios } = require("../../pages/utils/AccountPageInvalidScenarios");
 const { LoginFormPage } = require("../../pages/LoginFormPage");
+const { SingleProductPage } = require("../../pages/SingleProductPage");
 
 class TestMethods {
 
@@ -2442,6 +2443,29 @@ class TestMethods {
         //assert user account email is as expected, log the issue otherwise
         const accountPageOrderData = await accountPage.getAccountPageSubmittedOrder();
         Logger.info("Account page displayed order invoice data (no orders submitted yet): " + accountPageOrderData);
+    }
+
+    //single product page product data logger method
+    async logSingleProductPageProductData(){
+        const singleProductPage = new SingleProductPage(this.driver);
+        //log single product name
+        const singleProductName = await singleProductPage.getSingleProductPageTitle();
+        Logger.info("Single product page set product name: " + singleProductName);
+        //log single product author
+        const singleProductAuthor = await singleProductPage.getSingleProductAuthor();
+        Logger.info("Single product page set product author: " + singleProductAuthor);
+        //log single product genre
+        const singleProductGenre = await singleProductPage.getSingleProductGenre();
+        Logger.info("Single product page set product genre: " + singleProductGenre);
+        //log single product description
+        const singleProductDescription = await singleProductPage.getSingleProductDescription();
+        Logger.info("Single product page set product description: " + singleProductDescription);
+        //log single product price
+        const singleProductPrice = await singleProductPage.getSingleProductPrice();
+        Logger.info("Single product page set product price: " + singleProductPrice);
+        //log single product stock
+        const singleProductStock = await singleProductPage.getSingleProductStock();
+        Logger.info("Single product page set product stock: " + singleProductStock);
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
