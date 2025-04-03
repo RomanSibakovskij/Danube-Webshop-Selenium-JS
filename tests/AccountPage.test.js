@@ -150,6 +150,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditTooLongFirstNameTest();
             });
 
+            //Test 003l -> invalid edit user account edit test - too long user last name (100 chars) (the too long last name input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - Too Long Last Name", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - too long user last name (100 chars)
+                await testMethods.invalidUserAccountEditTooLongLastNameTest();
+            });
+
         });
 
     });

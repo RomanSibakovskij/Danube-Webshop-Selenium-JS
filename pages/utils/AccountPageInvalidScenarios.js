@@ -38,6 +38,7 @@ class AccountPageInvalidScenarios extends BasePage{
 
         //invalid user input data - too long singular input
         this._tooLongAccPageFirstName = "Ffhgjhdsfdsgfghtyutgtefrrttyijukolkijghbgnhgjfdgsdfrrghtuytikjgfgfdfgsdfsgfdhtuyiuorrewweqwedfsfdsgd";
+        this._tooLongAccPageLastName = "Ffhgjhdsfdsgfghtyutgtefrrttyijukolkijghbgnhgjfdgsdfrrghtuytikjgfgfdfgsdfsgfdhtuyiuorrewweqwedfsfdsgd";
     }
 
     //invalid user account data input methods - no singular input
@@ -110,6 +111,12 @@ class AccountPageInvalidScenarios extends BasePage{
         const tooLongFirstName = await this._tooLongAccPageFirstName;
         Logger.info("Too long user first name: ", tooLongFirstName);
         await firstNameInputField.sendKeys(tooLongFirstName);
+    }
+    async inputTooLongLastNameIntoAccPageLastNameInputField(){
+        const lastNameInputField = await this.driver.findElement(this._accountPageBillingInfoLastNameInputField);
+        const tooLongLastName = await this._tooLongAccPageLastName;
+        Logger.info("Too long user last name: ", tooLongLastName);
+        await lastNameInputField.sendKeys(tooLongLastName);
     }
 
     //account page error message getter
