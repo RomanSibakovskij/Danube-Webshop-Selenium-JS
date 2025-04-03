@@ -26,6 +26,7 @@ class AccountPageInvalidScenarios extends BasePage{
         this._noAccPageFirstName = "";
         this._noAccPageLastName = "";
         this._noAccPageAddress = "";
+        this._noAccPagePostCode = "";
 
     }
 
@@ -48,7 +49,12 @@ class AccountPageInvalidScenarios extends BasePage{
         Logger.info("No user address: ", noAddress);
         await addressInputField.sendKeys(noAddress);
     }
-
+    async inputNoPostCodeIntoAccPagePostCodeInputField() {
+        const postCodeInputField = await this.driver.findElement(this._accountPageBillingInfoPostCodeInputField);
+        const noPostCode = this._noAccPagePostCode;
+        Logger.info("No user post code: ", noPostCode);
+        await postCodeInputField.sendKeys(noPostCode);
+    }
 
     //account page error message getter
     async getAccountPageInputErrorMessage(){

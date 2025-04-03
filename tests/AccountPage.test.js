@@ -62,6 +62,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditNoAddressTest();
             });
 
+            //Test 003d -> invalid edit user account edit test - no user post code (the missing post code input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - No Post Code", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - no user post code
+                await testMethods.invalidUserAccountEditNoPostCodeTest();
+            });
+
         });
 
     });
