@@ -10,6 +10,7 @@ const { SignUpFormPage } = require("../../pages/SignUpFormPage");
 const { SignUpFormPageInvalidScenarios } = require("../../pages/utils/SignUpFormPageInvalidScenarios");
 const { AccountPage } = require("../../pages/AccountPage");
 const { AccountPageInvalidScenarios } = require("../../pages/utils/AccountPageInvalidScenarios");
+const { LoginFormPage } = require("../../pages/LoginFormPage");
 
 class TestMethods {
 
@@ -2220,6 +2221,14 @@ class TestMethods {
         } catch (e) {
             Logger.error(`The user email doesn't match expected values. Expected email: ${accountPageExpectedEmail}, displayed email: ${accountPageUserEmail}`)
         }
+    }
+
+    //login form page text element assert test method
+    async isLoginFormPageTextElementAsExpected(){
+        const loginFormPage = new LoginFormPage(this.driver);
+        //assert login form page title is as expected
+        const loginFormPageTitle = await loginFormPage.getLoginFormPageTitle();
+        assert.strictEqual(loginFormPageTitle, "LOG IN", "The login form page title doesn't match the expectations.");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
