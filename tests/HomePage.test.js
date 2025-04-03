@@ -41,6 +41,15 @@ describe('Home Page Tests', () => {
 
     });
 
+    describe("Single Product Category Product Addition To Cart Test (guest)", () => {
+
+        //Test 008 -> single category product page product ('The Insiders') addition to cart test
+        test("Single Category Product Page Product ('The Insiders') Addition To Cart Test (as a guest)", async function () {
+            await testMethods.addSingleCategoryProductToCart();
+        });
+
+    });
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //driver clean-up after each test run

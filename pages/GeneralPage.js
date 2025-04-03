@@ -78,6 +78,19 @@ class GeneralPage extends BasePage{
         await actions.move({ origin: searchButton }).click().perform();
     }
 
+    //click 'Crime & Thrillers' aside category link method
+    async clickAsideCrimeLink() {
+        //find and list elements
+        const asideBooksCategoryLink = await this.driver.findElements(this._asideBooksCategoryFictionLinkElements);
+        //assert list elements isn't empty
+        if (asideBooksCategoryLink.length === 0) {throw new Error("No aside books fiction category links found.");}
+
+        //choose set product
+        const crimeThrillersLink = asideBooksCategoryLink[0];
+        await this.driver.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", crimeThrillersLink);
+        await crimeThrillersLink.click();
+    }
+
 
     //general page text element getters
     async getSpecialOfferText(){
