@@ -11,7 +11,7 @@ class SingleProductPage extends BasePage{
     constructor(driver) {
         super(driver);
 
-        
+
     }
 
 }

@@ -23,30 +23,6 @@ describe('Home Page Tests', () => {
 
     });
 
-    describe("User Logout Tests", () => {
-
-        //Test 004 -> user account logout test
-        test("User Account Logout Test", async function () {
-            //navigate to 'Sign up' form test
-            await testMethods.navigateToSignUpFormTest();
-            //valid user account creation test
-            await testMethods.validUserAccountCreationTest();
-            //user account logout test
-            await testMethods.userLogoutTest();
-        });
-
-        //Test 004a -> user business account logout test
-        test("User Business Account Logout Test", async function () {
-            //navigate to 'Sign up' form test
-            await testMethods.navigateToSignUpFormTest();
-            //valid user business account creation test
-            await testMethods.validUserBusinessAccountCreationTest();
-            //user account logout test (same as common user logout method)
-            await testMethods.userLogoutTest();
-        });
-
-    });
-
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //driver clean-up after each test run

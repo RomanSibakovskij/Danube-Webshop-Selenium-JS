@@ -14,6 +14,30 @@ describe('Login Form Page Tests', () => {
     jest.setTimeout(140000) //timer for the whole single test run, otherwise throws a timeout error
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    describe("User Logout Tests", () => {
+
+        //Test 004 -> user account logout test
+        test("User Account Logout Test", async function () {
+            //navigate to 'Sign up' form test
+            await testMethods.navigateToSignUpFormTest();
+            //valid user account creation test
+            await testMethods.validUserAccountCreationTest();
+            //user account logout test
+            await testMethods.userLogoutTest();
+        });
+
+        //Test 004a -> user business account logout test
+        test("User Business Account Logout Test", async function () {
+            //navigate to 'Sign up' form test
+            await testMethods.navigateToSignUpFormTest();
+            //valid user business account creation test
+            await testMethods.validUserBusinessAccountCreationTest();
+            //user account logout test (same as common user logout method)
+            await testMethods.userLogoutTest();
+        });
+
+    });
+
     describe("Valid User Account Login Tests", () => {
 
         //Test 005 -> valid user account login test (the user fails to log in with valid credentials, therefore, registered user product testing will be halted here until the issue gets resolved, test has failed)
