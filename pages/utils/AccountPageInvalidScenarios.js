@@ -22,6 +22,8 @@ class AccountPageInvalidScenarios extends BasePage{
         //error message
         this._fillAllFieldsError = By.xpath("//div[@class='error-message']");
 
+        const testDataGenerator = new TestDataGenerator(this.driver);
+
         //invalid user input data - no singular input
         this._noAccPageFirstName = "";
         this._noAccPageLastName = "";
@@ -37,8 +39,9 @@ class AccountPageInvalidScenarios extends BasePage{
         this._tooShortAccPageCity = "Bt";
 
         //invalid user input data - too long singular input
-        this._tooLongAccPageFirstName = "Ffhgjhdsfdsgfghtyutgtefrrttyijukolkijghbgnhgjfdgsdfrrghtuytikjgfgfdfgsdfsgfdhtuyiuorrewweqwedfsfdsgd";
-        this._tooLongAccPageLastName = "Ffhgjhdsfdsgfghtyutgtefrrttyijukolkijghbgnhgjfdgsdfrrghtuytikjgfgfdfgsdfsgfdhtuyiuorrewweqwedfsfdsgd";
+        this._tooLongAccPageFirstName = "Ffhgjhdsfdsgfghtyutgtefrrttyijukolkijghbgnhgjfdgsdfrrghtuytikjgfgfdfgsdfsgfdhtuyiuorrewweqwedfsfdsgd";//100 chars
+        this._tooLongAccPageLastName = "Ffhgjhdsfdsgfghtyutgtefrrttyijukolkijghbgnhgjfdgsdfrrghtuytikjgfgfdfgsdfsgfdhtuyiuorrewweqwedfsfdsgd";//100 chars
+        this._tooLongAccPageAddress = testDataGenerator.generateRandomAddress(90);
     }
 
     //invalid user account data input methods - no singular input
@@ -117,6 +120,12 @@ class AccountPageInvalidScenarios extends BasePage{
         const tooLongLastName = await this._tooLongAccPageLastName;
         Logger.info("Too long user last name: ", tooLongLastName);
         await lastNameInputField.sendKeys(tooLongLastName);
+    }
+    async inputTooLongAddressIntoAccPageAddressInputField(){
+        const addressInputField = await this.driver.findElement(this._accountPageBillingInfoAddressInputField);
+        const tooLongAddress = await this._tooLongAccPageAddress;
+        Logger.info("Too long user address: ", tooLongAddress);
+        await addressInputField.sendKeys(tooLongAddress);
     }
 
     //account page error message getter

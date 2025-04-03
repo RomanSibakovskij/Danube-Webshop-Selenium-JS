@@ -160,6 +160,16 @@ describe('Account Page Tests', () => {
                 await testMethods.invalidUserAccountEditTooLongLastNameTest();
             });
 
+            //Test 003m -> invalid edit user account edit test - too long user address (100 chars) (the too long address input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - Too Long Address", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - too long user address (100 chars)
+                await testMethods.invalidUserAccountEditTooLongAddressTest();
+            });
+
         });
 
     });
