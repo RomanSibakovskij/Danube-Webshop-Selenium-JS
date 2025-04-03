@@ -878,7 +878,7 @@ class TestMethods {
         await this.isGeneralPageTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
-        //click 'Log out' button (it's same button as 'Logout' button)
+        //click 'Log out' button (it's same button as 'Login' button)
         await generalPage.clickLoginButton()
         //click 'Sign up' button
         await generalPage.clickSignUpButton();
@@ -2122,10 +2122,48 @@ class TestMethods {
         await this.isHomePageTextElementAsExpected();
         //log top sellers product data
         await this.logHomePageTopSellersProductData();
-        //click 'Log out' button (it's same button as 'Logout' button)
-        await generalPage.clickLoginButton()
+        //click 'Log out' button (it's same button as 'Login' button)
+        await generalPage.clickLoginButton();
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "User Account Logout Test Result");
+    }
+
+    //valid user login test
+    async validUserLoginTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const loginFormPage = new LoginFormPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //click 'Login' button
+        await generalPage.clickLoginButton();
+        //capture screenshot of the login form page display before data input
+        await TestMethods.captureScreenshot(this.driver, "Login Form Page Display Before Data Input");
+        //login form page web element assert
+        await loginFormPage.isLoginFormPagePageWebElementDisplayed();
+        //login form page text element assert
+        await this.isLoginFormPageTextElementAsExpected();
+        //input valid user login email into email input field
+        await loginFormPage.inputValidUserEmailIntoLoginEmailInputField();
+        //input valid user login password into email input field
+        await loginFormPage.inputValidUserPasswordIntoLoginPasswordInputField();
+        //capture screenshot of the login form page display after valid data input
+        await TestMethods.captureScreenshot(this.driver, "Login Form Page Display After Valid Data Input");
+        //click 'Sign in' button
+        await loginFormPage.clickSigninButton();
+        //if the login somehow fails, log the issue
+        const errorElement = await loginFormPage.getLoginInputErrorMessage();
+        if(errorElement.length === 0) {
+            Logger.info("The login has proceeded successfully. Test has passed");
+        } else {
+            assert.strictEqual(errorElement, "The email and/or password you have provided is incorrect.", "The expected error message doesn't match expectations")
+            Logger.error(`The login has failed with valid user login credentials. The error message displayed: ${errorElement}. Test has failed.`);
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Valid User Account Login Test Result");
     }
 
 
