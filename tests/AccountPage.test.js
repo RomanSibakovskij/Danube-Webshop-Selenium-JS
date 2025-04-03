@@ -41,8 +41,16 @@ describe('Account Page Tests', () => {
                 //invalid edit user account edit test - no user first name
                 await testMethods.invalidUserAccountEditNoFirstNameTest();
             });
-
-        });
+            
+            //Test 003b -> invalid edit user account edit test - no user last name (the missing last name input error message hasn't been triggered, test has failed)
+            test("Invalid User Account Edition Test - No Last Name", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //invalid edit user account edit test - no user last name
+                await testMethods.invalidUserAccountEditNoLastNameTest();
+            });
 
     });
 

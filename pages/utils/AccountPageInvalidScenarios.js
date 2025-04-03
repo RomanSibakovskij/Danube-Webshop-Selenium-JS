@@ -24,6 +24,7 @@ class AccountPageInvalidScenarios extends BasePage{
 
         //invalid user input data - no singular input
         this._noAccPageFirstName = "";
+        this._noAccPageLastName = "";
 
     }
 
@@ -34,6 +35,13 @@ class AccountPageInvalidScenarios extends BasePage{
         Logger.info("No user first name: ", noFirstName);
         await firstNameInputField.sendKeys(noFirstName);
     }
+    async inputNoLastNameIntoAccPageLastNameInputField(){
+        const lastNameInputField = await this.driver.findElement(this._accountPageBillingInfoLastNameInputField);
+        const noLastName = await this._noAccPageLastName;
+        Logger.info("No user last name: ", noLastName);
+        await lastNameInputField.sendKeys(noLastName);
+    }
+
 
     //account page error message getter
     async getAccountPageInputErrorMessage(){
