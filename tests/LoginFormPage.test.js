@@ -71,6 +71,23 @@ describe('Login Form Page Tests', () => {
             });
 
         });
+
+        describe("Invalid User Account Login Tests - Invalid Singular Input", () => {
+
+            //Test 005d -> invalid user account login test - invalid user login email
+            test("Invalid User Login Test - Invalid Login Email", async function () {
+                //navigate to 'Sign up' form test
+                await testMethods.navigateToSignUpFormTest();
+                //valid user account creation test
+                await testMethods.validUserAccountCreationTest();
+                //user account logout test
+                await testMethods.userLogoutTest();
+                //invalid user account login test - invalid user login email
+                await testMethods.invalidUserLoginInvalidEmailTest();
+            });
+
+        });
+
     });
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -2237,6 +2237,41 @@ class TestMethods {
         await TestMethods.captureScreenshot(this.driver, "Invalid User Account Login Test Result - No Login Password");
     }
 
+    //invalid singular input
+
+    //invalid user login test method - invalid user login email
+    async invalidUserLoginInvalidEmailTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const loginFormPage = new LoginFormPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //click 'Login' button
+        await generalPage.clickLoginButton();
+        //capture screenshot of the login form page display before data input
+        await TestMethods.captureScreenshot(this.driver, "Login Form Page Display Before Data Input");
+        //login form page web element assert
+        await loginFormPage.isLoginFormPagePageWebElementDisplayed();
+        //login form page text element assert
+        await this.isLoginFormPageTextElementAsExpected();
+        //input invalid user login email into email input field
+        await loginFormPage.inputInvalidUserEmailIntoLoginEmailInputField();
+        //input valid user login password into email input field
+        await loginFormPage.inputValidUserPasswordIntoLoginPasswordInputField();
+        //capture screenshot of the login form page display after invalid data input
+        await TestMethods.captureScreenshot(this.driver, "Login Form Page Display After Invalid Data Input - Invalid Login Email");
+        //click 'Sign in' button
+        await loginFormPage.clickSigninButton();
+        //assert the user gets an expected error message
+        const errorElement = await loginFormPage.getLoginInputErrorMessage();
+        assert.strictEqual(errorElement, "The email and/or password you have provided is incorrect.", "The invalid login email error message doesn't match expectations")
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid User Account Login Test Result - Invalid Login Email");
+    }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page text element assert test method
