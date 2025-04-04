@@ -54,6 +54,18 @@ describe('Home Page Tests', () => {
 
     });
 
+    describe("Single Product Category Product Addition To Checkout Tests (guest)", () => {
+
+        //Test 011 -> single category product page product ('The Insiders') addition to check out test (as a guest)
+        test("Single Category Product Page Product ('The Insiders') Addition To Checkout Test (as a guest)", async function () {
+            //single category product page product ('The Insiders') addition to cart test (as a guest)
+            await testMethods.addSingleCategoryProductToCart();
+            //single category product page product ('The Insiders') addition to check out test (as a guest)
+            await testMethods.addProductToCheckoutTest();
+        });
+
+    });
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //driver clean-up after each test run
