@@ -12,6 +12,7 @@ const { AccountPage } = require("../../pages/AccountPage");
 const { AccountPageInvalidScenarios } = require("../../pages/utils/AccountPageInvalidScenarios");
 const { LoginFormPage } = require("../../pages/LoginFormPage");
 const { SingleProductPage } = require("../../pages/SingleProductPage");
+const { ShoppingCartPage } = require("../../pages/ShoppingCartPage");
 
 class TestMethods {
 
@@ -2521,11 +2522,23 @@ class TestMethods {
         assert.strictEqual(loginFormPageTitle, "LOG IN", "The login form page title doesn't match the expectations.");
     }
 
+    //shopping cart text element assert test method
+    async isShoppingCartTextElementAsExpected(){
+        const shoppingCartPage = new ShoppingCartPage(this.driver);
+        //assert shopping cart page title is as expected
+        const shoppingCartPageTitle = await shoppingCartPage.getShoppingCartTitle();
+        assert.strictEqual(shoppingCartPageTitle, "Your Shopping Cart", "The shopping cart page title doesn't match the expectations.");
+        //assert shopping cart coupon subtext is as expected
+        const shoppingCartCouponSubtext = await shoppingCartPage.getShoppingCartCouponSubtext();
+        assert.strictEqual(shoppingCartCouponSubtext, "I have a coupon for this order", "The shopping cart coupon subtext doesn't match the expectations.");
+    }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //general page aside links text logger method
     async logAsideLinkTextElements(){
         const generalPage = new GeneralPage(this.driver);
+        console.log("General page aside links: " + "\n");
         //log aside books category fiction link names
         const asideBooksCategoryFictionLinkNames = await generalPage.getAsideBooksCategoryFictionLinkNames();
         Logger.info("Aside books category (fiction) link names: " + asideBooksCategoryFictionLinkNames);
@@ -2535,11 +2548,13 @@ class TestMethods {
         //log aside DVDs category fiction link names
         const asideDVDsCategoryFictionListNames = await generalPage.getAsideDVDsCategoryFictionList();
         Logger.info("Aside DVDs category (fiction) list names: " + asideDVDsCategoryFictionListNames);
+        console.log("\n");
     }
 
     //home page (top sellers) product data logger method
     async logHomePageTopSellersProductData(){
         const homePage = new HomePage(this.driver);
+        console.log("Home page displayed top sellers product data: " + "\n");
         //log home page top sellers product titles (as a list)
         const homePageTopSellersProductTitles = await homePage.getHomePageTopSellersProductTitle();
         Logger.info("Home page top sellers product title(s): " + homePageTopSellersProductTitles);
@@ -2549,37 +2564,52 @@ class TestMethods {
         //log home page top sellers product unit prices (as a list)
         const homePageTopSellersProductUnitPrices = await homePage.getHomePageTopSellersProductUnitPrice();
         Logger.info("Home page top sellers product unit price(s): " + homePageTopSellersProductUnitPrices);
+        console.log("\n");
     }
 
     //account page order invoice data logger method
     async logAccountPageOrderInvoiceData(){
         const accountPage = new AccountPage(this.driver);
+        console.log("Account page order invoice data (no orders have been made beforehand): " + "\n");
         //assert user account email is as expected, log the issue otherwise
         const accountPageOrderData = await accountPage.getAccountPageSubmittedOrder();
         Logger.info("Account page displayed order invoice data (no orders submitted yet): " + accountPageOrderData);
+        console.log("\n");
     }
 
     //single product page product data logger method
     async logSingleProductPageProductData(){
         const singleProductPage = new SingleProductPage(this.driver);
-        //log single product name
+        console.log("Single product page displayed product data: " + "\n");
+        //log single product page product name
         const singleProductName = await singleProductPage.getSingleProductPageTitle();
         Logger.info("Single product page set product name: " + singleProductName);
-        //log single product author
+        //log single product page product author
         const singleProductAuthor = await singleProductPage.getSingleProductAuthor();
         Logger.info("Single product page set product author: " + singleProductAuthor);
-        //log single product genre
+        //log single product page product genre
         const singleProductGenre = await singleProductPage.getSingleProductGenre();
         Logger.info("Single product page set product genre: " + singleProductGenre);
-        //log single product description
+        //log single product page product description
         const singleProductDescription = await singleProductPage.getSingleProductDescription();
         Logger.info("Single product page set product description: " + singleProductDescription);
-        //log single product price
+        //log single product page product price
         const singleProductPrice = await singleProductPage.getSingleProductPrice();
         Logger.info("Single product page set product price: " + singleProductPrice);
-        //log single product stock
+        //log single product page product stock
         const singleProductStock = await singleProductPage.getSingleProductStock();
         Logger.info("Single product page set product stock: " + singleProductStock);
+        console.log("\n");
+    }
+
+    //shopping cart data logger method
+    async logShoppingCartProductData(){
+        const shoppingCartPage = new ShoppingCartPage(this.driver);
+        console.log("Shopping cart displayed product data: " + "\n");
+        //log shopping cart product entry
+        const shoppingCartProductEntry = await shoppingCartPage.getShoppingCartProductEntry();
+        Logger.info("Shopping cart product entry(ies): " + shoppingCartProductEntry);
+        console.log("\n");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
