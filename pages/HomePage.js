@@ -120,6 +120,20 @@ class HomePage extends BasePage{
         await insidersProductCard.click();
     }
 
+    //click 'Does the Sun Also Rise?' product card method
+    async clickSunriseProductCard() {
+        await new Promise(resolve => setTimeout(resolve, 800));
+        //find and list elements
+        const singleCategoryProductCard = await this.driver.findElements(this._homePageProductCardElements);
+        //assert list elements isn't empty
+        if (singleCategoryProductCard.length === 0) {throw new Error("No single category product card has been found.");}
+
+        //choose set product
+        const sunriseProductCard = singleCategoryProductCard[0];
+        await this.driver.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", sunriseProductCard);
+        await sunriseProductCard.click();
+    }
+
     //home page text element getter
     async getHomePageTitle(){
         const homePageTitle = await this.driver.findElement(this._homePageTitle);

@@ -58,6 +58,11 @@ describe('Home Page Tests', () => {
             await testMethods.addSingleCategoryProductToCart();
         });
 
+        //Test 008a -> single category product page multiple products ('The Insiders','Does the Sun Also Rise?') addition to cart test
+        test("Single Category Product Page Multiple Products ('The Insiders', 'Does the Sun Also Rise?') Addition To Cart Test (as a guest)", async function () {
+            await testMethods.addSingleCategoryMultipleProductsToCart();
+        });
+
     });
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
