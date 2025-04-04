@@ -2563,6 +2563,25 @@ class TestMethods {
         await TestMethods.captureScreenshot(this.driver, "Single Category Product ('The Insiders','Does the Sun Also Rise?') Addition To Cart Test Result");
     }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //shopping cart page test
+
+    //product/products addition to check out test method
+    async addProductToCheckoutTest(){
+        const shoppingCartPage = new ShoppingCartPage(this.driver);
+        //shopping cart page web element assert
+        await shoppingCartPage.isShoppingPageWebElementDisplayed();
+        //shopping cart text element assert
+        await this.isShoppingCartTextElementAsExpected();
+        //log shopping cart test data
+        await this.logShoppingCartProductData();
+        //click 'Checkout' button
+        await shoppingCartPage.clickCheckoutButton();
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Shopping Cart Product/s Addition To Checkout Test Result");
+    }
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2753,6 +2772,9 @@ class TestMethods {
         //log shopping cart product entry
         const shoppingCartProductEntry = await shoppingCartPage.getShoppingCartProductEntry();
         Logger.info("Shopping cart product entry(ies): " + shoppingCartProductEntry);
+        //log shopping cart product entry
+        const shoppingCartOrderPrice = await shoppingCartPage.getShoppingCartOrderPrice();
+        Logger.info("Shopping cart product order price(s): " + shoppingCartOrderPrice);
         console.log("\n");
     }
 

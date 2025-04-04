@@ -10,15 +10,15 @@ class ShoppingCartPage extends BasePage{
         super(driver);
 
         //shopping cart page web elements
-        this._shoppingCartTitle = By.xpath("");
+        this._shoppingCartTitle = By.xpath("//div[@class='cart']/h1");
         //list elements
-        this._shoppingCartProductEntryElements = By.xpath("");
+        this._shoppingCartProductEntryElements = By.xpath("//div[@class='cart']/ul/li");
         //singular elements
-        this._shoppingCartOrderPrice = By.xpath("");
-        this._shoppingCartCouponCheckbox = By.xpath("");
-        this._shoppingCartCouponSubtext = By.xpath("");
-        this._shoppingCartCheckoutButton = By.xpath("");
-        this._shoppingCartEmptyCartButton = By.xpath("");
+        this._shoppingCartOrderPrice = By.xpath("//div[@id='total-price']");
+        this._shoppingCartCouponCheckbox = By.xpath("//input[@id='billing-coupon']");
+        this._shoppingCartCouponSubtext = By.xpath("//label[@for='billing-coupon']");
+        this._shoppingCartCheckoutButton = By.xpath("//div[@class='cart']/button[1]");
+        this._shoppingCartEmptyCartButton = By.xpath("//div[@class='cart']/button[2]");
     }
 
     //shopping cart product data getters
@@ -40,6 +40,13 @@ class ShoppingCartPage extends BasePage{
     async getShoppingCartOrderPrice(){
         const shoppingCartOrderPrice = await this.driver.findElement(this._shoppingCartOrderPrice);
         return await shoppingCartOrderPrice.getText();
+    }
+
+    //click 'Checkout' button method
+    async clickCheckoutButton(){
+        const checkoutButton = await this.driver.findElement(this._shoppingCartCheckoutButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: checkoutButton }).click().perform();
     }
 
     //shopping cart text element getters
