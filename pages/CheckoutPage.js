@@ -37,6 +37,102 @@ class CheckoutPage extends BasePage {
         this._checkoutPageBillingAddressCityInputField = By.xpath("//input[@id='b-city']");
         this._checkoutPageBillingAddressCompanyInputField = By.xpath("//input[@id='b-company']");
         this._checkoutPageBuyButton= By.xpath("//div[@class='checkout']/button");
+
+        const testDataGenerator = new TestDataGenerator(this.driver);
+        //valid guest checkout input data
+        const { firstName, lastName } = testDataGenerator.getRandomName();
+        this._guestCheckoutShipAddressFirstName = firstName;
+        this._guestCheckoutShipAddressLastName = lastName;
+        this._guestCheckoutShipAddress = testDataGenerator.generateRandomAddress(5);
+        this._guestCheckoutShipPostCode = testDataGenerator.getRandomPostalOrderNumber();
+        this._guestCheckoutShipCity = testDataGenerator.getRandomCity();
+        this._guestCheckoutShipCompany = testDataGenerator.getRandomCompany();
+    }
+
+    //valid guest checkout data input methods
+    async inputGuestFirstNameIntoShipAddressFirstNameInputField(){
+        const shipAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageShipAddressFirstNameInputField);
+        const guestFirstName = await this._guestCheckoutShipAddressFirstName;
+        Logger.info("Valid guest checkout first name (shipping address): ", guestFirstName);
+        await shipAddressFirstNameInputField.sendKeys(guestFirstName);
+    }
+    async inputGuestLastNameIntoShipAddressLastNameInputField(){
+        const shipAddressLastNameInputField = await this.driver.findElement(this._checkoutPageShipAddressLastNameInputField);
+        const lastName = await this._guestCheckoutShipAddressLastName;
+        Logger.info("Valid guest checkout last name (shipping address): ", lastName);
+        await shipAddressLastNameInputField.sendKeys(lastName);
+    }
+    async inputGuestAddressIntoShipAddressInputField(){
+        const shipAddressInputField = await this.driver.findElement(this._checkoutPageShipAddressInputField);
+        const guestShipAddress = this._guestCheckoutShipAddress;
+        Logger.info("Valid guest checkout address (shipping address): ", guestShipAddress);
+        await shipAddressInputField.sendKeys(guestShipAddress);
+    }
+    async inputGuestPostCodeIntoShipAddressPostCodeInputField() {
+        const shipAddressPostCodeInputField = await this.driver.findElement(this._checkoutPageShipAddressPostCodeInputField);
+        const guestShipAddressPostCode = this._guestCheckoutShipPostCode;
+        Logger.info("Valid guest checkout post code (shipping address): ", guestShipAddressPostCode);
+        await shipAddressPostCodeInputField.sendKeys(guestShipAddressPostCode);
+    }
+    async inputGuestCityIntoShipAddressCityInputField() {
+        const shipAddressCityInputField = await this.driver.findElement(this._checkoutPageShipAddressCityInputField);
+        const shipAddressGuestCity = this._guestCheckoutShipCity;
+        Logger.info("Valid guest checkout city (shipping address): ", shipAddressGuestCity);
+        await shipAddressCityInputField.sendKeys(shipAddressGuestCity);
+    }
+    async inputGuestCompanyIntoShipAddressCompanyInputField() {
+        const shipAddressCompanyInputField = await this.driver.findElement(this._checkoutPageShipAddressCompanyInputField);
+        const shipAddressCompany = this._guestCheckoutShipCompany;
+        Logger.info("Valid guest checkout company (shipping address): ", shipAddressCompany);
+        await shipAddressCompanyInputField.sendKeys(shipAddressCompany);
+    }
+
+    //click 'As soon as possible' radio button method (shipping address)
+    async clickAsSoonRadioButton(){
+        const asSoonRadioButton = await this.driver.findElement(this._checkoutPageShipSoonRadioButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: asSoonRadioButton }).click().perform();
+    }
+
+    //click 'Buy' button method
+    async clickBuyButton(){
+        const buyButton = await this.driver.findElement(this._checkoutPageBuyButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: buyButton }).click().perform();
+    }
+
+    //checkout page text element getters
+    async getCheckoutPageTitle(){
+        const checkoutPageTitle = await this.driver.findElement(this._checkoutPageTitle);
+        return checkoutPageTitle.getText();
+    }
+    async getCheckoutPageSubtitle(){
+        const checkoutPageSubtitle = await this.driver.findElement(this._checkoutPageSubtitle);
+        return checkoutPageSubtitle.getText();
+    }
+    async getCheckoutPageShipAddressSubtext(){
+        const checkoutPageShipAddressSubtext = await this.driver.findElement(this._checkoutPageShipAddressSubtext);
+        return checkoutPageShipAddressSubtext.getText();
+    }
+    async getCheckoutPageShipItemsSubtext(){
+        const checkoutPageShipItemsSubtext = await this.driver.findElement(this._checkoutPageShipItemsSubtext);
+        return checkoutPageShipItemsSubtext.getText();
+    }
+    async getCheckoutPageShipSoonSubtext(){
+        const checkoutPageShipSoonSubtext = await this.driver.findElement(this._checkoutPageShipSoonSubtext);
+        return checkoutPageShipSoonSubtext.getText();
+    }
+    async getCheckoutPageSinglePackageSubtext(){
+        const checkoutPageSinglePackageSubtext = await this.driver.findElement(this._checkoutPageShipSinglePackageSubtext);
+        return checkoutPageSinglePackageSubtext.getText();
+    }
+    async getCheckoutPageShipBillAddressSubtext(){
+        const checkoutPageShipBillAddressSubtext = await this.driver.findElement(this._checkoutPageShipBillAddressSubtext);
+        return checkoutPageShipBillAddressSubtext.getText();
+    }
+    async getCheckoutPageBillAddressSubtext(){
+        const checkoutPageBillAddressSubtext = await this.driver.findElement(this._checkoutPageBillingAddressSubtext);
+        return checkoutPageBillAddressSubtext.getText();
     }
 
     //checkout page web element assert method
@@ -63,13 +159,6 @@ class CheckoutPage extends BasePage {
             this._checkoutPageShipSinglePackageSubtext,
             this._checkoutPageShipBillAddressCheckbox,
             this._checkoutPageShipBillAddressSubtext,
-            this._checkoutPageBillingAddressSubtext,
-            this._checkoutPageBillingAddressFirstNameInputField,
-            this._checkoutPageBillingAddressLastNameInputField,
-            this._checkoutPageBillingAddressInputField,
-            this._checkoutPageBillingAddressPostCodeInputField,
-            this._checkoutPageBillingAddressCityInputField,
-            this._checkoutPageBillingAddressCompanyInputField,
             this._checkoutPageBuyButton
         ];
 

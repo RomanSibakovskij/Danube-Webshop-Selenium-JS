@@ -207,18 +207,6 @@ class GeneralPage extends BasePage{
             this._headerLoginButton,
             this._headerRegisterButton,
             this._headerShoppingCartButton,
-            this._asideBooksCategorySubtitle,
-            this._asideBooksCategoryFictionSubtitleLink,
-            this._asideBooksCategoryFictionLinkElements,
-            this._asideBooksCategoryNonFictionSubtitleLink,
-            this._asideBooksCategoryNonFictionLinkElements,
-            this._asideDVDsCategorySubtitle,
-            this._asideDVDsCategoryFictionSubtitleLink,
-            this._asideDVDsCategoryFictionListElements
-
-
-
-
         ];
 
         for (let element of elementsToCheck) {

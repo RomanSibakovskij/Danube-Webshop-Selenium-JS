@@ -13,6 +13,7 @@ const { AccountPageInvalidScenarios } = require("../../pages/utils/AccountPageIn
 const { LoginFormPage } = require("../../pages/LoginFormPage");
 const { SingleProductPage } = require("../../pages/SingleProductPage");
 const { ShoppingCartPage } = require("../../pages/ShoppingCartPage");
+const { CheckoutPage } = require("../../pages/CheckoutPage");
 
 class TestMethods {
 
@@ -2803,6 +2804,45 @@ class TestMethods {
         await TestMethods.captureScreenshot(this.driver, "Shopping Cart Product/s Addition To Checkout Test Result");
     }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //valid check out page tests (as a guest) (since registered user can't log into the created account, its testing is paused till the issue will be resolved)
+
+    //valid order checkout test method (shipping address only -> as soon as possible shipping)
+    async validOrderCheckoutShipAddressAsSoonOnlyTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const checkoutPage = new CheckoutPage(this.driver)
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //checkout page web element assert (shipping section)
+        await checkoutPage.isCheckoutPageWebElementDisplayed();
+        //checkout page text element assert (shipping section)
+        await this.isCheckoutPageTextElementAsExpected();
+        //capture screenshot of the shipping address form before guest input data
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display Before Guest Data Input");
+        //input valid guest first name into shipping address first name input field
+        await checkoutPage.inputGuestFirstNameIntoShipAddressFirstNameInputField();
+        //input valid guest last name into shipping address last name input field
+        await checkoutPage.inputGuestLastNameIntoShipAddressLastNameInputField();
+        //input valid guest address into shipping address input field
+        await checkoutPage.inputGuestAddressIntoShipAddressInputField();
+        //input valid guest post code into shipping address post code input field
+        await checkoutPage.inputGuestPostCodeIntoShipAddressPostCodeInputField();
+        //input valid guest city into shipping address city input field
+        await checkoutPage.inputGuestCityIntoShipAddressCityInputField();
+        //input valid guest company into shipping address company input field
+        await checkoutPage.inputGuestCompanyIntoShipAddressCompanyInputField();
+        //capture screenshot of the shipping address form after valid guest input data
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display After Valid Guest Data Input");
+        //click 'As soon as possible' shipping radio button
+        await checkoutPage.clickAsSoonRadioButton();
+        //click 'Buy' button
+        await checkoutPage.clickBuyButton();
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Valid Order Checkout (Shipping Address Only - 'As Soon As' shipping option) Test Result");
+    }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2920,6 +2960,40 @@ class TestMethods {
         //assert shopping cart coupon subtext is as expected
         const shoppingCartCouponSubtext = await shoppingCartPage.getShoppingCartCouponSubtext();
         assert.strictEqual(shoppingCartCouponSubtext, "I have a coupon for this order", "The shopping cart coupon subtext doesn't match the expectations.");
+    }
+
+    //checkout page text element assert test method
+    async isCheckoutPageTextElementAsExpected(){
+        const checkoutPage = new CheckoutPage(this.driver);
+        //assert checkout page title is as expected
+        const checkoutPageTitle = await checkoutPage.getCheckoutPageTitle();
+        assert.strictEqual(checkoutPageTitle, "Checkout", "The checkout page title doesn't match the expectations.");
+        //assert checkout page subtitle is as expected
+        const checkoutPageSubtitle = await checkoutPage.getCheckoutPageSubtitle();
+        assert.strictEqual(checkoutPageSubtitle, "buy those books already...", "The checkout page subtitle doesn't match the expectations.");
+        //assert checkout page shipping address subtext is as expected
+        const checkoutPageShipAddressSubtext = await checkoutPage.getCheckoutPageShipAddressSubtext();
+        assert.strictEqual(checkoutPageShipAddressSubtext, "Shipping:", "The checkout page shipping address subtext doesn't match the expectations.");
+        //assert checkout page shipping items subtext is as expected
+        const checkoutPageShipItemsSubtext = await checkoutPage.getCheckoutPageShipItemsSubtext();
+        assert.strictEqual(checkoutPageShipItemsSubtext, "I would like the items to be shipped", "The checkout page shipping items subtext doesn't match the expectations.");
+        //assert checkout page shipping soon subtext is as expected
+        const checkoutPageShipSoonSubtext = await checkoutPage.getCheckoutPageShipSoonSubtext();
+        assert.strictEqual(checkoutPageShipSoonSubtext, "as soon as possible", "The checkout page shipping soon subtext doesn't match the expectations.");
+        //assert checkout page shipping as a single package subtext is as expected
+        const checkoutPageSinglePackageSubtext = await checkoutPage.getCheckoutPageSinglePackageSubtext();
+        assert.strictEqual(checkoutPageSinglePackageSubtext, "in a single package", "The checkout page shipping as a single package subtext doesn't match the expectations.");
+        //assert checkout page shipping and billing address are different subtext is as expected
+        const checkoutPageShipBillAddressSubtext = await checkoutPage.getCheckoutPageShipBillAddressSubtext();
+        assert.strictEqual(checkoutPageShipBillAddressSubtext, "Billing address is different from shipping", "The checkout page shipping and billing address checkbox subtext doesn't match the expectations.");
+    }
+
+    //check out page text element assert test method (billing address)
+    async isCheckoutPageBillAddressTextElementAsExpected(){
+        const checkoutPage = new CheckoutPage(this.driver);
+        //assert checkout page billing address subtext is as expected
+        const checkoutPageBillAddressSubtext = await checkoutPage.getCheckoutPageBillAddressSubtext();
+        assert.strictEqual(checkoutPageBillAddressSubtext, "Billing:", "The checkout page billing address subtext doesn't match the expectations.");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -6,6 +6,7 @@ class TestDataGenerator {
     static generatedPhone;
     static generatedAddress;
     static generatedCity;
+    static generatedCompany
 
     constructor(driver) {
         this.driver = driver;
@@ -49,22 +50,23 @@ class TestDataGenerator {
             "Streamwood", "Carol Stream", "Romeoville", "Plainfield", "Hanover Park",
             "Carpentersville", "Wheeling", "Park Ridge", "Addison", "Calumet City"];
 
+        //street types array
         this._streetTypes = ["St.", "Ave.", "Blvd.", "Rd.", "Ln.", "Dr.", "Ct.", "Pl."];
 
-        //reviews array
-        this._reviews = [
-            "Excellent product, highly recommend!", "Not worth the money, very disappointed.", "The customer service was outstanding!",
-            "Shipping was delayed, but the product is good.", "Amazing quality and very durable.", "Does not match the description at all.",
-            "Fantastic value for the price!", "I love this product, will buy again.", "The packaging was damaged upon arrival.", "Super easy to use and very convenient.",
-            "Terrible experience, would not recommend.", "Exactly what I was looking for!", "Feels cheap, not what I expected.", "Works perfectly and exceeded my expectations.",
-            "I had high hopes, but it didn’t deliver.", "The color is different from the picture.", "Great features and very user-friendly.", "The instructions were hard to follow.",
-            "Perfect size and fits my needs.", "It broke after just a few uses.", "Arrived earlier than expected, very happy!", "Too expensive for what it offers.",
-            "Sturdy and well-made, great product.", "The quality could be better for the price.", "Five stars, I absolutely love it!", "Very uncomfortable to use, not for me.", "Looks great and works as advertised.", "The material feels cheap and flimsy.",
-            "Super happy with my purchase!", "Overrated and not worth the hype.", "I’ve already recommended it to friends.", "The smell was awful, had to return it.",
-            "Quick delivery and great quality.", "The product was missing parts.", "Stylish and works like a charm!", "Had some issues, but customer support helped.",
-            "The fit is perfect, very comfortable.", "It stopped working after a week.", "Exceeded my expectations, five stars!", "Not as durable as I hoped.", "I can’t live without this now!",
-            "The design is sleek and modern.", "It’s okay, but I’ve seen better.", "Very lightweight and portable.", "Disappointed with the lack of features.",
-            "My kids love it, a great buy!", "The battery life is amazing.", "Too complicated for me to use.", "This has been a game-changer!"];
+        //company names array
+        this._companyNames = [
+            "Nimbus Solutions",     "BluePeak Industries", "Quantum Arc",       "IronNest Technologies", "Velora Systems",
+            "NovaHive",             "Cobalt Edge",         "EchoForge Inc.",    "Skylynx Corp",          "TitanLeaf",
+            "DriftMind Labs",       "Crimson Harbor",      "GlideSphere",       "BrightCore Group",      "Axion Pulse",
+            "Zenith Vale",          "Frostbyte Innovations","Lucent Orbit",     "Vertex Bloom",          "JetBridge Tech",
+            "SolarRush Co.",        "Vortex Pathways",     "NeonSprout",        "IronFlare Ltd.",        "Stratus Grid",
+            "Lumen Quarry",         "VantaCraft",          "CrystalRoot Dynamics","Hyperlane Systems",   "SableWave",
+            "Radiant Vault",        "ForgeFront",          "Nextora Ventures",  "PhaseLoop Inc.",        "Silken Prism",
+            "KairoTech",            "StormPeak Industries","Thornbyte",         "DeepNova",              "Graviton Labs",
+            "MirageMint",           "BrightSilica",        "Omnisource",        "TracePoint",            "Blazeworks",
+            "NeuroSage",            "Everphase",           "Veltrix",           "Spectra Bloom",         "Ironshore Dynamics"
+        ];
+
 
     }
 
@@ -114,6 +116,11 @@ class TestDataGenerator {
         const firstName = this.getRandomItem(this.firstNames);
         const lastName = this.getRandomItem(this.lastNames);
         return { firstName, lastName };
+    }
+
+    //generate random company
+    getRandomCompany() {
+        return this.getRandomItem(this._companyNames);
     }
 
     //get random review
