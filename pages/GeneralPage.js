@@ -230,5 +230,30 @@ class GeneralPage extends BasePage{
 
     }
 
+    async isGeneralPageAsideWebElementDisplayed(){
+        const elementsToCheck = [
+            this._asideBooksCategorySubtitle,
+            this._asideBooksCategoryFictionSubtitleLink,
+            this._asideBooksCategoryFictionLinkElements,
+            this._asideBooksCategoryNonFictionSubtitleLink,
+            this._asideBooksCategoryNonFictionLinkElements,
+            this._asideDVDsCategorySubtitle,
+            this._asideDVDsCategoryFictionSubtitleLink,
+            this._asideDVDsCategoryFictionListElements
+
+
+
+
+        ];
+
+        for (let element of elementsToCheck) {
+            const isDisplayed = await this.isElementDisplayed(element);
+            if (!isDisplayed) {
+                throw new Error(`Element ${element} is not displayed.`);
+            }
+        }
+
+    }
+
 }
 module.exports = { GeneralPage }

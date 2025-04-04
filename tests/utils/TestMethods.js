@@ -26,8 +26,12 @@ class TestMethods {
         const homePage = new HomePage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -54,8 +58,12 @@ class TestMethods {
         const signUpFormPage = new SignUpFormPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -93,8 +101,12 @@ class TestMethods {
         const signUpFormPage = new SignUpFormPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -140,8 +152,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -183,8 +199,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -226,8 +246,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -269,8 +293,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -312,8 +340,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -353,8 +385,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -397,8 +433,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -440,8 +480,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -483,8 +527,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -526,8 +574,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -572,8 +624,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -615,8 +671,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -658,8 +718,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -701,8 +765,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -747,8 +815,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -790,8 +862,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -833,8 +909,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //sign up form page web element assert
@@ -876,8 +956,12 @@ class TestMethods {
         const signUpFormPageInvalidScenarios = new SignUpFormPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //click 'Log out' button (it's same button as 'Login' button)
@@ -930,8 +1014,12 @@ class TestMethods {
         const accountPage = new AccountPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -984,8 +1072,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1040,8 +1132,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1096,8 +1192,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1152,8 +1252,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1208,8 +1312,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1267,8 +1375,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1323,8 +1435,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1379,8 +1495,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1435,8 +1555,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1491,8 +1615,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1550,8 +1678,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1606,8 +1738,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1662,8 +1798,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1718,8 +1858,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1774,8 +1918,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1833,8 +1981,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1889,8 +2041,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -1945,8 +2101,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -2001,8 +2161,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -2057,8 +2221,12 @@ class TestMethods {
         const accountPageInvalidScenarios = new AccountPageInvalidScenarios(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -2114,8 +2282,12 @@ class TestMethods {
         const homePage = new HomePage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -2138,8 +2310,12 @@ class TestMethods {
         const loginFormPage = new LoginFormPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //click 'Login' button
@@ -2180,8 +2356,12 @@ class TestMethods {
         const loginFormPage = new LoginFormPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //click 'Login' button
@@ -2212,8 +2392,12 @@ class TestMethods {
         const loginFormPage = new LoginFormPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //click 'Login' button
@@ -2247,8 +2431,12 @@ class TestMethods {
         const loginFormPage = new LoginFormPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //click 'Login' button
@@ -2279,8 +2467,12 @@ class TestMethods {
         const loginFormPage = new LoginFormPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //click 'Login' button
@@ -2317,8 +2509,12 @@ class TestMethods {
         const singleProductPage = new SingleProductPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -2347,8 +2543,12 @@ class TestMethods {
         const singleProductPage = new SingleProductPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -2392,8 +2592,12 @@ class TestMethods {
         const singleProductPage = new SingleProductPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -2428,8 +2632,12 @@ class TestMethods {
         const singleProductPage = new SingleProductPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -2485,8 +2693,12 @@ class TestMethods {
         const singleProductPage = new SingleProductPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -2519,8 +2731,12 @@ class TestMethods {
         const singleProductPage = new SingleProductPage(this.driver);
         //general page web element assert
         await generalPage.isGeneralPageWebElementDisplayed();
+        //general page aside section web element assert
+        await generalPage.isGeneralPageAsideWebElementDisplayed();
         //general page text element assert
         await this.isGeneralPageTextElementAsExpected();
+        //general page aside link text element assert
+        await this.isGeneralPageAsideLinkTextElementAsExpected();
         //log aside link names
         await this.logAsideLinkTextElements();
         //home page web element assert
@@ -2569,7 +2785,12 @@ class TestMethods {
 
     //product/products addition to check out test method
     async addProductToCheckoutTest(){
+        const generalPage = new GeneralPage(this.driver);
         const shoppingCartPage = new ShoppingCartPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
         //shopping cart page web element assert
         await shoppingCartPage.isShoppingPageWebElementDisplayed();
         //shopping cart text element assert
@@ -2594,6 +2815,11 @@ class TestMethods {
         //assert header date text is as expected (it's static)
         const headerDate = await generalPage.getHeaderDate();
         assert.strictEqual(headerDate, "3:43pm 23/06/2002", "The header date text doesn't match the expectations.");
+    }
+
+    //general page aside links text element test method
+    async isGeneralPageAsideLinkTextElementAsExpected(){
+        const generalPage = new GeneralPage(this.driver);
         //aside category
         //assert aside books category subtitle is as expected
         const asideBooksCategorySubtitle = await generalPage.getAsideBooksCategorySubtitle();
