@@ -44,6 +44,14 @@ describe('Home Page Tests', () => {
             await testMethods.addProductToCheckoutTest();
         });
 
+        //Test 010a -> multiple searched products ('The Fjord of the Lies','Mostly on the Road') addition to check out test (as a guest)
+        test("Multiple Searched Products ('The Fjord of the Lies','Mostly on the Road') Addition To Checkout Test (as a guest)", async function () {
+            //multiple searched products ('The Fjord of the Lies','Mostly on the Road') addition to cart test (as a guest)
+            await testMethods.addMultipleSearchedBooksFjordAndRoadToCart();
+            //multiple searched products ('The Fjord of the Lies','Mostly on the Road') addition to check out test (as a guest)
+            await testMethods.addProductToCheckoutTest();
+        });
+
     });
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
