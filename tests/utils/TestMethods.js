@@ -2340,7 +2340,7 @@ class TestMethods {
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Home Page Product ('The Grand Grotsby') Addition To Cart Test Result");
     }
-    //home page set product ('The Grand Grotsby', 'The Pickled Lynx') addition to cart test method
+    //home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') addition to cart test method
     async addMultipleHomePageBooksToCart(){
         const generalPage = new GeneralPage(this.driver);
         const homePage = new HomePage(this.driver);
@@ -2383,7 +2383,7 @@ class TestMethods {
         await TestMethods.captureScreenshot(this.driver, "Home Page Multiple Products ('The Grand Grotsby', 'The Pickled Lynx') Addition To Cart Test Result");
     }
 
-    //home page searched product addition to cart test
+    //home page searched product/s addition to cart test
 
     //home page set searched product ('The Fjord of the Lies') addition to cart test method
     async addSearchedBookFjordToCart(){
@@ -2420,6 +2420,60 @@ class TestMethods {
         await singleProductPage.clickAddToCartButton();
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Searched Product ('The Fjord of the Lies') Addition To Cart Test Result");
+    }
+    //home page multiple searched products ('The Fjord of the Lies','Mostly on the Road') addition to cart test method
+    async addMultipleSearchedBooksFjordAndRoadToCart(){
+        const generalPage = new GeneralPage(this.driver);
+        const homePage = new HomePage(this.driver);
+        const singleProductPage = new SingleProductPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //log aside link names
+        await this.logAsideLinkTextElements();
+        //home page web element assert
+        await homePage.isHomePageWebElementDisplayed();
+        //home page text element assert
+        await this.isHomePageTextElementAsExpected();
+        //log top sellers product data
+        await this.logHomePageTopSellersProductData();
+        //input product search query ('The Fjord of the Lies')
+        await generalPage.inputProductFjordSearchQuery();
+        //click 'Search' button
+        await generalPage.clickSearchButton();
+        //capture screenshot of the single product page
+        await TestMethods.captureScreenshot(this.driver, "Searched Product Page Display - 'The Fjord of the Lies'");
+        //click searched product card ('The Fjord of the Lies')
+        await homePage.clickFjordProductCard();
+        //capture screenshot of the single product page
+        await TestMethods.captureScreenshot(this.driver, "Single Product Page Display - 'The Fjord of the Lies'");
+        //single product page web element assert
+        await singleProductPage.isSingleProductPageWebElementDisplayed();
+        //log single product page product data ('The Fjord of the Lies')
+        await this.logSingleProductPageProductData();
+        //click 'Add to cart' button
+        await singleProductPage.clickAddToCartButton();
+        //click 'Homepage' logo link
+        await generalPage.clickHomePageLogoLink();
+        //input product search query ('Mostly on the Road')
+        await generalPage.inputProductRoadSearchQuery();
+        //click 'Search' button
+        await generalPage.clickSearchButton();
+        //capture screenshot of the single product page
+        await TestMethods.captureScreenshot(this.driver, "Searched Product Page Display - 'Mostly on the Road'");
+        //click searched product card ('Mostly on the Road')
+        await homePage.clickFjordProductCard();
+        //capture screenshot of the single product page
+        await TestMethods.captureScreenshot(this.driver, "Single Product Page Display - 'Mostly on the Road'");
+        //single product page web element assert
+        await singleProductPage.isSingleProductPageWebElementDisplayed();
+        //log single product page product data ('The Fjord of the Lies', 'Mostly on the Road')
+        await this.logSingleProductPageProductData();
+        //click 'Add to cart' button
+        await singleProductPage.clickAddToCartButton();
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Multiple Searched Product ('The Fjord of the Lies', 'Mostly on the Road') Addition To Cart Test Result");
     }
 
     //home page searched product addition to cart test

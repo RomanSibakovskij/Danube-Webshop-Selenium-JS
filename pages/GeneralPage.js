@@ -71,6 +71,13 @@ class GeneralPage extends BasePage{
         await searchBar.sendKeys(searchQuery);
     }
 
+    //input search query method (for product 'Mostly on the Road')
+    async inputProductRoadSearchQuery() {
+        const searchBar = await this.driver.findElement(this._headerSearchBarInputField);
+        const searchQuery = "Mostly on the Road";
+        await searchBar.sendKeys(searchQuery);
+    }
+
     //click 'Search' button method
     async clickSearchButton(){
         const searchButton = await this.driver.findElement(this._headerSearchButton);

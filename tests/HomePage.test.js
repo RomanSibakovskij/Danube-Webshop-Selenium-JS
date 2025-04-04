@@ -31,17 +31,22 @@ describe('Home Page Tests', () => {
         });
 
         //Test 006a -> home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') addition to cart test
-        test("Home Page Product ('The Grand Grotsby', 'The Pickled Lynx') Addition To Cart Test (as a guest)", async function () {
+        test("Home Page Multiple Products ('The Grand Grotsby', 'The Pickled Lynx') Addition To Cart Test (as a guest)", async function () {
             await testMethods.addMultipleHomePageBooksToCart();
         });
 
     });
 
-    describe("Searched Addition To Cart Test (guest)", () => {
+    describe("Searched Product/s Addition To Cart Test (guest)", () => {
 
         //Test 007 -> searched product ('The Fjord of the Lies') addition to cart test
         test("Searched Product ('The Fjord of the Lies') Addition To Cart Test (as a guest)", async function () {
             await testMethods.addSearchedBookFjordToCart();
+        });
+
+        //Test 007a -> multiple searched products ('The Fjord of the Lies','Mostly on the Road') addition to cart test
+        test("Multiple Searched Products ('The Fjord of the Lies','Mostly on the Road') Addition To Cart Test (as a guest)", async function () {
+            await testMethods.addMultipleSearchedBooksFjordAndRoadToCart();
         });
 
     });
