@@ -64,6 +64,14 @@ describe('Home Page Tests', () => {
             await testMethods.addProductToCheckoutTest();
         });
 
+        //Test 011a -> single category product page multiple products ('The Insiders','Does the Sun Also Rise?') addition to check out test (as a guest)
+        test("Single Category Product Page Multiple Products ('The Insiders', 'Does the Sun Also Rise?') Addition To Checkout Test (as a guest)", async function () {
+            //single category product page multiple products ('The Insiders','Does the Sun Also Rise?') addition to cart test (as a guest)
+            await testMethods.addSingleCategoryMultipleProductsToCart();
+            //single category product page multiple products ('The Insiders','Does the Sun Also Rise?') addition to check out test (as a guest)
+            await testMethods.addProductToCheckoutTest();
+        });
+
     });
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
