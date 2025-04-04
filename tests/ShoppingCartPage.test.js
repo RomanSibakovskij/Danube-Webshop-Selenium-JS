@@ -24,6 +24,14 @@ describe('Home Page Tests', () => {
             await testMethods.addProductToCheckoutTest();
         });
 
+        //Test 009a -> home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') addition to check out test (as a guest)
+        test("Home Page Multiple Products ('The Grand Grotsby', 'The Pickled Lynx') Addition To Checkout Test (as a guest)", async function () {
+            //home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') addition to cart test (as a guest)
+            await testMethods.addMultipleHomePageBooksToCart();
+            //home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') addition to check out test (as a guest)
+            await testMethods.addProductToCheckoutTest();
+        });
+
     });
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
