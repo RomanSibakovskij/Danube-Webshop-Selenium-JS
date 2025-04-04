@@ -23,11 +23,16 @@ describe('Home Page Tests', () => {
 
     });
 
-    describe("Home Page Product Addition To Cart Test (guest)", () => {
+    describe("Home Page Product/s Addition To Cart Test (guest)", () => {
 
         //Test 006 -> home page product ('The Grand Grotsby') addition to cart test
         test("Home Page Product ('The Grand Grotsby') Addition To Cart Test (as a guest)", async function () {
             await testMethods.addHomePageGrandGrotsbyBookToCart();
+        });
+
+        //Test 006a -> home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') addition to cart test
+        test("Home Page Product ('The Grand Grotsby', 'The Pickled Lynx') Addition To Cart Test (as a guest)", async function () {
+            await testMethods.addMultipleHomePageBooksToCart();
         });
 
     });

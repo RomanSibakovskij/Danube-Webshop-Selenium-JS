@@ -91,6 +91,11 @@ class GeneralPage extends BasePage{
         await crimeThrillersLink.click();
     }
 
+    //click home page logo link method
+    async clickHomePageLogoLink(){
+        const homePageLogoLink = await this.driver.findElement(this._homePageLogoLink);
+        await homePageLogoLink.click();
+    }
 
     //general page text element getters
     async getSpecialOfferText(){

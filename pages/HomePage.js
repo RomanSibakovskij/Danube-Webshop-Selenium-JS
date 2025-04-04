@@ -85,6 +85,19 @@ class HomePage extends BasePage{
         await grandGrotsbyProductCard.click();
     }
 
+    //click 'Pickled Lynx' product card method
+    async clickPickledLynxProductCard() {
+        //find and list elements
+        const homePageProductCard = await this.driver.findElements(this._homePageProductCardElements);
+        //assert list elements isn't empty
+        if (homePageProductCard.length === 0) {throw new Error("No product cards found on home page.");}
+
+        //choose set product
+        const pickledLynxProductCard = homePageProductCard[6];
+        await this.driver.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", pickledLynxProductCard);
+        await pickledLynxProductCard.click();
+    }
+
     //click searched 'Fjord' product card method
     async clickFjordProductCard() {
         await new Promise(resolve => setTimeout(resolve, 800));
