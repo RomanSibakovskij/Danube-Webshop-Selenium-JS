@@ -34,6 +34,18 @@ describe('Home Page Tests', () => {
 
     });
 
+    describe("Searched Product/s Addition To Checkout Tests (guest)", () => {
+
+        //Test 010 -> searched product ('The Fjord of the Lies') addition to check out test (as a guest)
+        test("Searched Product ('The Fjord of the Lies') Addition To Checkout Test (as a guest)", async function () {
+            //searched product ('The Fjord of the Lies') addition to cart test (as a guest)
+            await testMethods.addSearchedBookFjordToCart();
+            //searched product ('The Fjord of the Lies') addition to check out test (as a guest)
+            await testMethods.addProductToCheckoutTest();
+        });
+
+    });
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //driver clean-up after each test run
