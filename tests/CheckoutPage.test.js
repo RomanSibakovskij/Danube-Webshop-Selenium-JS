@@ -28,6 +28,16 @@ describe('Checkout Page Tests', () => {
                 await testMethods.validOrderCheckoutShipAddressAsSoonOnlyTest();
             });
 
+            //Test 012a -> home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') check out confirmation test (as a guest) (shipping address only -> single package shipping)
+            test("Home Page Multiple Products ('The Grand Grotsby', 'The Pickled Lynx') Checkout Confirmation (Shipping Address Only) Test (as a guest)", async function () {
+                //home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') addition to cart test (as a guest)
+                await testMethods.addMultipleHomePageBooksToCart();
+                //home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') addition to check out test (as a guest)
+                await testMethods.addProductToCheckoutTest();
+                //home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') check out confirmation test (as a guest) (shipping address only -> single package shipping)
+                await testMethods.validOrderCheckoutShipAddressSinglePkgOnlyTest();
+            });
+
         });
     });
 

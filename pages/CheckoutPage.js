@@ -94,6 +94,13 @@ class CheckoutPage extends BasePage {
         await actions.move({ origin: asSoonRadioButton }).click().perform();
     }
 
+    //click 'Single package' radio button method (shipping address)
+    async clickSinglePkgRadioButton(){
+        const singlePkgRadioButton = await this.driver.findElement(this._checkoutPageShipSinglePackageRadioButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: singlePkgRadioButton }).click().perform();
+    }
+
     //click 'Buy' button method
     async clickBuyButton(){
         const buyButton = await this.driver.findElement(this._checkoutPageBuyButton);

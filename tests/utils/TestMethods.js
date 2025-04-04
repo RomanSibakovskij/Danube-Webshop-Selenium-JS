@@ -2841,7 +2841,42 @@ class TestMethods {
         //click 'Buy' button
         await checkoutPage.clickBuyButton();
         //capture screenshot of the test result
-        await TestMethods.captureScreenshot(this.driver, "Valid Order Checkout (Shipping Address Only - 'As Soon As' shipping option) Test Result");
+        await TestMethods.captureScreenshot(this.driver, "Valid Guest Order Checkout (Shipping Address Only - 'As Soon As' shipping option) Test Result");
+    }
+    //valid order checkout test method (shipping address only -> single package shipping)
+    async validOrderCheckoutShipAddressSinglePkgOnlyTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const checkoutPage = new CheckoutPage(this.driver)
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //checkout page web element assert (shipping section)
+        await checkoutPage.isCheckoutPageWebElementDisplayed();
+        //checkout page text element assert (shipping section)
+        await this.isCheckoutPageTextElementAsExpected();
+        //capture screenshot of the shipping address form before guest input data
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display Before Guest Data Input");
+        //input valid guest first name into shipping address first name input field
+        await checkoutPage.inputGuestFirstNameIntoShipAddressFirstNameInputField();
+        //input valid guest last name into shipping address last name input field
+        await checkoutPage.inputGuestLastNameIntoShipAddressLastNameInputField();
+        //input valid guest address into shipping address input field
+        await checkoutPage.inputGuestAddressIntoShipAddressInputField();
+        //input valid guest post code into shipping address post code input field
+        await checkoutPage.inputGuestPostCodeIntoShipAddressPostCodeInputField();
+        //input valid guest city into shipping address city input field
+        await checkoutPage.inputGuestCityIntoShipAddressCityInputField();
+        //input valid guest company into shipping address company input field
+        await checkoutPage.inputGuestCompanyIntoShipAddressCompanyInputField();
+        //capture screenshot of the shipping address form after valid guest input data
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display After Valid Guest Data Input");
+        //click 'Single package' shipping radio button
+        await checkoutPage.clickSinglePkgRadioButton();
+        //click 'Buy' button
+        await checkoutPage.clickBuyButton();
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Valid Guest Order Checkout (Shipping Address Only - 'Single Package' shipping option) Test Result");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
