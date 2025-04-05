@@ -258,6 +258,16 @@ describe('Checkout Page Tests', () => {
                 await testMethods.invalidOrderCheckoutShipAddressTooShortGuestAddressTest();
             });
 
+            //Test 016p -> invalid guest check out confirmation test (shipping address) - too short guest shipping post code (4 digits)
+            test("Invalid Guest Checkout Confirmation (Shipping Address) Test - Too Short Guest Shipping Post Code", async function () {
+                //home page product ('The Grand Grotsby') addition to cart test (as a guest)
+                await testMethods.addHomePageGrandGrotsbyBookToCart();
+                //home page product ('The Grand Grotsby') addition to check out test (as a guest)
+                await testMethods.addProductToCheckoutTest();
+                //invalid guest check out confirmation test (shipping address) - too short guest shipping post code (4 digits)
+                await testMethods.invalidOrderCheckoutShipAddressTooShortGuestPostCodeTest();
+            });
+
         });
 
     });
