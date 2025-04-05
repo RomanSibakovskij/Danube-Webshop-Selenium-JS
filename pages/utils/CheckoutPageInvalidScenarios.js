@@ -158,6 +158,14 @@ class CheckoutPageInvalidScenarios extends BasePage{
         await shipAddressCompanyInputField.sendKeys(tooShortShipAddressCompany);
     }
 
+    //invalid guest checkout data input methods (billing address) - too short singular input
+    async inputTooShortGuestFirstNameIntoBillAddressFirstNameInputField(){
+        const billAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageBillingAddressFirstNameInputField);
+        const tooShortGuestFirstName = this._guestCheckoutShipAddressTooShortFirstName;
+        Logger.info("Too short guest checkout first name (billing address): ", tooShortGuestFirstName);
+        await billAddressFirstNameInputField.sendKeys(tooShortGuestFirstName);
+    }
+
     //invalid input error message getter
     async getCheckoutPageInvalidInputErrorMessage(){
         const invalidInputError = await this.driver.findElement(this._fillAllFieldsError);
