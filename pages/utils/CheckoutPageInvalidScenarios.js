@@ -51,6 +51,7 @@ class CheckoutPageInvalidScenarios extends BasePage{
         this._guestCheckoutTooLongShipAddress = testDataGenerator.generateRandomAddress(90); //100 chars
         this._guestCheckoutShipAddressTooLongPostCode = 2323453453232324232232324; //25 digits
         this._guestCheckoutShipAddressTooLongCity = "Sffdxfhffvdfhggjkjhluyutrtserttiuuyouitrgfsdsadffdfvxzcxcgfdhfujttetregfdgfddsafddsfgfdhgwaewrdsdsad";
+        this._guestCheckoutShipAddressTooLongCompany = "Hfffxfhfrvdfhggjkjhluyutrtserttiuuyouitrgfsdsadffdfvxzcxcgfdhfujttetregfdgfddsafddsfgfdhgwaewrdsdsad";
     }
 
     //invalid guest checkout data input methods (shipping address) - no singular input
@@ -235,6 +236,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         const tooLongShipAddressGuestCity = this._guestCheckoutShipAddressTooLongCity;
         Logger.info("Too long guest checkout city (shipping address): ", tooLongShipAddressGuestCity);
         await shipAddressCityInputField.sendKeys(tooLongShipAddressGuestCity);
+    }
+    async inputTooLongGuestCompanyIntoShipAddressCompanyInputField() {
+        const shipAddressCompanyInputField = await this.driver.findElement(this._checkoutPageShipAddressCompanyInputField);
+        const tooLongShipAddressCompany = this._guestCheckoutShipAddressTooLongCompany;
+        Logger.info("Too long guest checkout company (shipping address): ", tooLongShipAddressCompany);
+        await shipAddressCompanyInputField.sendKeys(tooLongShipAddressCompany);
     }
 
     //invalid input error message getter

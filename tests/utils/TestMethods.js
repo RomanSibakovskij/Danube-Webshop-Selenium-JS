@@ -4515,6 +4515,46 @@ class TestMethods {
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Invalid Guest Order Checkout (Shipping Address) Test Result - Too Long Shipping City");
     }
+    //invalid order checkout test method (shipping address) - too long guest shipping company (100 chars)
+    async invalidOrderCheckoutShipAddressTooLongGuestCompanyTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const checkoutPage = new CheckoutPage(this.driver)
+        const checkoutPageInvalidScenarios = new CheckoutPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //checkout page web element assert (shipping section)
+        await checkoutPage.isCheckoutPageWebElementDisplayed();
+        //checkout page text element assert (shipping section)
+        await this.isCheckoutPageTextElementAsExpected();
+        //capture screenshot of the shipping address form before guest input data (shipping address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display Before Guest Data Input");
+        //input valid guest first name into shipping address first name input field
+        await checkoutPage.inputGuestFirstNameIntoShipAddressFirstNameInputField();
+        //input valid guest last name into shipping address last name input field
+        await checkoutPage.inputGuestLastNameIntoShipAddressLastNameInputField();
+        //input valid guest address into shipping address input field
+        await checkoutPage.inputGuestAddressIntoShipAddressInputField();
+        //input valid guest post code into shipping address post code input field
+        await checkoutPage.inputGuestPostCodeIntoShipAddressPostCodeInputField();
+        //input valid guest city into shipping address city input field
+        await checkoutPage.inputGuestCityIntoShipAddressCityInputField();
+        //input too long guest company into shipping address company input field (100 chars)
+        await checkoutPageInvalidScenarios.inputTooLongGuestCompanyIntoShipAddressCompanyInputField();
+        //capture screenshot of the shipping address form after invalid guest input data (shipping address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display After Invalid Guest Data Input - Too Long Guest Shipping Company");
+        //click 'As soon as possible' shipping radio button
+        await checkoutPage.clickAsSoonRadioButton();
+        //click 'Buy' button
+        await checkoutPage.clickBuyButton();
+        //if the order gets submitted successfully, log the issue
+        if(await checkoutPage.getCheckoutRecapSuccessMessage()){
+            Logger.error("The too long shipping company input error hasn't been triggered, test has failed.");
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid Guest Order Checkout (Shipping Address) Test Result - Too Long Shipping Company");
+    }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
