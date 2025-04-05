@@ -66,6 +66,20 @@ describe('Checkout Page Tests', () => {
 
     });
 
+    describe("Single Product Category Product/s Checkout Confirmation Tests (guest)", () => {
+
+        //Test 015 -> single category product page product ('The Insiders') check out confirmation test (as a guest) (shipping address and billing address -> as soon as possible shipping)
+        test("Single Category Product Page Product ('The Insiders') Checkout Confirmation (Shipping Address And Billing Address) Test (as a guest)", async function () {
+            //single category product page product ('The Insiders') addition to cart test (as a guest)
+            await testMethods.addSingleCategoryProductToCart();
+            //single category product page product ('The Insiders') addition to check out test (as a guest)
+            await testMethods.addProductToCheckoutTest();
+            //single category product page product ('The Insiders') check out confirmation test (as a guest) (shipping address and billing address -> as soon as possible shipping)
+            await testMethods.validOrderCheckoutShipAndBillAddressAsSoonOnlyTest();
+        });
+
+    });
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
