@@ -54,6 +54,16 @@ describe('Checkout Page Tests', () => {
             await testMethods.validOrderCheckoutShipAndBillAddressAsSoonOnlyTest();
         });
 
+        //Test 014a -> multiple searched products ('The Fjord of the Lies','Mostly on the Road') check out confirmation test (as a guest) (shipping address and billing address -> as soon as possible shipping)
+        test("Multiple Searched Products ('The Fjord of the Lies','Mostly on the Road') Checkout Confirmation (Shipping Address And Billing Address) Test (as a guest)", async function () {
+            //multiple searched products ('The Fjord of the Lies','Mostly on the Road') addition to cart test (as a guest)
+            await testMethods.addMultipleSearchedBooksFjordAndRoadToCart();
+            //multiple searched products ('The Fjord of the Lies','Mostly on the Road') addition to check out test (as a guest)
+            await testMethods.addProductToCheckoutTest();
+            //multiple searched products ('The Fjord of the Lies','Mostly on the Road') check out confirmation test (as a guest) (shipping address and billing address -> as soon as possible shipping)
+            await testMethods.validOrderCheckoutShipAndBillAddressSinglePkgOnlyTest();
+        });
+
     });
 
 
