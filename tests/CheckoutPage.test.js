@@ -39,6 +39,21 @@ describe('Checkout Page Tests', () => {
             });
 
         });
+
+    });
+
+    describe("Searched Product/s Checkout Confirmation Tests (guest)", () => {
+
+        //Test 014 -> searched product ('The Fjord of the Lies') check out confirmation test (as a guest) (shipping address and billing address -> as soon as possible shipping)
+        test("Searched Product ('The Fjord of the Lies') Checkout Confirmation (Shipping Address And Billing Address) Test (as a guest)", async function () {
+            //searched product ('The Fjord of the Lies') addition to cart test (as a guest)
+            await testMethods.addSearchedBookFjordToCart();
+            //searched product ('The Fjord of the Lies') addition to check out test (as a guest)
+            await testMethods.addProductToCheckoutTest();
+            //searched product ('The Fjord of the Lies') check out confirmation test (as a guest) (shipping address and billing address -> as soon as possible shipping)
+            await testMethods.validOrderCheckoutShipAndBillAddressAsSoonOnlyTest();
+        });
+
     });
 
 

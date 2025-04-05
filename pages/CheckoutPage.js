@@ -37,9 +37,13 @@ class CheckoutPage extends BasePage {
         this._checkoutPageBillingAddressCityInputField = By.xpath("//input[@id='b-city']");
         this._checkoutPageBillingAddressCompanyInputField = By.xpath("//input[@id='b-company']");
         this._checkoutPageBuyButton= By.xpath("//div[@class='checkout']/button");
+        //recap section
+        this._checkoutRecapSuccessMessage = By.xpath("//p[@id='order-confirmation']");
+        this._checkoutRecapShopMoreButton = By.xpath("//div[@class='recap']/button");
 
         const testDataGenerator = new TestDataGenerator(this.driver);
         //valid guest checkout input data
+        //shipping address
         const { firstName, lastName } = testDataGenerator.getRandomName();
         this._guestCheckoutShipAddressFirstName = firstName;
         this._guestCheckoutShipAddressLastName = lastName;
@@ -47,9 +51,16 @@ class CheckoutPage extends BasePage {
         this._guestCheckoutShipPostCode = testDataGenerator.getRandomPostalOrderNumber();
         this._guestCheckoutShipCity = testDataGenerator.getRandomCity();
         this._guestCheckoutShipCompany = testDataGenerator.getRandomCompany();
+        //billing address data
+        this._guestCheckoutBillAddressFirstName = this._guestCheckoutShipAddressFirstName;
+        this._guestCheckoutBillAddressLastName = this._guestCheckoutShipAddressLastName;
+        this._guestCheckoutBillAddress = testDataGenerator.generateRandomAddress(9);
+        this._guestCheckoutBillPostCode = testDataGenerator.getRandomPostalOrderNumber();
+        this._guestCheckoutBillCity = testDataGenerator.getRandomCity();
+        this._guestCheckoutBillCompany = this._guestCheckoutShipCompany;
     }
 
-    //valid guest checkout data input methods
+    //valid guest checkout data input methods (shipping address)
     async inputGuestFirstNameIntoShipAddressFirstNameInputField(){
         const shipAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageShipAddressFirstNameInputField);
         const guestFirstName = await this._guestCheckoutShipAddressFirstName;
@@ -58,9 +69,9 @@ class CheckoutPage extends BasePage {
     }
     async inputGuestLastNameIntoShipAddressLastNameInputField(){
         const shipAddressLastNameInputField = await this.driver.findElement(this._checkoutPageShipAddressLastNameInputField);
-        const lastName = await this._guestCheckoutShipAddressLastName;
-        Logger.info("Valid guest checkout last name (shipping address): ", lastName);
-        await shipAddressLastNameInputField.sendKeys(lastName);
+        const guestLastName = await this._guestCheckoutShipAddressLastName;
+        Logger.info("Valid guest checkout last name (shipping address): ", guestLastName);
+        await shipAddressLastNameInputField.sendKeys(guestLastName);
     }
     async inputGuestAddressIntoShipAddressInputField(){
         const shipAddressInputField = await this.driver.findElement(this._checkoutPageShipAddressInputField);
@@ -87,6 +98,44 @@ class CheckoutPage extends BasePage {
         await shipAddressCompanyInputField.sendKeys(shipAddressCompany);
     }
 
+    //valid guest checkout data input methods (billing address)
+    async inputGuestFirstNameIntoBillAddressFirstNameInputField(){
+        const billAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageBillingAddressFirstNameInputField);
+        const guestFirstName = await this._guestCheckoutBillAddressFirstName;
+        Logger.info("Valid guest checkout first name (billing address): ", guestFirstName);
+        await billAddressFirstNameInputField.sendKeys(guestFirstName);
+    }
+    async inputGuestLastNameIntoBillAddressLastNameInputField(){
+        const billAddressLastNameInputField = await this.driver.findElement(this._checkoutPageBillingAddressLastNameInputField);
+        const guestLastName = await this._guestCheckoutBillAddressLastName;
+        Logger.info("Valid guest checkout last name (billing address): ", guestLastName);
+        await billAddressLastNameInputField.sendKeys(guestLastName);
+    }
+    async inputGuestAddressIntoBillAddressInputField() {
+        const billAddressInputField = await this.driver.findElement(this._checkoutPageBillingAddressInputField);
+        const guestShipAddress = this._guestCheckoutBillAddress;
+        Logger.info("Valid guest checkout address (shipping address): ", guestShipAddress);
+        await billAddressInputField.sendKeys(guestShipAddress);
+    }
+    async inputGuestPostCodeIntoBillAddressPostCodeInputField() {
+        const billAddressPostCodeInputField = await this.driver.findElement(this._checkoutPageBillingAddressPostCodeInputField);
+        const guestBillAddressPostCode = this._guestCheckoutBillPostCode;
+        Logger.info("Valid guest checkout post code (billing address): ", guestBillAddressPostCode);
+        await billAddressPostCodeInputField.sendKeys(guestBillAddressPostCode);
+    }
+    async inputGuestCityIntoBillAddressCityInputField() {
+        const billAddressCityInputField = await this.driver.findElement(this._checkoutPageBillingAddressCityInputField);
+        const billAddressGuestCity = this._guestCheckoutBillCity;
+        Logger.info("Valid guest checkout city (billing address): ", billAddressGuestCity);
+        await billAddressCityInputField.sendKeys(billAddressGuestCity);
+    }
+    async inputGuestCompanyIntoBillAddressCompanyInputField() {
+        const billAddressCompanyInputField = await this.driver.findElement(this._checkoutPageBillingAddressCompanyInputField);
+        const billAddressCompany = this._guestCheckoutBillCompany;
+        Logger.info("Valid guest checkout company (billing address): ", billAddressCompany);
+        await billAddressCompanyInputField.sendKeys(billAddressCompany);
+    }
+
     //click 'As soon as possible' radio button method (shipping address)
     async clickAsSoonRadioButton(){
         const asSoonRadioButton = await this.driver.findElement(this._checkoutPageShipSoonRadioButton);
@@ -101,11 +150,17 @@ class CheckoutPage extends BasePage {
         await actions.move({ origin: singlePkgRadioButton }).click().perform();
     }
 
-    //click 'Buy' button method
+    //click 'Billing address are different' checkbox method
+    async clickBillAddressCheckbox(){
+        const billAddressCheckbox = await this.driver.findElement(this._checkoutPageShipBillAddressCheckbox);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: billAddressCheckbox }).click().perform();
+    }
+
+    //click 'Buy' button method (since scrolling down doesn't work on this page, JS executor method is used here)
     async clickBuyButton(){
         const buyButton = await this.driver.findElement(this._checkoutPageBuyButton);
-        const actions = this.driver.actions({ bridge: true });
-        await actions.move({ origin: buyButton }).click().perform();
+        await this.driver.executeScript("arguments[0].click();", buyButton);
     }
 
     //checkout page text element getters
@@ -140,6 +195,12 @@ class CheckoutPage extends BasePage {
     async getCheckoutPageBillAddressSubtext(){
         const checkoutPageBillAddressSubtext = await this.driver.findElement(this._checkoutPageBillingAddressSubtext);
         return checkoutPageBillAddressSubtext.getText();
+    }
+
+    //checkout recap text getter
+    async getCheckoutRecapSuccessMessage(){
+        const checkoutPageRecapSuccessMessage = await this.driver.findElement(this._checkoutRecapSuccessMessage);
+        return checkoutPageRecapSuccessMessage.getText();
     }
 
     //checkout page web element assert method
