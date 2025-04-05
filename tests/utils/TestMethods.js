@@ -2862,6 +2862,9 @@ class TestMethods {
         await checkoutPage.clickAsSoonRadioButton();
         //click 'Buy' button
         await checkoutPage.clickBuyButton();
+        //assert the user gets the expected success recap message
+        const checkoutRecapMessage = await checkoutPage.getCheckoutRecapSuccessMessage();
+        assert.strictEqual(checkoutRecapMessage, "All good, order is on the way. Thank you!!", "The checkout recap success message doesn't match expectations.");
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Valid Guest Order Checkout (Shipping Address Only - 'As Soon As' shipping option) Test Result");
     }
@@ -2897,6 +2900,9 @@ class TestMethods {
         await checkoutPage.clickSinglePkgRadioButton();
         //click 'Buy' button
         await checkoutPage.clickBuyButton();
+        //assert the user gets the expected success recap message
+        const checkoutRecapMessage = await checkoutPage.getCheckoutRecapSuccessMessage();
+        assert.strictEqual(checkoutRecapMessage, "All good, order is on the way. Thank you!!", "The checkout recap success message doesn't match expectations.");
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Valid Guest Order Checkout (Shipping Address Only - 'Single Package' shipping option) Test Result");
     }
