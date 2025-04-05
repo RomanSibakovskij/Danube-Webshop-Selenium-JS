@@ -2830,6 +2830,9 @@ class TestMethods {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //valid check out page tests (as a guest) (since registered user can't log into the created account, its testing is paused till the issue will be resolved)
+    //(Important visual bugs note:
+    // 1: even if the company input field is being marked as 'optional' in both shipping and billing addresses, they are being treated as required
+    // 2: the scroll up/down doesn't work on this page so it's impossible to visually verify billing address section elements / error message.)
 
     //valid order checkout test method (shipping address only -> as soon as possible shipping)
     async validOrderCheckoutShipAddressAsSoonOnlyTest(){
@@ -3229,6 +3232,45 @@ class TestMethods {
         assert.strictEqual(checkoutInvalidInputError, "Please fill in all fields.", "The checkout invalid input error message doesn't match expectations.");
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Invalid Guest Order Checkout (Shipping Address) Test Result - No Shipping City");
+    }
+    //invalid order checkout test method (shipping address) - no guest shipping company
+    async invalidOrderCheckoutShipAddressNoGuestCompanyTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const checkoutPage = new CheckoutPage(this.driver)
+        const checkoutPageInvalidScenarios = new CheckoutPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //checkout page web element assert (shipping section)
+        await checkoutPage.isCheckoutPageWebElementDisplayed();
+        //checkout page text element assert (shipping section)
+        await this.isCheckoutPageTextElementAsExpected();
+        //capture screenshot of the shipping address form before guest input data (shipping address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display Before Guest Data Input");
+        //input valid guest first name into shipping address first name input field
+        await checkoutPage.inputGuestFirstNameIntoShipAddressFirstNameInputField();
+        //input valid guest last name into shipping address last name input field
+        await checkoutPage.inputGuestLastNameIntoShipAddressLastNameInputField();
+        //input valid guest address into shipping address input field
+        await checkoutPage.inputGuestAddressIntoShipAddressInputField();
+        //input valid guest post code into shipping address post code input field
+        await checkoutPage.inputGuestPostCodeIntoShipAddressPostCodeInputField();
+        //input valid guest city into shipping address city input field
+        await checkoutPage.inputGuestCityIntoShipAddressCityInputField();
+        //don't input guest company into shipping address company input field
+        await checkoutPageInvalidScenarios.inputNoGuestCompanyIntoShipAddressCompanyInputField();
+        //capture screenshot of the shipping address form after invalid guest input data (shipping address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display After Invalid Guest Data Input - No Guest Shipping Address Company");
+        //click 'As soon as possible' shipping radio button
+        await checkoutPage.clickAsSoonRadioButton();
+        //click 'Buy' button
+        await checkoutPage.clickBuyButton();
+        //assert the user gets the expected error message
+        const checkoutInvalidInputError = await checkoutPageInvalidScenarios.getCheckoutPageInvalidInputErrorMessage();
+        assert.strictEqual(checkoutInvalidInputError, "Please fill in all fields.", "The checkout invalid input error message doesn't match expectations.");
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid Guest Order Checkout (Shipping Address) Test Result - No Shipping Company");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
