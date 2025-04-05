@@ -27,13 +27,14 @@ class CheckoutPageInvalidScenarios extends BasePage{
         //input error message
         this._fillAllFieldsError = By.xpath("//p[@id='error-message']");
 
-        //invalid guest checkout data input - no singular input
+        //invalid guest checkout data input - no singular input (shipping and billing address input fields will share same variables to avoid redundancies)
         this._guestCheckoutShipAddressNoFirstName = "";
         this._guestCheckoutShipAddressNoLastName = "";
         this._guestCheckoutNoShipAddress = "";
         this._guestCheckoutShipAddressNoPostCode = "";
         this._guestCheckoutShipAddressNoCity = "";
         this._guestCheckoutShipAddressNoCompany = "";
+
     }
 
     //invalid guest checkout data input methods (shipping address) - no singular input
@@ -72,6 +73,14 @@ class CheckoutPageInvalidScenarios extends BasePage{
         const noShipAddressCompany = this._guestCheckoutShipAddressNoCompany;
         Logger.info("No guest checkout company (shipping address): ", noShipAddressCompany);
         await shipAddressCompanyInputField.sendKeys(noShipAddressCompany);
+    }
+
+    //invalid guest checkout data input methods (billing address) - no singular input
+    async inputNoGuestFirstNameIntoBillAddressFirstNameInputField(){
+        const billAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageBillingAddressFirstNameInputField);
+        const noGuestFirstName = await this._guestCheckoutShipAddressNoFirstName;
+        Logger.info("No guest checkout first name (billing address): ", noGuestFirstName);
+        await billAddressFirstNameInputField.sendKeys(noGuestFirstName);
     }
 
     //invalid input error message getter
