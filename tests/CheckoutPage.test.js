@@ -154,6 +154,16 @@ describe('Checkout Page Tests', () => {
                 await testMethods.invalidOrderCheckoutShipAddressNoGuestCompanyTest();
             });
 
+            //Test 016f -> invalid guest check out confirmation test (shipping address) - no guest shipping method selection (the checkout gets confirmed, test has failed)
+            test("Invalid Guest Checkout Confirmation (Shipping Address) Test - No Guest Shipping Method Selection", async function () {
+                //home page product ('The Grand Grotsby') addition to cart test (as a guest)
+                await testMethods.addHomePageGrandGrotsbyBookToCart();
+                //home page product ('The Grand Grotsby') addition to check out test (as a guest)
+                await testMethods.addProductToCheckoutTest();
+                //invalid guest check out confirmation test (shipping address) - no guest shipping method
+                await testMethods.invalidOrderCheckoutShipAddressNoGuestShipMethodTest();
+            });
+
         });
 
     });
