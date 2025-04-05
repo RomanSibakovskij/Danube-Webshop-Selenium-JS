@@ -38,6 +38,7 @@ class CheckoutPageInvalidScenarios extends BasePage{
         //invalid guest checkout data input - too short singular input (shipping and billing address input fields will share same variables to avoid redundancies)
         this._guestCheckoutShipAddressTooShortFirstName = "K";
         this._guestCheckoutShipAddressTooShortLastName = "G";
+        this._guestCheckoutTooShortShipAddress = "3 st"; //4 chars
     }
 
     //invalid guest checkout data input methods (shipping address) - no singular input
@@ -128,6 +129,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         const tooShortGuestLastName = this._guestCheckoutShipAddressTooShortLastName;
         Logger.info("Too short guest checkout last name (shipping address): ", tooShortGuestLastName);
         await shipAddressLastNameInputField.sendKeys(tooShortGuestLastName);
+    }
+    async inputTooShortGuestAddressIntoShipAddressInputField(){
+        const shipAddressInputField = await this.driver.findElement(this._checkoutPageShipAddressInputField);
+        const tooShortGuestShipAddress = this._guestCheckoutTooShortShipAddress;
+        Logger.info("Too short guest checkout address (shipping address): ", tooShortGuestShipAddress);
+        await shipAddressInputField.sendKeys(tooShortGuestShipAddress);
     }
 
     //invalid input error message getter
