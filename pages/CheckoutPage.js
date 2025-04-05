@@ -101,13 +101,13 @@ class CheckoutPage extends BasePage {
     //valid guest checkout data input methods (billing address)
     async inputGuestFirstNameIntoBillAddressFirstNameInputField(){
         const billAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageBillingAddressFirstNameInputField);
-        const guestFirstName = await this._guestCheckoutBillAddressFirstName;
+        const guestFirstName = this._guestCheckoutBillAddressFirstName;
         Logger.info("Valid guest checkout first name (billing address): ", guestFirstName);
         await billAddressFirstNameInputField.sendKeys(guestFirstName);
     }
     async inputGuestLastNameIntoBillAddressLastNameInputField(){
         const billAddressLastNameInputField = await this.driver.findElement(this._checkoutPageBillingAddressLastNameInputField);
-        const guestLastName = await this._guestCheckoutBillAddressLastName;
+        const guestLastName = this._guestCheckoutBillAddressLastName;
         Logger.info("Valid guest checkout last name (billing address): ", guestLastName);
         await billAddressLastNameInputField.sendKeys(guestLastName);
     }

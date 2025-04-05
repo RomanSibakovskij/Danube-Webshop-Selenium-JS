@@ -40,13 +40,13 @@ class CheckoutPageInvalidScenarios extends BasePage{
     //invalid guest checkout data input methods (shipping address) - no singular input
     async inputNoGuestFirstNameIntoShipAddressFirstNameInputField(){
         const shipAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageShipAddressFirstNameInputField);
-        const noGuestFirstName = await this._guestCheckoutShipAddressNoFirstName;
+        const noGuestFirstName = this._guestCheckoutShipAddressNoFirstName;
         Logger.info("No guest checkout first name (shipping address): ", noGuestFirstName);
         await shipAddressFirstNameInputField.sendKeys(noGuestFirstName);
     }
     async inputNoGuestLastNameIntoShipAddressLastNameInputField(){
         const shipAddressLastNameInputField = await this.driver.findElement(this._checkoutPageShipAddressLastNameInputField);
-        const noGuestLastName = await this._guestCheckoutShipAddressNoLastName;
+        const noGuestLastName = this._guestCheckoutShipAddressNoLastName;
         Logger.info("No guest checkout last name (shipping address): ", noGuestLastName);
         await shipAddressLastNameInputField.sendKeys(noGuestLastName);
     }
@@ -78,9 +78,15 @@ class CheckoutPageInvalidScenarios extends BasePage{
     //invalid guest checkout data input methods (billing address) - no singular input
     async inputNoGuestFirstNameIntoBillAddressFirstNameInputField(){
         const billAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageBillingAddressFirstNameInputField);
-        const noGuestFirstName = await this._guestCheckoutShipAddressNoFirstName;
+        const noGuestFirstName = this._guestCheckoutShipAddressNoFirstName;
         Logger.info("No guest checkout first name (billing address): ", noGuestFirstName);
         await billAddressFirstNameInputField.sendKeys(noGuestFirstName);
+    }
+    async inputNoGuestLastNameIntoBillAddressLastNameInputField(){
+        const billAddressLastNameInputField = await this.driver.findElement(this._checkoutPageBillingAddressLastNameInputField);
+        const noGuestLastName = this._guestCheckoutShipAddressNoLastName;
+        Logger.info("No guest checkout last name (billing address): ", noGuestLastName);
+        await billAddressLastNameInputField.sendKeys(noGuestLastName);
     }
 
     //invalid input error message getter

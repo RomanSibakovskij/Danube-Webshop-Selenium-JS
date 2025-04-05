@@ -3038,6 +3038,8 @@ class TestMethods {
 
     //no singular input
 
+    //shipping address section
+
     //invalid order checkout test method (shipping address) - no guest shipping address first name
     async invalidOrderCheckoutShipAddressNoGuestFirstNameTest(){
         const generalPage = new GeneralPage(this.driver);
@@ -3313,6 +3315,9 @@ class TestMethods {
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Invalid Guest Order Checkout (Shipping Address) Test Result - No Shipping Method Selection");
     }
+
+    //billing address section
+
     //invalid order checkout test method (billing address) - no guest billing first name
     async invalidOrderCheckoutBillAddressNoGuestFirstNameTest(){
         const generalPage = new GeneralPage(this.driver);
@@ -3354,6 +3359,16 @@ class TestMethods {
         await TestMethods.captureScreenshot(this.driver, "Checkout Page Billing Address Section Display Before Guest Data Input");
         //don't input guest first name into billing address first name input field
         await checkoutPageInvalidScenarios.inputNoGuestFirstNameIntoBillAddressFirstNameInputField();
+        //input valid guest last name into billing address last name input field
+        await checkoutPage.inputGuestLastNameIntoBillAddressLastNameInputField();
+        //input valid guest address into billing address input field
+        await checkoutPage.inputGuestAddressIntoBillAddressInputField();
+        //input valid guest post code into billing address post code input field
+        await checkoutPage.inputGuestPostCodeIntoBillAddressPostCodeInputField();
+        //input valid guest city into billing address city input field
+        await checkoutPage.inputGuestCityIntoBillAddressCityInputField();
+        //input valid guest company into billing address company input field
+        await checkoutPage.inputGuestCompanyIntoBillAddressCompanyInputField();
         //capture screenshot of the shipping address form after valid guest input data (billing address)
         await TestMethods.captureScreenshot(this.driver, "Checkout Page Billing Address Section Display After Invalid Guest Data Input - No Billing First Name");
         //click 'Buy' button
@@ -3364,6 +3379,68 @@ class TestMethods {
         }
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Invalid Guest Order Checkout (Billing Address) Test Result - No Billing First Name");
+    }
+    //invalid order checkout test method (billing address) - no guest billing last name
+    async invalidOrderCheckoutBillAddressNoGuestLastNameTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const checkoutPage = new CheckoutPage(this.driver)
+        const checkoutPageInvalidScenarios = new CheckoutPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //checkout page web element assert (shipping section)
+        await checkoutPage.isCheckoutPageWebElementDisplayed();
+        //checkout page text element assert (shipping section)
+        await this.isCheckoutPageTextElementAsExpected();
+        //capture screenshot of the shipping address form before guest input data (shipping address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display Before Guest Data Input");
+        //input valid guest first name into shipping address first name input field
+        await checkoutPage.inputGuestFirstNameIntoShipAddressFirstNameInputField();
+        //input valid guest last name into shipping address last name input field
+        await checkoutPage.inputGuestLastNameIntoShipAddressLastNameInputField();
+        //input valid guest address into shipping address input field
+        await checkoutPage.inputGuestAddressIntoShipAddressInputField();
+        //input valid guest post code into shipping address post code input field
+        await checkoutPage.inputGuestPostCodeIntoShipAddressPostCodeInputField();
+        //input valid guest city into shipping address city input field
+        await checkoutPage.inputGuestCityIntoShipAddressCityInputField();
+        //input valid guest company into shipping address company input field
+        await checkoutPage.inputGuestCompanyIntoShipAddressCompanyInputField();
+        //capture screenshot of the shipping address form after valid guest input data (shipping address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display After Valid Guest Data Input");
+        //click 'As soon as possible' shipping radio button
+        await checkoutPage.clickAsSoonRadioButton();
+        //click 'Billing address are different' checkbox
+        await checkoutPage.clickBillAddressCheckbox();
+        //check out page web element assert (billing address)
+        await checkoutPage.isCheckoutPageBillAddressSectionWebElementDisplayed();
+        //check out page text element assert (billing address)
+        await this.isCheckoutPageBillAddressTextElementAsExpected();
+        //capture screenshot of the shipping address form before invalid guest input data (billing address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Billing Address Section Display Before Guest Data Input");
+        //input valid guest first name into billing address first name input field
+        await checkoutPage.inputGuestFirstNameIntoBillAddressFirstNameInputField();
+        //don't input valid guest last name into billing address last name input field
+        await checkoutPageInvalidScenarios.inputNoGuestLastNameIntoBillAddressLastNameInputField();
+        //input valid guest address into billing address input field
+        await checkoutPage.inputGuestAddressIntoBillAddressInputField();
+        //input valid guest post code into billing address post code input field
+        await checkoutPage.inputGuestPostCodeIntoBillAddressPostCodeInputField();
+        //input valid guest city into billing address city input field
+        await checkoutPage.inputGuestCityIntoBillAddressCityInputField();
+        //input valid guest company into billing address company input field
+        await checkoutPage.inputGuestCompanyIntoBillAddressCompanyInputField();
+        //capture screenshot of the shipping address form after valid guest input data (billing address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Billing Address Section Display After Invalid Guest Data Input - No Billing Last Name");
+        //click 'Buy' button
+        await checkoutPage.clickBuyButton();
+        //if the order gets submitted successfully, log the issue
+        if(await checkoutPage.getCheckoutRecapSuccessMessage()){
+            Logger.error("The missing billing address last name input error hasn't been triggered, test has failed.");
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid Guest Order Checkout (Billing Address) Test Result - No Billing Last Name");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
