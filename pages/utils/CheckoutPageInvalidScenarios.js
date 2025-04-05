@@ -27,9 +27,23 @@ class CheckoutPageInvalidScenarios extends BasePage{
         //input error message
         this._fillAllFieldsError = By.xpath("//p[@id='error-message']");
 
-
+        //invalid guest checkout data input - no singular input
+        this._guestCheckoutShipAddressNoFirstName = "";
     }
 
+    //invalid guest checkout data input methods (shipping address) - no singular input
+    async inputNoGuestFirstNameIntoShipAddressFirstNameInputField(){
+        const shipAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageShipAddressFirstNameInputField);
+        const noGuestFirstName = await this._guestCheckoutShipAddressNoFirstName;
+        Logger.info("No guest checkout first name (shipping address): ", noGuestFirstName);
+        await shipAddressFirstNameInputField.sendKeys(noGuestFirstName);
+    }
+
+    //invalid input error message getter
+    async getCheckoutPageInvalidInputErrorMessage(){
+        const invalidInputError = await this.driver.findElement(this._fillAllFieldsError);
+        return await invalidInputError.getText();
+    }
 
 }
 module.exports = { CheckoutPageInvalidScenarios }

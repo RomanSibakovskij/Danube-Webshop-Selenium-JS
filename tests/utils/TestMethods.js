@@ -14,6 +14,7 @@ const { LoginFormPage } = require("../../pages/LoginFormPage");
 const { SingleProductPage } = require("../../pages/SingleProductPage");
 const { ShoppingCartPage } = require("../../pages/ShoppingCartPage");
 const { CheckoutPage } = require("../../pages/CheckoutPage");
+const { CheckoutPageInvalidScenarios } = require("../../pages/utils/CheckoutPageInvalidScenarios");
 
 class TestMethods {
 
@@ -3028,6 +3029,50 @@ class TestMethods {
         assert.strictEqual(checkoutRecapMessage, "All good, order is on the way. Thank you!!", "The checkout recap success message doesn't match expectations.");
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Valid Guest Order Checkout (Shipping Address And Billing Address - 'Single Package' shipping option) Test Result");
+    }
+
+    //invalid guest checkout tests (for both shipping and billing address sections)
+
+    //no singular input
+
+    //invalid order checkout test method (shipping address) - no guest shipping address first name
+    async invalidOrderCheckoutShipAddressNoGuestFirstNameTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const checkoutPage = new CheckoutPage(this.driver)
+        const checkoutPageInvalidScenarios = new CheckoutPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //checkout page web element assert (shipping section)
+        await checkoutPage.isCheckoutPageWebElementDisplayed();
+        //checkout page text element assert (shipping section)
+        await this.isCheckoutPageTextElementAsExpected();
+        //capture screenshot of the shipping address form before guest input data (shipping address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display Before Guest Data Input");
+        //don't input guest first name into shipping address first name input field
+        await checkoutPageInvalidScenarios.inputNoGuestFirstNameIntoShipAddressFirstNameInputField();
+        //input valid guest last name into shipping address last name input field
+        await checkoutPage.inputGuestLastNameIntoShipAddressLastNameInputField();
+        //input valid guest address into shipping address input field
+        await checkoutPage.inputGuestAddressIntoShipAddressInputField();
+        //input valid guest post code into shipping address post code input field
+        await checkoutPage.inputGuestPostCodeIntoShipAddressPostCodeInputField();
+        //input valid guest city into shipping address city input field
+        await checkoutPage.inputGuestCityIntoShipAddressCityInputField();
+        //input valid guest company into shipping address company input field
+        await checkoutPage.inputGuestCompanyIntoShipAddressCompanyInputField();
+        //capture screenshot of the shipping address form after invalid guest input data (shipping address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display After Invalid Guest Data Input - No Guest Shipping Address First Name");
+        //click 'As soon as possible' shipping radio button
+        await checkoutPage.clickAsSoonRadioButton();
+        //click 'Buy' button
+        await checkoutPage.clickBuyButton();
+        //assert the user gets the expected error message
+        const checkoutInvalidInputError = await checkoutPageInvalidScenarios.getCheckoutPageInvalidInputErrorMessage();
+        assert.strictEqual(checkoutInvalidInputError, "Please fill in all fields.", "The checkout invalid input error message doesn't match expectations.");
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid Guest Order Checkout (Shipping Address) Test Result - No Shipping Address First Name");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

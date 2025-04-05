@@ -166,15 +166,15 @@ class CheckoutPage extends BasePage {
     //checkout page text element getters
     async getCheckoutPageTitle(){
         const checkoutPageTitle = await this.driver.findElement(this._checkoutPageTitle);
-        return checkoutPageTitle.getText();
+        return await checkoutPageTitle.getText();
     }
     async getCheckoutPageSubtitle(){
         const checkoutPageSubtitle = await this.driver.findElement(this._checkoutPageSubtitle);
-        return checkoutPageSubtitle.getText();
+        return await checkoutPageSubtitle.getText();
     }
     async getCheckoutPageShipAddressSubtext(){
         const checkoutPageShipAddressSubtext = await this.driver.findElement(this._checkoutPageShipAddressSubtext);
-        return checkoutPageShipAddressSubtext.getText();
+        return await checkoutPageShipAddressSubtext.getText();
     }
     async getCheckoutPageShipItemsSubtext(){
         const checkoutPageShipItemsSubtext = await this.driver.findElement(this._checkoutPageShipItemsSubtext);
@@ -182,25 +182,25 @@ class CheckoutPage extends BasePage {
     }
     async getCheckoutPageShipSoonSubtext(){
         const checkoutPageShipSoonSubtext = await this.driver.findElement(this._checkoutPageShipSoonSubtext);
-        return checkoutPageShipSoonSubtext.getText();
+        return await checkoutPageShipSoonSubtext.getText();
     }
     async getCheckoutPageSinglePackageSubtext(){
         const checkoutPageSinglePackageSubtext = await this.driver.findElement(this._checkoutPageShipSinglePackageSubtext);
-        return checkoutPageSinglePackageSubtext.getText();
+        return await checkoutPageSinglePackageSubtext.getText();
     }
     async getCheckoutPageShipBillAddressSubtext(){
         const checkoutPageShipBillAddressSubtext = await this.driver.findElement(this._checkoutPageShipBillAddressSubtext);
-        return checkoutPageShipBillAddressSubtext.getText();
+        return await checkoutPageShipBillAddressSubtext.getText();
     }
     async getCheckoutPageBillAddressSubtext(){
         const checkoutPageBillAddressSubtext = await this.driver.findElement(this._checkoutPageBillingAddressSubtext);
-        return checkoutPageBillAddressSubtext.getText();
+        return await checkoutPageBillAddressSubtext.getText();
     }
 
     //checkout recap text getter
     async getCheckoutRecapSuccessMessage(){
         const checkoutPageRecapSuccessMessage = await this.driver.findElement(this._checkoutRecapSuccessMessage);
-        return checkoutPageRecapSuccessMessage.getText();
+        return await checkoutPageRecapSuccessMessage.getText();
     }
 
     //checkout page web element assert method
