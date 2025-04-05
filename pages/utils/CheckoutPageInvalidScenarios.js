@@ -32,6 +32,7 @@ class CheckoutPageInvalidScenarios extends BasePage{
         this._guestCheckoutShipAddressNoLastName = "";
         this._guestCheckoutNoShipAddress = "";
         this._guestCheckoutShipAddressNoPostCode = "";
+        this._guestCheckoutShipAddressNoCity = "";
     }
 
     //invalid guest checkout data input methods (shipping address) - no singular input
@@ -58,6 +59,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         const noGuestShipAddressPostCode = this._guestCheckoutShipAddressNoPostCode;
         Logger.info("No guest checkout post code (shipping address): ", noGuestShipAddressPostCode);
         await shipAddressPostCodeInputField.sendKeys(noGuestShipAddressPostCode);
+    }
+    async inputNoGuestCityIntoShipAddressCityInputField() {
+        const shipAddressCityInputField = await this.driver.findElement(this._checkoutPageShipAddressCityInputField);
+        const noShipAddressGuestCity = this._guestCheckoutShipAddressNoCity;
+        Logger.info("No guest checkout city (shipping address): ", noShipAddressGuestCity);
+        await shipAddressCityInputField.sendKeys(noShipAddressGuestCity);
     }
 
     //invalid input error message getter
