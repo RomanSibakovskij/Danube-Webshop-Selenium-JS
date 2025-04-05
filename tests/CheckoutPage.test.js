@@ -442,6 +442,16 @@ describe('Checkout Page Tests', () => {
                 await testMethods.invalidOrderCheckoutBillAddressTooLongGuestAddressTest();
             });
 
+            //Test 016ah -> invalid guest check out confirmation test (billing address) - too long guest billing post code (25 digits) (the order gets submitted, test has failed)
+            test("Invalid Guest Checkout Confirmation (Billing Address) Test - Too Long Guest Billing Post Code", async function () {
+                //home page product ('The Grand Grotsby') addition to cart test (as a guest)
+                await testMethods.addHomePageGrandGrotsbyBookToCart();
+                //home page product ('The Grand Grotsby') addition to check out test (as a guest)
+                await testMethods.addProductToCheckoutTest();
+                //invalid guest check out confirmation test (billing address) - too long guest billing post code (25 digits)
+                await testMethods.invalidOrderCheckoutBillAddressTooLongGuestPostCodeTest();
+            });
+
         });
 
     });

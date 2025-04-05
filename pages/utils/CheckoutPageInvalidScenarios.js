@@ -263,6 +263,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         Logger.info("Too long guest checkout address (billing address): ", tooLongGuestBillAddress);
         await billAddressInputField.sendKeys(tooLongGuestBillAddress);
     }
+    async inputTooLongGuestPostCodeIntoBillAddressPostCodeInputField() {
+        const billAddressPostCodeInputField = await this.driver.findElement(this._checkoutPageBillingAddressPostCodeInputField);
+        const tooLongGuestBillAddressPostCode = this._guestCheckoutShipAddressTooLongPostCode;
+        Logger.info("Too long guest checkout post code (billing address): ", tooLongGuestBillAddressPostCode);
+        await billAddressPostCodeInputField.sendKeys(tooLongGuestBillAddressPostCode);
+    }
 
     //invalid input error message getter
     async getCheckoutPageInvalidInputErrorMessage(){
