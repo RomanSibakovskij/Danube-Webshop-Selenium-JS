@@ -362,6 +362,16 @@ describe('Checkout Page Tests', () => {
                 await testMethods.invalidOrderCheckoutShipAddressTooLongGuestFirstNameTest();
             });
 
+            //Test 016z -> invalid guest check out confirmation test (shipping address) - too long guest shipping last name (100 chars) (the order gets submitted, test has failed)
+            test("Invalid Guest Checkout Confirmation (Shipping Address) Test - Too Long Guest Shipping Last Name", async function () {
+                //home page product ('The Grand Grotsby') addition to cart test (as a guest)
+                await testMethods.addHomePageGrandGrotsbyBookToCart();
+                //home page product ('The Grand Grotsby') addition to check out test (as a guest)
+                await testMethods.addProductToCheckoutTest();
+                //invalid guest check out confirmation test (shipping address) - too long guest shipping last name (100 chars)
+                await testMethods.invalidOrderCheckoutShipAddressTooLongGuestLastNameTest();
+            });
+
         });
 
     });
