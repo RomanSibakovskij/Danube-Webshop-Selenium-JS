@@ -104,6 +104,16 @@ describe('Checkout Page Tests', () => {
                 await testMethods.invalidOrderCheckoutShipAddressNoGuestFirstNameTest();
             });
 
+            //Test 016a -> invalid guest check out confirmation test (shipping address) - no guest shipping last name
+            test("Invalid Guest Checkout Confirmation (Shipping Address) Test - No Guest Shipping Last Name", async function () {
+                //home page product ('The Grand Grotsby') addition to cart test (as a guest)
+                await testMethods.addHomePageGrandGrotsbyBookToCart();
+                //home page product ('The Grand Grotsby') addition to check out test (as a guest)
+                await testMethods.addProductToCheckoutTest();
+                //invalid guest check out confirmation test (shipping address) - no guest shipping last name
+                await testMethods.invalidOrderCheckoutShipAddressNoGuestLastNameTest();
+            });
+
         });
 
     });
