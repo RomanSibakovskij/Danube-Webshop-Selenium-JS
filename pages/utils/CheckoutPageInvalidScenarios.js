@@ -27,6 +27,8 @@ class CheckoutPageInvalidScenarios extends BasePage{
         //input error message
         this._fillAllFieldsError = By.xpath("//p[@id='error-message']");
 
+        const testDataGenerator = new TestDataGenerator(this.driver);
+
         //invalid guest checkout data input - no singular input (shipping and billing address input fields will share same variables to avoid redundancies)
         this._guestCheckoutShipAddressNoFirstName = "";
         this._guestCheckoutShipAddressNoLastName = "";
@@ -46,6 +48,7 @@ class CheckoutPageInvalidScenarios extends BasePage{
         //invalid guest checkout data input - too long singular input (shipping and billing address input fields will share same variables to avoid redundancies)
         this._guestCheckoutShipAddressTooLongFirstName = "Rffdgfhffvdfhggjkjhluyutrtserttiuuyouitrgfsdsadffdfvxzcxcgfdhfujttetregfdgfddsafddsfgfdhgwaewrdsdsad";
         this._guestCheckoutShipAddressTooLongLastName = "Dffdgfhffvdfhggjkjhluyutrtserttiuuyouitrgfsdsadffdfvxzcxcgfdhfujttetregfdgfddsafddsfgfdhgwaewrdsdsad";
+        this._guestCheckoutTooLongShipAddress = testDataGenerator.generateRandomAddress(90); //100 chars
     }
 
     //invalid guest checkout data input methods (shipping address) - no singular input
@@ -212,6 +215,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         const tooLongGuestLastName = this._guestCheckoutShipAddressTooLongLastName;
         Logger.info("Too long guest checkout last name (shipping address): ", tooLongGuestLastName);
         await shipAddressLastNameInputField.sendKeys(tooLongGuestLastName);
+    }
+    async inputTooLongGuestAddressIntoShipAddressInputField(){
+        const shipAddressInputField = await this.driver.findElement(this._checkoutPageShipAddressInputField);
+        const tooLongGuestShipAddress = this._guestCheckoutTooLongShipAddress;
+        Logger.info("Too long guest checkout address (shipping address): ", tooLongGuestShipAddress);
+        await shipAddressInputField.sendKeys(tooLongGuestShipAddress);
     }
 
     //invalid input error message getter
