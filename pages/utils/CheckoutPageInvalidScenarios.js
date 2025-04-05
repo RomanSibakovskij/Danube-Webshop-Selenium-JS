@@ -41,6 +41,7 @@ class CheckoutPageInvalidScenarios extends BasePage{
         this._guestCheckoutTooShortShipAddress = "3 st"; //4 chars
         this._guestCheckoutShipAddressTooShortPostCode = 7654; //4 digits
         this._guestCheckoutShipAddressTooShortCity = "K";
+        this._guestCheckoutShipAddressTooShortCompany = "G";
     }
 
     //invalid guest checkout data input methods (shipping address) - no singular input
@@ -149,6 +150,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         const tooShortShipAddressGuestCity = this._guestCheckoutShipAddressTooShortCity;
         Logger.info("Too short guest checkout city (shipping address): ", tooShortShipAddressGuestCity);
         await shipAddressCityInputField.sendKeys(tooShortShipAddressGuestCity);
+    }
+    async inputTooShortGuestCompanyIntoShipAddressCompanyInputField() {
+        const shipAddressCompanyInputField = await this.driver.findElement(this._checkoutPageShipAddressCompanyInputField);
+        const tooShortShipAddressCompany = this._guestCheckoutShipAddressTooShortCompany;
+        Logger.info("Too short guest checkout company (shipping address): ", tooShortShipAddressCompany);
+        await shipAddressCompanyInputField.sendKeys(tooShortShipAddressCompany);
     }
 
     //invalid input error message getter
