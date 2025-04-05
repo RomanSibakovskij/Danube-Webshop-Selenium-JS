@@ -18,7 +18,7 @@ describe('Checkout Page Tests', () => {
 
         describe("Home Page Product/s Checkout Confirmation Tests (guest)", () => {
 
-            //Test 012 -> home page product ('The Grand Grotsby') check out confirmation test (as a guest) (shipping address only -> as soon as possible shipping)
+            //Test 013 -> home page product ('The Grand Grotsby') check out confirmation test (as a guest) (shipping address only -> as soon as possible shipping)
             test("Home Page Product ('The Grand Grotsby') Checkout Confirmation (Shipping Address Only) Test (as a guest)", async function () {
                 //home page product ('The Grand Grotsby') addition to cart test (as a guest)
                 await testMethods.addHomePageGrandGrotsbyBookToCart();
@@ -28,7 +28,7 @@ describe('Checkout Page Tests', () => {
                 await testMethods.validOrderCheckoutShipAddressAsSoonOnlyTest();
             });
 
-            //Test 012a -> home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') check out confirmation test (as a guest) (shipping address only -> single package shipping)
+            //Test 013a -> home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') check out confirmation test (as a guest) (shipping address only -> single package shipping)
             test("Home Page Multiple Products ('The Grand Grotsby', 'The Pickled Lynx') Checkout Confirmation (Shipping Address Only) Test (as a guest)", async function () {
                 //home page multiple products ('The Grand Grotsby', 'The Pickled Lynx') addition to cart test (as a guest)
                 await testMethods.addMultipleHomePageBooksToCart();
