@@ -74,6 +74,18 @@ describe('Home Page Tests', () => {
 
     });
 
+    describe("Product Removal From Shopping Cart Test", () => {
+
+        //Test 012 -> product removal from cart test
+        test("Product Removal From Shopping Cart Test", async function () {
+            //single category product page product ('The Insiders') addition to cart test (as a guest)
+            await testMethods.addSingleCategoryProductToCart();
+            //product removal from cart test
+            await testMethods.removeProductFromShoppingCartTest();
+        });
+
+    });
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //driver clean-up after each test run

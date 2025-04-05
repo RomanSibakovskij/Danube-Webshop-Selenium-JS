@@ -2804,6 +2804,28 @@ class TestMethods {
         await TestMethods.captureScreenshot(this.driver, "Shopping Cart Product/s Addition To Checkout Test Result");
     }
 
+    //product removal from shopping cart page test
+
+    //product removal from shopping cart test method
+    async removeProductFromShoppingCartTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const shoppingCartPage = new ShoppingCartPage(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //shopping cart page web element assert
+        await shoppingCartPage.isShoppingPageWebElementDisplayed();
+        //shopping cart text element assert
+        await this.isShoppingCartTextElementAsExpected();
+        //log shopping cart test data
+        await this.logShoppingCartProductData();
+        //click 'Empty cart' button
+        await shoppingCartPage.clickEmptyCartButton();
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Shopping Cart Product/s Addition To Checkout Test Result");
+    }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //valid check out page tests (as a guest) (since registered user can't log into the created account, its testing is paused till the issue will be resolved)

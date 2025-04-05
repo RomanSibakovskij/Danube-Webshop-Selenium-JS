@@ -49,6 +49,13 @@ class ShoppingCartPage extends BasePage{
         await actions.move({ origin: checkoutButton }).click().perform();
     }
 
+    //click 'Empty cart' button method
+    async clickEmptyCartButton(){
+        const emptyCartButton = await this.driver.findElement(this._shoppingCartEmptyCartButton);
+        const actions = this.driver.actions({ bridge: true });
+        await actions.move({ origin: emptyCartButton }).click().perform();
+    }
+
     //shopping cart text element getters
     async getShoppingCartTitle(){
         const shoppingCartTitle = await this.driver.findElement(this._shoppingCartTitle);
