@@ -88,6 +88,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         Logger.info("No guest checkout last name (billing address): ", noGuestLastName);
         await billAddressLastNameInputField.sendKeys(noGuestLastName);
     }
+    async inputNoGuestAddressIntoBillAddressInputField() {
+        const billAddressInputField = await this.driver.findElement(this._checkoutPageBillingAddressInputField);
+        const noGuestBillAddress = this._guestCheckoutNoShipAddress;
+        Logger.info("No guest checkout address (shipping address): ", noGuestBillAddress);
+        await billAddressInputField.sendKeys(noGuestBillAddress);
+    }
 
     //invalid input error message getter
     async getCheckoutPageInvalidInputErrorMessage(){

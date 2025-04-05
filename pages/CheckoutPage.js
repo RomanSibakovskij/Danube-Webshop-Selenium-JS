@@ -113,9 +113,9 @@ class CheckoutPage extends BasePage {
     }
     async inputGuestAddressIntoBillAddressInputField() {
         const billAddressInputField = await this.driver.findElement(this._checkoutPageBillingAddressInputField);
-        const guestShipAddress = this._guestCheckoutBillAddress;
-        Logger.info("Valid guest checkout address (shipping address): ", guestShipAddress);
-        await billAddressInputField.sendKeys(guestShipAddress);
+        const guestBillAddress = this._guestCheckoutBillAddress;
+        Logger.info("Valid guest checkout address (shipping address): ", guestBillAddress);
+        await billAddressInputField.sendKeys(guestBillAddress);
     }
     async inputGuestPostCodeIntoBillAddressPostCodeInputField() {
         const billAddressPostCodeInputField = await this.driver.findElement(this._checkoutPageBillingAddressPostCodeInputField);
