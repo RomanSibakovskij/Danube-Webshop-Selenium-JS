@@ -90,6 +90,10 @@ describe('Checkout Page Tests', () => {
 
     });
 
+    //(Important visual bugs note:
+    // 1: even if the company input field is being marked as 'optional' in both shipping and billing addresses, they are being treated as required
+    // 2: the scroll up/down doesn't work on this page so it's impossible to visually verify billing address section elements / error message.)
+
     describe("Invalid Guest Order Checkout Tests", () => {
 
         describe("Invalid Guest Checkout Confirmation Tests - No Singular Input", () => {
