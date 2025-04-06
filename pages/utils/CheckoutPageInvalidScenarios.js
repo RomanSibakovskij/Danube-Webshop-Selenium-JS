@@ -328,6 +328,14 @@ class CheckoutPageInvalidScenarios extends BasePage{
         await shipAddressCompanyInputField.sendKeys(invalidShipAddressCompanyFormat);
     }
 
+    //invalid guest checkout data input methods (billing address) - invalid singular input format
+    async inputInvalidGuestFirstNameFormatIntoBillAddressFirstNameInputField(){
+        const billAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageBillingAddressFirstNameInputField);
+        const invalidGuestFirstNameFormat = this._guestCheckoutInvalidFirstNameFormat;
+        Logger.info("Invalid guest checkout first name format (billing address): ", invalidGuestFirstNameFormat);
+        await billAddressFirstNameInputField.sendKeys(invalidGuestFirstNameFormat);
+    }
+
     //invalid input error message getter
     async getCheckoutPageInvalidInputErrorMessage(){
         const invalidInputError = await this.driver.findElement(this._fillAllFieldsError);
