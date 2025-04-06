@@ -506,6 +506,16 @@ describe('Checkout Page Tests', () => {
                 await testMethods.invalidOrderCheckoutShipAddressInvalidGuestAddressFormatTest();
             });
 
+            //Test 016an -> invalid guest check out confirmation test (shipping address) - invalid guest shipping post code format (special symbols only) (the order gets submitted, test has failed)
+            test("Invalid Guest Checkout Confirmation (Shipping Address) Test - Invalid Guest Shipping Post Code Format", async function () {
+                //home page product ('The Grand Grotsby') addition to cart test (as a guest)
+                await testMethods.addHomePageGrandGrotsbyBookToCart();
+                //home page product ('The Grand Grotsby') addition to check out test (as a guest)
+                await testMethods.addProductToCheckoutTest();
+                //invalid guest check out confirmation test (shipping address) - invalid guest shipping post code format (special symbols only)
+                await testMethods.invalidOrderCheckoutShipAddressInvalidGuestPostCodeFormatTest();
+            });
+
         });
 
     });
