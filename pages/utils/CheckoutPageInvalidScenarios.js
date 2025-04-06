@@ -359,6 +359,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         Logger.info("Invalid guest checkout city format (billing address): ", invalidBillAddressGuestCityFormat);
         await billAddressCityInputField.sendKeys(invalidBillAddressGuestCityFormat);
     }
+    async inputInvalidGuestCompanyFormatIntoBillAddressCompanyInputField() {
+        const billAddressCompanyInputField = await this.driver.findElement(this._checkoutPageBillingAddressCompanyInputField);
+        const invalidBillAddressCompanyFormat = this._guestCheckoutInvalidCompanyFormat;
+        Logger.info("Invalid guest checkout company format (billing address): ", invalidBillAddressCompanyFormat);
+        await billAddressCompanyInputField.sendKeys(invalidBillAddressCompanyFormat);
+    }
 
     //invalid input error message getter
     async getCheckoutPageInvalidInputErrorMessage(){
