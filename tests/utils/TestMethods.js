@@ -4935,7 +4935,7 @@ class TestMethods {
 
     //shipping address section
 
-    //invalid order checkout test method (shipping address) - invalid guest shipping address first name format(special symbols only)
+    //invalid order checkout test method (shipping address) - invalid guest shipping address first name format (special symbols only)
     async invalidOrderCheckoutShipAddressInvalidGuestFirstNameFormatTest(){
         const generalPage = new GeneralPage(this.driver);
         const checkoutPage = new CheckoutPage(this.driver)
@@ -4974,6 +4974,46 @@ class TestMethods {
         }
         //capture screenshot of the test result
         await TestMethods.captureScreenshot(this.driver, "Invalid Guest Order Checkout (Shipping Address) Test Result - Invalid Shipping Address First Name Format");
+    }
+    //invalid order checkout test method (shipping address) - invalid guest shipping address last name format (special symbols only)
+    async invalidOrderCheckoutShipAddressInvalidGuestLastNameFormatTest(){
+        const generalPage = new GeneralPage(this.driver);
+        const checkoutPage = new CheckoutPage(this.driver)
+        const checkoutPageInvalidScenarios = new CheckoutPageInvalidScenarios(this.driver);
+        //general page web element assert
+        await generalPage.isGeneralPageWebElementDisplayed();
+        //general page text element assert
+        await this.isGeneralPageTextElementAsExpected();
+        //checkout page web element assert (shipping section)
+        await checkoutPage.isCheckoutPageWebElementDisplayed();
+        //checkout page text element assert (shipping section)
+        await this.isCheckoutPageTextElementAsExpected();
+        //capture screenshot of the shipping address form before guest input data (shipping address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display Before Guest Data Input");
+        //input valid guest first name into shipping address first name input field (special symbols only)
+        await checkoutPage.inputGuestFirstNameIntoShipAddressFirstNameInputField();
+        //input invalid guest last name format into shipping address last name input field
+        await checkoutPageInvalidScenarios.inputInvalidGuestLastNameFormatIntoShipAddressLastNameInputField();
+        //input valid guest address into shipping address input field
+        await checkoutPage.inputGuestAddressIntoShipAddressInputField();
+        //input valid guest post code into shipping address post code input field
+        await checkoutPage.inputGuestPostCodeIntoShipAddressPostCodeInputField();
+        //input valid guest city into shipping address city input field
+        await checkoutPage.inputGuestCityIntoShipAddressCityInputField();
+        //input valid guest company into shipping address company input field
+        await checkoutPage.inputGuestCompanyIntoShipAddressCompanyInputField();
+        //capture screenshot of the shipping address form after invalid guest input data (shipping address)
+        await TestMethods.captureScreenshot(this.driver, "Checkout Page Shipping Address Section Display After Invalid Guest Data Input - Invalid Guest Shipping Address Last Name Format");
+        //click 'As soon as possible' shipping radio button
+        await checkoutPage.clickAsSoonRadioButton();
+        //click 'Buy' button
+        await checkoutPage.clickBuyButton();
+        //if the order gets submitted successfully, log the issue
+        if(await checkoutPage.getCheckoutRecapSuccessMessage()){
+            Logger.error("The invalid shipping last name input format error hasn't been triggered, test has failed.");
+        }
+        //capture screenshot of the test result
+        await TestMethods.captureScreenshot(this.driver, "Invalid Guest Order Checkout (Shipping Address) Test Result - Invalid Shipping Address Last Name Format");
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

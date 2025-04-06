@@ -55,6 +55,7 @@ class CheckoutPageInvalidScenarios extends BasePage{
 
         //invalid guest checkout data input - invalid singular input format (shipping and billing address input fields will share same variables to avoid redundancies)
         this._guestCheckoutInvalidFirstNameFormat = "@$#@$%#$%^";
+        this._guestCheckoutInvalidLastNameFormat = "*&^%&*$$";
     }
 
     //invalid guest checkout data input methods (shipping address) - no singular input
@@ -291,6 +292,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         const invalidGuestFirstNameFormat = this._guestCheckoutInvalidFirstNameFormat;
         Logger.info("Invalid guest checkout first name format (shipping address): ", invalidGuestFirstNameFormat);
         await shipAddressFirstNameInputField.sendKeys(invalidGuestFirstNameFormat);
+    }
+    async inputInvalidGuestLastNameFormatIntoShipAddressLastNameInputField(){
+        const shipAddressLastNameInputField = await this.driver.findElement(this._checkoutPageShipAddressLastNameInputField);
+        const invalidGuestLastNameFormat = this._guestCheckoutInvalidLastNameFormat;
+        Logger.info("Invalid guest checkout last name format (shipping address): ", invalidGuestLastNameFormat);
+        await shipAddressLastNameInputField.sendKeys(invalidGuestLastNameFormat);
     }
 
     //invalid input error message getter
