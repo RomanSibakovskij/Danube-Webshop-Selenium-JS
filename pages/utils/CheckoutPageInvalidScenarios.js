@@ -52,6 +52,9 @@ class CheckoutPageInvalidScenarios extends BasePage{
         this._guestCheckoutShipAddressTooLongPostCode = 2323453453232324232232324; //25 digits
         this._guestCheckoutShipAddressTooLongCity = "Sffdxfhffvdfhggjkjhluyutrtserttiuuyouitrgfsdsadffdfvxzcxcgfdhfujttetregfdgfddsafddsfgfdhgwaewrdsdsad"; //100 chars
         this._guestCheckoutShipAddressTooLongCompany = "Hfffxfhfrvdfhggjkjhluyutrtserttiuuyouitrgfsdsadffdfvxzcxcgfdhfujttetregfdgfddsafddsfgfdhgwaewrdsdsad";//100 chars
+
+        //invalid guest checkout data input - invalid singular input format (shipping and billing address input fields will share same variables to avoid redundancies)
+        this._guestCheckoutInvalidFirstNameFormat = "@$#@$%#$%^";
     }
 
     //invalid guest checkout data input methods (shipping address) - no singular input
@@ -280,6 +283,14 @@ class CheckoutPageInvalidScenarios extends BasePage{
         const tooLongBillAddressCompany = this._guestCheckoutShipAddressTooLongCompany;
         Logger.info("Too long guest checkout company (billing address): ", tooLongBillAddressCompany);
         await billAddressCompanyInputField.sendKeys(tooLongBillAddressCompany);
+    }
+
+    //invalid guest checkout data input methods (shipping address) - invalid singular input format
+    async inputInvalidGuestFirstNameFormatIntoShipAddressFirstNameInputField(){
+        const shipAddressFirstNameInputField = await this.driver.findElement(this._checkoutPageShipAddressFirstNameInputField);
+        const invalidGuestFirstNameFormat = this._guestCheckoutInvalidFirstNameFormat;
+        Logger.info("Invalid guest checkout first name format (shipping address): ", invalidGuestFirstNameFormat);
+        await shipAddressFirstNameInputField.sendKeys(invalidGuestFirstNameFormat);
     }
 
     //invalid input error message getter
