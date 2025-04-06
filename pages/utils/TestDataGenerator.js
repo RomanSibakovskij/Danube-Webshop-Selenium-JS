@@ -3,7 +3,6 @@ class TestDataGenerator {
     static generatedEmail;
     static generatedPassword;
     static generatedZipCode;
-    static generatedPhone;
     static generatedAddress;
     static generatedCity;
     static generatedCompany
@@ -123,12 +122,6 @@ class TestDataGenerator {
         return this.getRandomItem(this._companyNames);
     }
 
-    //get random review
-    getRandomReview(){
-        return this.getRandomItem(this._reviews);
-    }
-
-
     //generate random string
     generateRandomString(characters, length) {
         let result = '';
@@ -175,39 +168,6 @@ class TestDataGenerator {
         const maxZip = 89999; // Ending zip code range
         TestDataGenerator.generatedZipCode = Math.floor(minZip + Math.random() * (maxZip - minZip + 1));
         return TestDataGenerator.generatedZipCode;
-    }
-
-    generatePhoneNumber(length) {
-        if (length < 1) {
-            throw new Error("Phone number length must be at least 1.");
-        }
-
-        let phoneNumber = '';
-        for (let i = 0; i < length; i++) {
-            phoneNumber += Math.floor(Math.random() * 10); // Generate a random digit (0-9)
-        }
-        TestDataGenerator.generatedPhone = phoneNumber;
-        console.log("Generated phone number in generator: " + TestDataGenerator.generatedPhone);
-        return TestDataGenerator.generatedPhone;
-    }
-
-    generateUSPhoneNumber() {
-        // Generate the area code (first 3 digits, first digit can't be 0 or 1)
-        const areaCode = `${this.getRandomDigit(2, 9)}${this.getRandomDigit(0, 9)}${this.getRandomDigit(0, 9)}`;
-
-        // Generate the central office code (next 3 digits, first digit can't be 0 or 1)
-        const centralOfficeCode = `${this.getRandomDigit(2, 9)}${this.getRandomDigit(0, 9)}${this.getRandomDigit(0, 9)}`;
-
-        // Generate the line number (last 4 digits)
-        const lineNumber = `${this.getRandomDigit(0, 9)}${this.getRandomDigit(0, 9)}${this.getRandomDigit(0, 9)}${this.getRandomDigit(0, 9)}`;
-
-        TestDataGenerator.generatedPhone = `(${areaCode}) ${centralOfficeCode}-${lineNumber}`;
-        return TestDataGenerator.generatedPhone;
-    }
-
-// Helper function to generate a random digit between min and max (inclusive)
-    getRandomDigit(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     generateRandomAddress(length) {
