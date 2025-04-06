@@ -3,7 +3,6 @@
 const { By, until} = require('selenium-webdriver');
 const BasePage = require('./utils/BasePage');
 const { Logger } = require("./utils/Logger");
-const { Actions } = require('selenium-webdriver');
 class ShoppingCartPage extends BasePage{
 
     constructor(driver) {

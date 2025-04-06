@@ -3,7 +3,6 @@
 const { By, until} = require('selenium-webdriver');
 const BasePage = require('./utils/BasePage');
 const Logger  = require("./utils/Logger");
-const { Actions } = require('selenium-webdriver');
 const { TestDataGenerator } = require("./utils/TestDataGenerator");
 
 class CheckoutPage extends BasePage {
@@ -39,7 +38,6 @@ class CheckoutPage extends BasePage {
         this._checkoutPageBuyButton= By.xpath("//div[@class='checkout']/button");
         //recap section
         this._checkoutRecapSuccessMessage = By.xpath("//p[@id='order-confirmation']");
-        this._checkoutRecapShopMoreButton = By.xpath("//div[@class='recap']/button");
 
         const testDataGenerator = new TestDataGenerator(this.driver);
         //valid guest checkout input data
