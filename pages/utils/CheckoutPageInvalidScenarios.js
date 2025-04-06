@@ -59,6 +59,7 @@ class CheckoutPageInvalidScenarios extends BasePage{
         this._guestCheckoutInvalidAddressFormat = "!^%^*^&*&^";
         this._guestCheckoutInvalidPostCodeFormat = ")$%%$%^";
         this._guestCheckoutInvalidCityFormat = "#$%%&^%&";
+        this._guestCheckoutInvalidCompanyFormat = "*()&%%%$";
     }
 
     //invalid guest checkout data input methods (shipping address) - no singular input
@@ -319,6 +320,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         const invalidShipAddressGuestCityFormat = this._guestCheckoutInvalidCityFormat;
         Logger.info("Invalid guest checkout city format (shipping address): ", invalidShipAddressGuestCityFormat);
         await shipAddressCityInputField.sendKeys(invalidShipAddressGuestCityFormat);
+    }
+    async inputInvalidGuestCompanyFormatIntoShipAddressCompanyInputField() {
+        const shipAddressCompanyInputField = await this.driver.findElement(this._checkoutPageShipAddressCompanyInputField);
+        const invalidShipAddressCompanyFormat = this._guestCheckoutInvalidCompanyFormat;
+        Logger.info("Invalid guest checkout company format (shipping address): ", invalidShipAddressCompanyFormat);
+        await shipAddressCompanyInputField.sendKeys(invalidShipAddressCompanyFormat);
     }
 
     //invalid input error message getter
