@@ -341,6 +341,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         Logger.info("Invalid guest checkout last name format (billing address): ", invalidGuestLastNameFormat);
         await billAddressLastNameInputField.sendKeys(invalidGuestLastNameFormat);
     }
+    async inputInvalidGuestAddressFormatIntoBillAddressInputField() {
+        const billAddressInputField = await this.driver.findElement(this._checkoutPageBillingAddressInputField);
+        const invalidGuestBillAddressFormat = this._guestCheckoutInvalidAddressFormat;
+        Logger.info("Invalid guest checkout address format (billing address): ", invalidGuestBillAddressFormat);
+        await billAddressInputField.sendKeys(invalidGuestBillAddressFormat);
+    }
 
     //invalid input error message getter
     async getCheckoutPageInvalidInputErrorMessage(){
