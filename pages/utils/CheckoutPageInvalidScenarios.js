@@ -353,6 +353,12 @@ class CheckoutPageInvalidScenarios extends BasePage{
         Logger.info("Invalid guest checkout post code format (billing address): ", invalidGuestBillAddressPostCodeFormat);
         await billAddressPostCodeInputField.sendKeys(invalidGuestBillAddressPostCodeFormat);
     }
+    async inputInvalidGuestCityFormatIntoBillAddressCityInputField() {
+        const billAddressCityInputField = await this.driver.findElement(this._checkoutPageBillingAddressCityInputField);
+        const invalidBillAddressGuestCityFormat = this._guestCheckoutInvalidCityFormat;
+        Logger.info("Invalid guest checkout city format (billing address): ", invalidBillAddressGuestCityFormat);
+        await billAddressCityInputField.sendKeys(invalidBillAddressGuestCityFormat);
+    }
 
     //invalid input error message getter
     async getCheckoutPageInvalidInputErrorMessage(){
