@@ -14,7 +14,7 @@ describe('Checkout Page Tests', () => {
     jest.setTimeout(140000) //timer for the whole single test run, otherwise throws a timeout error
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    describe("Valid Guest Order Checkout Tests(guest)", () => {
+    describe("Valid Guest Order Checkout Tests (guest)", () => {
 
         describe("Home Page Product/s Checkout Confirmation Tests (guest)", () => {
 
